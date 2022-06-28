@@ -7,7 +7,7 @@ public class StatManager : MonoBehaviour
     public static StatManager instance;
 
     public static StatDictionary StatDictionary => statDictionary;
-    static StatDictionary statDictionary;
+    static StatDictionary statDictionary = new StatDictionary();
 
     [SerializeField]
     List<StatData> stats;
@@ -21,7 +21,8 @@ public class StatManager : MonoBehaviour
 
         for (int i = 0; i < stats.Count; i++)
         {
-            statDictionary.Add(stats[i].stat, stats[i]);
+            if (!StatDictionary.ContainsKey(stats[i].stat))
+                statDictionary.Add(stats[i].stat, stats[i]);
         }
     }
 

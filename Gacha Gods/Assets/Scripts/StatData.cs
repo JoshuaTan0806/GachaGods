@@ -8,6 +8,8 @@ public class StatData : ScriptableObject
 {
     public Stat stat;
 
+    [SerializeField] bool hasFlat;
+
     public float Flat
     {
         get
@@ -50,11 +52,20 @@ public class StatData : ScriptableObject
     }
     [SerializeField]  float multiplier = 1;
 
-    [ReadOnly] public float totalValue;
+    public float Total => total;
+    [ReadOnly, SerializeField] float total;
+
+    private void OnValidate()
+    {
+        CalculateTotal();
+    }
 
     public void CalculateTotal()
     {
-        totalValue = (1 + (percent / 100) * multiplier);
+        if (hasFlat)
+            total = ((flat + (flat * (percent / 100))) * multiplier);
+        else
+            total = ((1 + (percent / 100)) * multiplier);
     }
 
     public static StatData operator+ (StatData l, StatData r)

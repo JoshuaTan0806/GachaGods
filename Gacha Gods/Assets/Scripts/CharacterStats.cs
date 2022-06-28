@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterStats : MonoBehaviour
 {
     public StatDictionary Stats => stats;
-    StatDictionary stats;
+    StatDictionary stats = new StatDictionary();
 
     public Character Character => character;
     [SerializeField] Character character;
