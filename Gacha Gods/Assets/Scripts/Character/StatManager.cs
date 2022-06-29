@@ -31,7 +31,7 @@ public class StatManager : MonoBehaviour
         return Instantiate(statDictionary[stat]);
     }
 
-    public static StatData NewStat(Stat stat, StatType statType, float value)
+    public static StatData CreateStat(Stat stat, StatType statType, float value)
     {
         StatData newStat = NullStat(stat);
 
@@ -39,6 +39,8 @@ public class StatManager : MonoBehaviour
         {
             case StatType.Flat:
                 newStat.Flat += value;
+                if(statDictionary[stat].FlatDefaultsToOne)
+                    Debug.LogError("Flat value does not matter for this stat");
                 break;
             case StatType.Percent:
                 newStat.Percent += value;

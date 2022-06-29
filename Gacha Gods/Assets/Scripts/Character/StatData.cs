@@ -8,7 +8,8 @@ public class StatData : ScriptableObject
 {
     public Stat stat;
 
-    [SerializeField] bool hasFlat;
+    public bool FlatDefaultsToOne => flatDefaultsToOne;
+    [SerializeField] bool flatDefaultsToOne;
 
     public float Flat
     {
@@ -62,7 +63,7 @@ public class StatData : ScriptableObject
 
     public void CalculateTotal()
     {
-        if (hasFlat)
+        if (!flatDefaultsToOne)
             total = ((flat + (flat * (percent / 100))) * multiplier);
         else
             total = ((1 + (percent / 100)) * multiplier);
