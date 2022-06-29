@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public static System.Action OnGameStart;
+    public static System.Action OnGameEnd;
+
     private void Awake()
     {
         if (instance == null)
@@ -18,5 +21,15 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void StartGame()
+    {
+        OnGameStart?.Invoke();
+    }
+
+    public void EndGame()
+    {
+        OnGameEnd?.Invoke();
     }
 }
