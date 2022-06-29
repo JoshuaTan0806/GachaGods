@@ -6,6 +6,6 @@ using UnityEngine;
 public class Rarity : ScriptableObject
 {
     public string Name => name;
-    public string Description => description;
-    [SerializeField] string description;
+    public int RarityNumber => rarityNumber;
+    [SerializeField] int rarityNumber;
 }
