@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class CharacterStats : MonoBehaviour
 {
     public StatDictionary Stats => stats;
     StatDictionary stats = new StatDictionary();
+    [ReadOnly, SerializeField] StatFloatDictionary totalStats = new StatFloatDictionary();
 
     public Character Character => character;
     [SerializeField] Character character;
+
+    List<Buff> buffs = new List<Buff>();
 
     float currentHealth;
 
     void Start()
     {
+        character = Instantiate(character);
+
         foreach (var item in StatManager.StatDictionary)
         {
             AddStat(item.Value);
@@ -21,7 +27,7 @@ public class CharacterStats : MonoBehaviour
 
         foreach (var item in Character.BaseStats)
         {
-            AddStat(item.Value);
+            AddStat(StatManager.CreateStat(item.Key, StatType.Flat, item.Value));
         }
     }
 
@@ -41,6 +47,8 @@ public class CharacterStats : MonoBehaviour
             stats.Add(stat.stat, StatManager.NullStat(stat.stat));
             stats[stat.stat] += stat;
         }
+
+        totalStats[stat.stat] = stats[stat.stat].Total;
     }
 
     public void RemoveStat(StatData stat)
@@ -54,10 +62,42 @@ public class CharacterStats : MonoBehaviour
             stats.Add(stat.stat, StatManager.NullStat(stat.stat));
             stats[stat.stat] -= stat;
         }
+
+        totalStats[stat.stat] = stats[stat.stat].Total;
     }
 
     public bool IsDead()
     {
         return currentHealth > 0;
+    }
+
+    [Button]
+    public void Buff()
+    {
+        Buff buff = new Buff(StatManager.CreateStat(Stat.Health, StatType.Flat, 100), GameManager.OnGameEnd);
+        GameManager.OnGameEnd += buff.RemoveBuff;
+        AddBuff(buff);
+    }
+
+    public void AddBuff(Buff buff)
+    {
+        if(buffs.Contains(buff))
+            throw new System.Exception("Trying to add buff that character already has.");
+
+        buffs.Add(buff);
+        AddStat(buff.Stat);
+
+        buff.OnConditionHit -= RemoveBuff;
+        buff.OnConditionHit += RemoveBuff;
+    }
+
+    void RemoveBuff(Buff buff)
+    {
+        if (!buffs.Contains(buff))
+            throw new System.Exception("Trying to remove buff that character does not have.");
+
+        buffs.Remove(buff);
+        RemoveStat(buff.Stat);
+        buff.OnConditionHit -= RemoveBuff;
     }
 }

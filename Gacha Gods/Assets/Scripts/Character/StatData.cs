@@ -76,9 +76,9 @@ public class StatData : ScriptableObject
 
         StatData stat = StatManager.NullStat(l.stat);
 
-        stat.flat = l.flat + r.flat;
-        stat.percent = l.percent + r.percent;
-        stat.multiplier = l.multiplier * r.multiplier;
+        stat.Flat = l.Flat + r.Flat;
+        stat.Percent = l.Percent + r.Percent;
+        stat.Multiplier = l.Multiplier * r.Multiplier;
 
         return stat;
     }
@@ -90,15 +90,16 @@ public class StatData : ScriptableObject
 
         StatData stat = StatManager.NullStat(l.stat);
 
-        stat.flat = l.flat - r.flat;
-        stat.percent = l.percent - r.percent;
-        stat.multiplier = l.multiplier * 1 / r.multiplier;
+        stat.Flat = l.Flat - r.Flat;
+        stat.Percent = l.Percent - r.Percent;
+        stat.Multiplier = l.Multiplier * 1 / r.Multiplier;
 
         return stat;
     }
 }
 
-public class StatDictionary : SerializableDictionary<Stat, StatData> { }
+[System.Serializable] public class StatDictionary : SerializableDictionary<Stat, StatData> { }
+[System.Serializable] public class StatFloatDictionary : SerializableDictionary<Stat, float> { }
 
 public enum Stat
 {

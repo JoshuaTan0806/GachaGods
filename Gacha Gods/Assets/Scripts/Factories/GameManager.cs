@@ -14,11 +14,13 @@ public class GameManager : Factories.FactoryBase
 
     }
 
+    [Button]
     public void StartGame()
     {
         OnGameStart?.Invoke();
     }
 
+    [Button]
     public void EndGame()
     {
         OnGameEnd?.Invoke();
