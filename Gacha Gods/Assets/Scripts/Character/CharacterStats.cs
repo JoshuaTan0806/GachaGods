@@ -9,6 +9,9 @@ public class CharacterStats : MonoBehaviour
 
     public Character Character => character;
     [SerializeField] Character character;
+
+    float currentHealth;
+
     void Start()
     {
         foreach (var item in StatManager.StatDictionary)
@@ -20,6 +23,11 @@ public class CharacterStats : MonoBehaviour
         {
             AddStat(item.Value);
         }
+    }
+
+    public float GetStat(Stat stat)
+    {
+        return stats.ContainsKey(stat) ? stats[stat].Total : StatManager.NullStat(stat).Total;
     }
 
     public void AddStat(StatData stat)
@@ -46,5 +54,10 @@ public class CharacterStats : MonoBehaviour
             stats.Add(stat.stat, StatManager.NullStat(stat.stat));
             stats[stat.stat] -= stat;
         }
+    }
+
+    public bool IsDead()
+    {
+        return currentHealth > 0;
     }
 }

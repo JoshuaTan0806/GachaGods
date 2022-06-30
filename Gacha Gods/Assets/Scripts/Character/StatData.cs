@@ -102,7 +102,8 @@ public class StatDictionary : SerializableDictionary<Stat, StatData> { }
 
 public enum Stat
 {
-    Health
+    Health,
+    Range
 }
 
 public enum StatType
