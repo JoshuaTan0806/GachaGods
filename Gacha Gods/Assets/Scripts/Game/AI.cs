@@ -21,10 +21,10 @@ public class AI : MonoBehaviour
         if (stats.IsDead())
             return;
 
-        if (target != null && !TargetIsInRange())
+        if (HasTarget() && !TargetIsInRange())
             target = null;
 
-        if (target == null)
+        if (!HasTarget())
             target = FindClosestEnemy();
 
         if (CanCastSpell())
@@ -39,6 +39,11 @@ public class AI : MonoBehaviour
     CharacterStats FindClosestEnemy()
     {
         return null;
+    }
+
+    bool HasTarget()
+    {
+        return target != null;
     }
 
     bool TargetIsInRange()
