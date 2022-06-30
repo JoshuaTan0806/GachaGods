@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [CreateAssetMenu(menuName = "Managers/CharacterManager")]
 public class CharacterManager : Factories.FactoryBase
@@ -17,5 +18,25 @@ public class CharacterManager : Factories.FactoryBase
         {
             allCharacters.Add(item);
         }
+    }
+
+    public List<Character> FilterCharacters(Rarity rarity)
+    {
+        return allCharacters.Where(x => x.Rarity == rarity).ToList();
+    }
+
+    public List<Character> FilterCharacters(Role role)
+    {
+        return allCharacters.Where(x => x.Role.Contains(role)).ToList();
+    }
+
+    public List<Character> FilterCharacters(Archetype archetype)
+    {
+        return allCharacters.Where(x => x.Archetype.Contains(archetype)).ToList();
+    }
+
+    public List<Character> FilterCharacters(Element element)
+    {
+        return allCharacters.Where(x => x.Element.Contains(element)).ToList();
     }
 }
