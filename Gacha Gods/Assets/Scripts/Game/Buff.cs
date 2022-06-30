@@ -10,6 +10,23 @@ public class Buff
 
         conditionToRemove -= RemoveBuff;
         conditionToRemove += RemoveBuff;
+
+        GameManager.OnGameEnd -= RemoveBuff;
+        GameManager.OnGameEnd += RemoveBuff;
+    }
+
+    public Buff(StatData statData, ref List<System.Action> conditionsToRemove)
+    {
+        Stat = statData;
+
+        for (int i = 0; i < conditionsToRemove.Count; i++)
+        {
+            conditionsToRemove[i] -= RemoveBuff;
+            conditionsToRemove[i] += RemoveBuff;
+        }
+
+        GameManager.OnGameEnd -= RemoveBuff;
+        GameManager.OnGameEnd += RemoveBuff;
     }
 
     public void RemoveBuff()
