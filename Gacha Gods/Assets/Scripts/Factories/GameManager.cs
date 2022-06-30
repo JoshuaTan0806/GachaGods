@@ -4,14 +4,20 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 [CreateAssetMenu(menuName = "Managers/GameManager")]
-public class GameManager : Factories.FactoryBase
+public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     public static System.Action OnGameStart;
     public static System.Action OnGameEnd;
 
-    public override void Initialize()
+    private void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
 
+        DontDestroyOnLoad(gameObject);
     }
 
     [Button]

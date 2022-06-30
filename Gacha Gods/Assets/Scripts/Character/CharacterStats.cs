@@ -15,6 +15,7 @@ public class CharacterStats : MonoBehaviour
     List<Buff> buffs = new List<Buff>();
 
     float currentHealth;
+    float currentMana;
 
     void Start()
     {
@@ -71,13 +72,6 @@ public class CharacterStats : MonoBehaviour
         return currentHealth > 0;
     }
 
-    [Button]
-    public void Buff()
-    {
-        Buff buff = new(StatManager.CreateStat(Stat.Health, StatType.Flat, 100), ref GameManager.OnGameEnd);
-        AddBuff(buff);
-    }
-
     public void AddBuff(Buff buff)
     {
         if(buffs.Contains(buff))
@@ -98,5 +92,12 @@ public class CharacterStats : MonoBehaviour
         buffs.Remove(buff);
         RemoveStat(buff.Stat);
         buff.OnConditionHit -= RemoveBuff;
+    }
+
+    [Button]
+    public void Buff()
+    {
+        Buff buff = new(StatManager.CreateStat(Stat.Health, StatType.Flat, 100), 10);
+        AddBuff(buff);
     }
 }

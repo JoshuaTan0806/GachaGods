@@ -10,6 +10,8 @@ public class AI : MonoBehaviour
 
     CharacterStats target;
 
+    bool canChooseAction;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -19,6 +21,9 @@ public class AI : MonoBehaviour
     void Update()
     {
         if (stats.IsDead())
+            return;
+
+        if (!canChooseAction)
             return;
 
         if (HasTarget() && !TargetIsInRange())
@@ -58,7 +63,8 @@ public class AI : MonoBehaviour
 
     void Attack()
     {
-
+        canChooseAction = false;
+        StartCoroutine(AllowAction(1 / stats.GetStat(Stat.AtkSpd)));
     }
 
     void Move()
@@ -68,6 +74,13 @@ public class AI : MonoBehaviour
 
     void Cast()
     {
+        canChooseAction = false;
+        StartCoroutine(AllowAction(1 / stats.GetStat(Stat.SpellSpd)));
+    }
 
+    IEnumerator AllowAction(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canChooseAction = true;
     }
 }

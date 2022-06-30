@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Health
   m_EditorClassIdentifier: 
   stat: 0
-  hasFlat: 1
+  flatDefaultsToOne: 0
   flat: 0
   percent: 0
   multiplier: 1

@@ -29,6 +29,12 @@ public class Buff
         GameManager.OnGameEnd += RemoveBuff;
     }
 
+    public Buff(StatData statData, float timeInSeconds)
+    {
+        Stat = statData;
+        GameManager.instance.StartCoroutine(ExpireAfterSeconds(timeInSeconds));
+    }
+
     public void RemoveBuff()
     {
         OnConditionHit?.Invoke(this);
@@ -36,4 +42,10 @@ public class Buff
 
     public StatData Stat;
     public System.Action<Buff> OnConditionHit;
+
+    public IEnumerator ExpireAfterSeconds(float time)
+    {
+        yield return new WaitForSeconds(time);
+        RemoveBuff();
+    }
 }

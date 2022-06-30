@@ -104,7 +104,11 @@ public class StatData : ScriptableObject
 public enum Stat
 {
     Health,
-    Range
+    Range,
+    ManaCost,
+    ManaGainPerHit,
+    AtkSpd,
+    SpellSpd
 }
 
 public enum StatType
