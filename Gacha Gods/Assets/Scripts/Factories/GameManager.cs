@@ -1,26 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
-public class GameManager : MonoBehaviour
+[CreateAssetMenu(menuName = "Managers/GameManager")]
+public class GameManager : Factories.FactoryBase
 {
-    public static GameManager instance;
-
     public static System.Action OnGameStart;
     public static System.Action OnGameEnd;
 
-    private void Awake()
+    public override void Initialize()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
 
-        DontDestroyOnLoad(gameObject);
     }
 
     public void StartGame()

@@ -2,23 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatManager : MonoBehaviour
+[CreateAssetMenu(menuName = "Managers/StatManager")]
+public class StatManager : Factories.FactoryBase
 {
-    public static StatManager instance;
-
     public static StatDictionary StatDictionary => statDictionary;
     static StatDictionary statDictionary = new StatDictionary();
 
     [SerializeField]
     List<StatData> stats;
 
-    public void Awake()
+    public override void Initialize()
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(gameObject);
-
         for (int i = 0; i < stats.Count; i++)
         {
             if (!StatDictionary.ContainsKey(stats[i].stat))
