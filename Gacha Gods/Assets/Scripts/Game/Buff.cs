@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Buff
 {
-    public Buff(StatData statData, System.Action conditionToRemove)
+    public Buff(StatData statData, ref System.Action conditionToRemove)
     {
         Stat = statData;
 

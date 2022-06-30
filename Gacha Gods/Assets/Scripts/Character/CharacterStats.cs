@@ -74,8 +74,7 @@ public class CharacterStats : MonoBehaviour
     [Button]
     public void Buff()
     {
-        Buff buff = new Buff(StatManager.CreateStat(Stat.Health, StatType.Flat, 100), GameManager.OnGameEnd);
-        GameManager.OnGameEnd += buff.RemoveBuff;
+        Buff buff = new(StatManager.CreateStat(Stat.Health, StatType.Flat, 100), ref GameManager.OnGameEnd);
         AddBuff(buff);
     }
 
