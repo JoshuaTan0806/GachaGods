@@ -13,6 +13,7 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] Character character;
 
     List<Buff> buffs = new List<Buff>();
+    public System.Action OnDeath;
 
     float currentHealth;
     float currentMana;
@@ -94,10 +95,23 @@ public class CharacterStats : MonoBehaviour
         buff.OnConditionHit -= RemoveBuff;
     }
 
+    public void TakeDamage(float damage)
+    {
+        if (IsDead())
+            return;
+
+        currentHealth -= damage;
+
+        if (IsDead())
+            OnDeath?.Invoke();
+    }
+
     [Button]
     public void Buff()
     {
         Buff buff = new(StatManager.CreateStat(Stat.Health, StatType.Flat, 100), 10);
         AddBuff(buff);
     }
+
+  
 }
