@@ -15,7 +15,7 @@ public enum BannerType
 
 public class Banner : MonoBehaviour
 {
-    [SerializeField] BannerType bannerType;
+    [ReadOnly] public BannerType bannerType;
 
     [Header("Possible Characters")]
     [ReadOnly, SerializeField] List<Character> characters = new List<Character>();

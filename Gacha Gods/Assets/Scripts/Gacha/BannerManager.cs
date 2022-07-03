@@ -5,48 +5,39 @@ using UnityEngine.UI;
 
 public class BannerManager : MonoBehaviour
 {
-    [SerializeField] List<Banner> Banners;
-    [SerializeField] Button LeftArrow;
-    [SerializeField] Button RightArrow;
-    Banner CurrentBanner;
+    List<Banner> Banners = new List<Banner>();
+    Banner CurrentBanner
+    {
+        get
+        {
+            return currentBanner;
+        }
+        set
+        {
+            currentBanner = value;
+            ChangeBanner();
+        }
+    }
+    Banner currentBanner;
+
+    [Header("Prefabs")]
+    [SerializeField] GameObject BannerPrefab;
 
     private void Awake()
     {
-        LeftArrow.onClick.AddListener(CycleLeft);   
-        RightArrow.onClick.AddListener(CycleRight);
+        InitialiseBanners();
         CurrentBanner = Banners[0];
         ChangeBanner();
     }
 
-    void CycleLeft()
+    void InitialiseBanners()
     {
-        if (BannerIndex() == 0)
-            CurrentBanner = Banners[Banners.Count - 1];
-        else
-            CurrentBanner = Banners[BannerIndex() - 1];
-
-        ChangeBanner();
-    }
-
-    void CycleRight()
-    {
-        if (BannerIndex() == Banners.Count - 1)
-            CurrentBanner = Banners[0];
-        else
-            CurrentBanner = Banners[BannerIndex() + 1];
-
-        ChangeBanner();
-    }
-
-    int BannerIndex()
-    {
-        for (int i = 0; i < Banners.Count; i++)
+        for (int i = 0; i < System.Enum.GetNames(typeof(BannerType)).Length; i++)
         {
-            if (Banners[i] == CurrentBanner)
-                return i;
+            Banner b = Instantiate(BannerPrefab, transform).GetComponent<Banner>();
+            b.bannerType = (BannerType)(i);
+            Banners.Add(b);
         }
-
-        throw new System.Exception("Current banner isn't in list of banners");
     }
 
     void ChangeBanner()
