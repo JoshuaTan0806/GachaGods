@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Sirenix.OdinInspector;
 
 public enum BannerType
 {
     Regular,
+    RateUp,
     Role,
     Archetype,
     Element,
@@ -14,15 +16,25 @@ public enum BannerType
 public class Banner : MonoBehaviour
 {
     [SerializeField] BannerType bannerType;
-    List<Character> characters = new List<Character>();
-    List<Character> rateUpCharacters = new List<Character>();
+    [ReadOnly, SerializeField] List<Character> characters = new List<Character>();
+    [ReadOnly, SerializeField] List<Character> rateUpCharacters = new List<Character>();
+    [ReadOnly, SerializeField] int TimesRolled;
+
+    [Button]
     public void RefreshBanner()
     {
         characters = new List<Character>();
 
+        if (bannerType != BannerType.Regular)
+            TimesRolled = 0;
+
         switch (bannerType)
         {
             case BannerType.Regular:
+                characters = CharacterManager.AllCharacters;
+                break;
+
+            case BannerType.RateUp:
                 characters = CharacterManager.AllCharacters;
 
                 for (int i = 0; i < CharacterManager.AllRarities.Count; i++)
@@ -30,7 +42,6 @@ public class Banner : MonoBehaviour
                     List<Character> charactersOfSameRarity = CharacterManager.FilterCharacters(CharacterManager.AllCharacters, CharacterManager.AllRarities[i]);
                     rateUpCharacters.Add(charactersOfSameRarity.ChooseRandomElementInList());
                 }
-
                 break;
             case BannerType.Role:
                 characters = CharacterManager.FilterCharacters(CharacterManager.AllCharacters, CharacterManager.RandomRole());
@@ -46,6 +57,7 @@ public class Banner : MonoBehaviour
         }
     }
 
+    [Button]
     public void Roll()
     {
         for (int i = 0; i < CharacterManager.AllRarities.Count; i++)

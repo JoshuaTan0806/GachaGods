@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(menuName = "Managers/CharacterManager")]
 public class CharacterManager : Factories.FactoryBase
@@ -30,6 +31,26 @@ public class CharacterManager : Factories.FactoryBase
     static List<Rarity> allRarities = new List<Rarity>();
     [SerializeField]
     List<Rarity> rarities;
+
+
+    public static List<OddsDictionary> Odds => Odds;
+    [SerializeField] List<OddsDictionary> odds;
+
+    //[Button]
+    //public void InitialiseDictionary()
+    //{
+    //    odds.Clear();
+
+    //    for (int i = 0; i < 11; i++)
+    //    {
+    //        odds.Add(new OddsDictionary());
+
+    //        for (int j = 0; j < rarities.Count; j++)
+    //        {
+    //            odds[i].Add(rarities[j], 0);
+    //        }
+    //    }
+    //}
 
     public override void Initialize()
     {
@@ -96,5 +117,5 @@ public class CharacterManager : Factories.FactoryBase
         return allElements.ChooseRandomElementInList();
     }
 
-
+    [System.Serializable] public class OddsDictionary : SerializableDictionary<Rarity, int> { }
 }
