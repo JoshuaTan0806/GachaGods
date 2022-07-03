@@ -22,7 +22,7 @@ namespace Factories
             {
                 try
                 {
-                    f.Initialize();
+                    f.Initialise();
                 }
                 catch (System.Exception e)
                 { Debug.LogException(e); }

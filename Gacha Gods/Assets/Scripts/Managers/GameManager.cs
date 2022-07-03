@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public static System.Action OnGameEnd;
     public static System.Action OnRoundStart;
     public static System.Action OnRoundEnd;
+
+    public static int RoundNumber;
     private void Awake()
     {
         if (instance == null)
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         OnGameStart?.Invoke();
+        RoundNumber = 0;
     }
 
     [Button]
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
     [Button]
     public void EndRound()
     {
+        RoundNumber++;
         OnRoundEnd?.Invoke();
     }
 }

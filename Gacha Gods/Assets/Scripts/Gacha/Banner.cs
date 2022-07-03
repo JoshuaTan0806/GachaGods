@@ -16,9 +16,8 @@ public enum BannerType
 public class Banner : MonoBehaviour
 {
     [SerializeField] BannerType bannerType;
-    [SerializeField, ShowIf("bannerType", BannerType.Regular)] int timesForGuaranteed;
 
-    [Header("Possible Character")]
+    [Header("Possible Characters")]
     [ReadOnly, SerializeField] List<Character> characters = new List<Character>();
     [ReadOnly, SerializeField] List<Character> rateUpCharacters = new List<Character>();
 
@@ -50,26 +49,26 @@ public class Banner : MonoBehaviour
         switch (bannerType)
         {
             case BannerType.Regular:
-                characters = CharacterManager.AllCharacters;
+                characters = CharacterManager.Characters;
                 break;
 
             case BannerType.RateUp:
-                characters = CharacterManager.AllCharacters;
+                characters = CharacterManager.Characters;
 
-                for (int i = 0; i < CharacterManager.AllRarities.Count; i++)
+                for (int i = 0; i < CharacterManager.Rarities.Count; i++)
                 {
-                    List<Character> charactersOfSameRarity = CharacterManager.FilterCharacters(CharacterManager.AllCharacters, CharacterManager.AllRarities[i]);
+                    List<Character> charactersOfSameRarity = CharacterManager.FilterCharacters(CharacterManager.Characters, CharacterManager.Rarities[i]);
                     rateUpCharacters.Add(charactersOfSameRarity.ChooseRandomElementInList());
                 }
                 break;
             case BannerType.Role:
-                characters = CharacterManager.FilterCharacters(CharacterManager.AllCharacters, CharacterManager.RandomRole());
+                characters = CharacterManager.FilterCharacters(CharacterManager.Characters, CharacterManager.RandomRole());
                 break;
             case BannerType.Archetype:
-                characters = CharacterManager.FilterCharacters(CharacterManager.AllCharacters, CharacterManager.RandomArchetype());
+                characters = CharacterManager.FilterCharacters(CharacterManager.Characters, CharacterManager.RandomArchetype());
                 break;
             case BannerType.Element:
-                characters = CharacterManager.FilterCharacters(CharacterManager.AllCharacters, CharacterManager.RandomElement());
+                characters = CharacterManager.FilterCharacters(CharacterManager.Characters, CharacterManager.RandomElement());
                 break;
             default:
                 break;
@@ -90,14 +89,7 @@ public class Banner : MonoBehaviour
     {
         TimesRolled++;
 
-        if (bannerType == BannerType.Regular && TimesRolled >= timesForGuaranteed)
-        {
-            TimesRolled = 0;
-            RollCharacterOfRarity(CharacterManager.AllRarities.LastElement());
-            return;
-        }
-
-        OddsDictionary odds = CharacterManager.AllOdds[level];
+        OddsDictionary odds = FindOdds(level);
 
         float roll = Random.Range(0, 100);
         float counter = 0;
@@ -120,9 +112,9 @@ public class Banner : MonoBehaviour
     {
         TimesRolled++;
 
-        OddsDictionary odds = CharacterManager.AllOdds[level];
+        OddsDictionary odds = FindOdds(level);
 
-        Rarity rarityToPick = CharacterManager.AllRarities[0];
+        Rarity rarityToPick = CharacterManager.Rarities[0];
 
         foreach (var item in odds)
         {
@@ -148,15 +140,28 @@ public class Banner : MonoBehaviour
         return characterPulled;
     }
 
+    OddsDictionary FindOdds(int level)
+    {
+        if (!IsRateUp())
+            return CharacterManager.Odds[level];
+        else
+            return CharacterManager.Odds[level + 1];
+    }
+
+    bool IsRateUp()
+    {
+        return (GameManager.RoundNumber - 1) % 4 == 0;
+    }
+
     [Button]
-    public void RollLevel()
+    public void RollAtTestLevel()
     {
         Roll(levelToPullAt);
     }
 
     [Button]
-    public void Roll10Level()
+    public void Roll10AtTestLevel()
     {
         Roll10(levelToPullAt);
-    }
+    }    
 }

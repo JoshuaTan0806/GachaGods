@@ -80,7 +80,7 @@ namespace Factories
         /// <summary>
         /// Sets the instance to be this.
         /// </summary>
-        public override void Initialize()
+        public override void Initialise()
         {
             Instance = (T)this;
         }
@@ -99,7 +99,7 @@ namespace Factories
         /// <summary>
         /// Sets the instance to be this.
         /// </summary>
-        public override void Initialize()
+        public override void Initialise()
         {
             Instance = (T)this;
         }
@@ -112,6 +112,6 @@ namespace Factories
         /// <summary>
         /// Initilizes the factory
         /// </summary>
-        public abstract void Initialize();
+        public abstract void Initialise();
     }
 }

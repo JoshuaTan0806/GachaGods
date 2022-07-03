@@ -11,7 +11,7 @@ public class StatManager : Factories.FactoryBase
     [SerializeField]
     List<StatData> stats;
 
-    public override void Initialize()
+    public override void Initialise()
     {
         for (int i = 0; i < stats.Count; i++)
         {
