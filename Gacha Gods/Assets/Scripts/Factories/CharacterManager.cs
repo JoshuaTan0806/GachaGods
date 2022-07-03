@@ -61,23 +61,40 @@ public class CharacterManager : Factories.FactoryBase
         allRarities = allRarities.OrderBy(x => x.RarityNumber).ToList();
     }
 
-    public List<Character> FilterCharacters(Rarity rarity)
+    public static List<Character> FilterCharacters(List<Character> characters, Rarity rarity)
     {
-        return allCharacters.Where(x => x.Rarity == rarity).ToList();
+        return characters.Where(x => x.Rarity == rarity).ToList();
     }
 
-    public List<Character> FilterCharacters(Role role)
+    public static List<Character> FilterCharacters(List<Character> characters, Role role)
     {
-        return allCharacters.Where(x => x.Role.Contains(role)).ToList();
+        return characters.Where(x => x.Role.Contains(role)).ToList();
     }
 
-    public List<Character> FilterCharacters(Archetype archetype)
+    public static List<Character> FilterCharacters(List<Character> characters, Archetype archetype)
     {
-        return allCharacters.Where(x => x.Archetype.Contains(archetype)).ToList();
+        return characters.Where(x => x.Archetype.Contains(archetype)).ToList();
     }
 
-    public List<Character> FilterCharacters(Element element)
+    public static List<Character> FilterCharacters(List<Character> characters, Element element)
     {
-        return allCharacters.Where(x => x.Element.Contains(element)).ToList();
+        return characters.Where(x => x.Element.Contains(element)).ToList();
     }
+
+    public static Role RandomRole()
+    {
+        return allRoles.ChooseRandomElementInList();
+    }
+
+    public static Archetype RandomArchetype()
+    {
+        return allArchetypes.ChooseRandomElementInList();
+    }
+
+    public static Element RandomElement()
+    {
+        return allElements.ChooseRandomElementInList();
+    }
+
+
 }
