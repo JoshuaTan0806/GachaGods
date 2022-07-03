@@ -18,8 +18,12 @@ public class Banner : MonoBehaviour
     [SerializeField] BannerType bannerType;
     [ReadOnly, SerializeField] List<Character> characters = new List<Character>();
     [ReadOnly, SerializeField] List<Character> rateUpCharacters = new List<Character>();
+    [SerializeField, ShowIf("bannerType", BannerType.Regular)] int timesForGuaranteed;
     [ReadOnly, SerializeField] int TimesRolled;
+
+    [Header("Pull")]
     [ReadOnly, SerializeField] Character characterPulled;
+    [ReadOnly, SerializeField] Rarity rarityPulled;
 
     private void OnEnable()
     {
@@ -72,6 +76,13 @@ public class Banner : MonoBehaviour
     {
         TimesRolled++;
 
+        if (bannerType == BannerType.Regular && TimesRolled == timesForGuaranteed)
+        {
+            characterPulled = RollCharacterOfRarity(CharacterManager.AllRarities.LastElement());
+            rarityPulled = characterPulled.Rarity;
+            return;
+        }
+
         OddsDictionary odds = CharacterManager.AllOdds[level];
 
         float roll = Random.Range(0, 100);
@@ -84,6 +95,7 @@ public class Banner : MonoBehaviour
             if (roll < counter)
             {
                 characterPulled = RollCharacterOfRarity(item.Key);
+                rarityPulled = characterPulled.Rarity;
                 return;
             }
         }

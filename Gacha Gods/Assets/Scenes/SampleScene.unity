@@ -427,7 +427,8 @@ MonoBehaviour:
   bannerType: 0
   characters: []
   rateUpCharacters: []
-  TimesRolled: 0
+  timesForGuaranteed: 50
+  TimesRolled: 1
   characterPulled: {fileID: 0}
 --- !u!4 &665361983
 Transform:

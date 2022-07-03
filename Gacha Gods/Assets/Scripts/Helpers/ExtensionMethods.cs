@@ -112,8 +112,8 @@ public static class ExtensionMethods
     {
         T t = ts[UnityEngine.Random.Range(0, ts.Count)];
 
-        if(RemoveFromList)
-        ts.Remove(t);
+        if (RemoveFromList)
+            ts.Remove(t);
 
         return t;
     }
