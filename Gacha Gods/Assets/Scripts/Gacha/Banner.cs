@@ -19,7 +19,7 @@ public class Banner : MonoBehaviour
 
     [Header("Possible Characters")]
     [ReadOnly, SerializeField] List<Character> characters = new List<Character>();
-    [ReadOnly, SerializeField] List<Character> rateUpCharacters = new List<Character>();
+    [ReadOnly, SerializeField, ShowIf("bannerType", BannerType.RateUp)] List<Character> rateUpCharacters = new List<Character>();
 
     [Header("Pull Data")]
     [SerializeField] int levelToPullAt;
@@ -29,12 +29,14 @@ public class Banner : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.OnGameStart += RefreshBanner;
         GameManager.OnRoundEnd += RefreshBanner;
         TimesRolled = 0;
     }
 
     private void OnDestroy()
     {
+        GameManager.OnGameStart -= RefreshBanner;
         GameManager.OnRoundEnd -= RefreshBanner;
     }
 
@@ -42,6 +44,7 @@ public class Banner : MonoBehaviour
     void RefreshBanner()
     {
         characters = new List<Character>();
+        rateUpCharacters = new List<Character>();
 
         if (bannerType != BannerType.Regular)
             TimesRolled = 0;

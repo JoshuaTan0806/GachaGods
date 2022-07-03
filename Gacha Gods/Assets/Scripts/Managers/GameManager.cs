@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        StartGame();
+    }
+
     [Button]
     public void StartGame()
     {
