@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using System.Linq;
 
 public class BannerManager : MonoBehaviour
 {
-    List<Banner> Banners = new List<Banner>();
-    Banner CurrentBanner
+    public static Dictionary<Transform, Banner> Banners = new Dictionary<Transform, Banner>();
+
+    public static Banner CurrentBanner
     {
         get
         {
@@ -18,33 +19,43 @@ public class BannerManager : MonoBehaviour
             ChangeBanner();
         }
     }
-    Banner currentBanner;
+    static Banner currentBanner;
+
+    [Header("References")]
+    [SerializeField] Transform BannerHolder;
+    [SerializeField] Transform BannerSliderHolder;
 
     [Header("Prefabs")]
     [SerializeField] GameObject BannerPrefab;
+    [SerializeField] GameObject BannerSliderPrefab;
 
     private void Awake()
     {
         InitialiseBanners();
-        CurrentBanner = Banners[0];
+        currentBanner = Banners.Values.First();
         ChangeBanner();
     }
 
     void InitialiseBanners()
     {
+        Banners.Clear();
+
         for (int i = 0; i < System.Enum.GetNames(typeof(BannerType)).Length; i++)
         {
-            Banner b = Instantiate(BannerPrefab, transform).GetComponent<Banner>();
+            Banner b = Instantiate(BannerPrefab, BannerHolder).GetComponent<Banner>();
             b.bannerType = (BannerType)(i);
-            Banners.Add(b);
+
+            Transform t = Instantiate(BannerSliderPrefab, BannerSliderHolder).transform;
+
+            Banners.Add(t, b);
         }
     }
 
-    void ChangeBanner()
+    static void ChangeBanner()
     {
-        for (int i = 0; i < Banners.Count; i++)
+        foreach (var item in Banners)
         {
-            Banners[i].gameObject.SetActive(false);
+            item.Value.gameObject.SetActive(false);
         }
 
         CurrentBanner.gameObject.SetActive(true);
