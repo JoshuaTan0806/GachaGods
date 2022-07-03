@@ -20,7 +20,7 @@ public class CharacterManager : Factories.FactoryBase
     public static List<Archetype> AllArchetypes => allArchetypes;
     static List<Archetype> allArchetypes = new List<Archetype>();
     [SerializeField]
-    List<Archetype> archetype;
+    List<Archetype> archetypes;
 
     public static List<Element> AllElements => allElements;
     static List<Element> allElements = new List<Element>();
@@ -33,7 +33,8 @@ public class CharacterManager : Factories.FactoryBase
     List<Rarity> rarities;
 
 
-    public static List<OddsDictionary> Odds => Odds;
+    public static List<OddsDictionary> AllOdds => allOdds;
+    static List<OddsDictionary> allOdds;
     [SerializeField] List<OddsDictionary> odds;
 
     //[Button]
@@ -54,32 +55,12 @@ public class CharacterManager : Factories.FactoryBase
 
     public override void Initialize()
     {
-        foreach (var item in characters)
-        {
-            allCharacters.Add(item);
-        }
-
-        foreach (var item in roles)
-        {
-            allRoles.Add(item);
-        }
-
-        foreach (var item in archetype)
-        {
-            allArchetypes.Add(item);
-        }
-
-        foreach (var item in elements)
-        {
-            allElements.Add(item);
-        }
-
-        foreach (var item in rarities)
-        {
-            allRarities.Add(item);
-        }
-
-        allRarities = allRarities.OrderBy(x => x.RarityNumber).ToList();
+        allCharacters = characters;
+        allRoles = roles;
+        allArchetypes = archetypes;
+        allElements = elements;
+        allRarities = rarities.OrderBy(x => x.RarityNumber).ToList();
+        allOdds = odds;
     }
 
     public static List<Character> FilterCharacters(List<Character> characters, Rarity rarity)
@@ -117,5 +98,5 @@ public class CharacterManager : Factories.FactoryBase
         return allElements.ChooseRandomElementInList();
     }
 
-    [System.Serializable] public class OddsDictionary : SerializableDictionary<Rarity, int> { }
 }
+[System.Serializable] public class OddsDictionary : SerializableDictionary<Rarity, int> { }

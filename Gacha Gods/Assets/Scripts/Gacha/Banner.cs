@@ -19,9 +19,20 @@ public class Banner : MonoBehaviour
     [ReadOnly, SerializeField] List<Character> characters = new List<Character>();
     [ReadOnly, SerializeField] List<Character> rateUpCharacters = new List<Character>();
     [ReadOnly, SerializeField] int TimesRolled;
+    [ReadOnly, SerializeField] Character characterPulled;
+
+    private void OnEnable()
+    {
+        GameManager.OnRoundEnd += RefreshBanner;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnRoundEnd -= RefreshBanner;
+    }
 
     [Button]
-    public void RefreshBanner()
+    void RefreshBanner()
     {
         characters = new List<Character>();
 
@@ -57,16 +68,30 @@ public class Banner : MonoBehaviour
         }
     }
 
-    [Button]
-    public void Roll()
+    public void Roll(int level)
     {
-        for (int i = 0; i < CharacterManager.AllRarities.Count; i++)
-        {
+        TimesRolled++;
 
+        OddsDictionary odds = CharacterManager.AllOdds[level];
+
+        float roll = Random.Range(0, 100);
+        float counter = 0;
+
+        foreach (var item in odds)
+        {
+            counter += item.Value;
+
+            if (roll < counter)
+            {
+                characterPulled = RollCharacterOfRarity(item.Key);
+                return;
+            }
         }
+
+        throw new System.Exception("Roll total is above 100.");
     }
 
-    public Character RollCharacterOfRarity(Rarity rarity)
+    Character RollCharacterOfRarity(Rarity rarity)
     {
         if (rateUpCharacters.Where(x => x.Rarity == rarity).ToList().Count > 0)
         {
@@ -77,5 +102,11 @@ public class Banner : MonoBehaviour
 
         List<Character> charactersOfSameRarity = CharacterManager.FilterCharacters(characters, rarity);
         return charactersOfSameRarity.ChooseRandomElementInList();
+    }
+
+    [Button]
+    public void RollLevel3()
+    {
+        Roll(3);
     }
 }

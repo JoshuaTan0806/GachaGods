@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static System.Action OnGameStart;
     public static System.Action OnGameEnd;
-
+    public static System.Action OnRoundStart;
+    public static System.Action OnRoundEnd;
     private void Awake()
     {
         if (instance == null)
@@ -30,5 +31,17 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         OnGameEnd?.Invoke();
+    }
+
+    [Button]
+    public void StartRound()
+    {
+        OnRoundStart?.Invoke();
+    }
+
+    [Button]
+    public void EndRound()
+    {
+        OnRoundEnd?.Invoke();
     }
 }

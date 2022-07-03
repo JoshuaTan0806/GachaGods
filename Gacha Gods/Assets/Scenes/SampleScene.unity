@@ -428,6 +428,7 @@ MonoBehaviour:
   characters: []
   rateUpCharacters: []
   TimesRolled: 0
+  characterPulled: {fileID: 0}
 --- !u!4 &665361983
 Transform:
   m_ObjectHideFlags: 0
