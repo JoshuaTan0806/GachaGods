@@ -16,21 +16,25 @@ public enum BannerType
 public class Banner : MonoBehaviour
 {
     [SerializeField] BannerType bannerType;
+    [SerializeField, ShowIf("bannerType", BannerType.Regular)] int timesForGuaranteed;
+
+    [Header("Possible Character")]
     [ReadOnly, SerializeField] List<Character> characters = new List<Character>();
     [ReadOnly, SerializeField] List<Character> rateUpCharacters = new List<Character>();
-    [SerializeField, ShowIf("bannerType", BannerType.Regular)] int timesForGuaranteed;
-    [ReadOnly, SerializeField] int TimesRolled;
 
-    [Header("Pull")]
+    [Header("Pull Data")]
+    [SerializeField] int levelToPullAt;
+    [ReadOnly, SerializeField] int TimesRolled;
     [ReadOnly, SerializeField] Character characterPulled;
     [ReadOnly, SerializeField] Rarity rarityPulled;
 
-    private void OnEnable()
+    private void Awake()
     {
         GameManager.OnRoundEnd += RefreshBanner;
+        TimesRolled = 0;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         GameManager.OnRoundEnd -= RefreshBanner;
     }
@@ -72,14 +76,24 @@ public class Banner : MonoBehaviour
         }
     }
 
+    public void Roll10(int level)
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            Roll(level);
+        }
+
+        RollHighestPossibleTier(level);
+    }
+
     public void Roll(int level)
     {
         TimesRolled++;
 
-        if (bannerType == BannerType.Regular && TimesRolled == timesForGuaranteed)
+        if (bannerType == BannerType.Regular && TimesRolled >= timesForGuaranteed)
         {
-            characterPulled = RollCharacterOfRarity(CharacterManager.AllRarities.LastElement());
-            rarityPulled = characterPulled.Rarity;
+            TimesRolled = 0;
+            RollCharacterOfRarity(CharacterManager.AllRarities.LastElement());
             return;
         }
 
@@ -94,13 +108,29 @@ public class Banner : MonoBehaviour
 
             if (roll < counter)
             {
-                characterPulled = RollCharacterOfRarity(item.Key);
-                rarityPulled = characterPulled.Rarity;
+                RollCharacterOfRarity(item.Key);
                 return;
             }
         }
 
         throw new System.Exception("Roll total is above 100.");
+    }
+
+    public void RollHighestPossibleTier(int level)
+    {
+        TimesRolled++;
+
+        OddsDictionary odds = CharacterManager.AllOdds[level];
+
+        Rarity rarityToPick = CharacterManager.AllRarities[0];
+
+        foreach (var item in odds)
+        {
+            if (item.Value > 0 && item.Key.RarityNumber > rarityToPick.RarityNumber)
+                rarityToPick = item.Key;
+        }
+
+        RollCharacterOfRarity(rarityToPick);
     }
 
     Character RollCharacterOfRarity(Rarity rarity)
@@ -113,12 +143,20 @@ public class Banner : MonoBehaviour
         }
 
         List<Character> charactersOfSameRarity = CharacterManager.FilterCharacters(characters, rarity);
-        return charactersOfSameRarity.ChooseRandomElementInList();
+        characterPulled = charactersOfSameRarity.ChooseRandomElementInList();
+        rarityPulled = characterPulled.Rarity;
+        return characterPulled;
     }
 
     [Button]
-    public void RollLevel3()
+    public void RollLevel()
     {
-        Roll(3);
+        Roll(levelToPullAt);
+    }
+
+    [Button]
+    public void Roll10Level()
+    {
+        Roll10(levelToPullAt);
     }
 }

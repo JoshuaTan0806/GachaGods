@@ -425,11 +425,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bannerType: 0
+  timesForGuaranteed: 50
   characters: []
   rateUpCharacters: []
-  timesForGuaranteed: 50
-  TimesRolled: 1
+  levelToPullAt: 0
+  TimesRolled: 3
   characterPulled: {fileID: 0}
+  rarityPulled: {fileID: 0}
 --- !u!4 &665361983
 Transform:
   m_ObjectHideFlags: 0
