@@ -8,4 +8,6 @@ public class Rarity : ScriptableObject
     public string Name => name;
     public int RarityNumber => rarityNumber;
     [SerializeField] int rarityNumber;
+    public Gradient Gradient => gradient;
+    [SerializeField] Gradient gradient;
 }
