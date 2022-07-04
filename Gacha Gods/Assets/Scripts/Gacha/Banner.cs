@@ -13,9 +13,9 @@ public enum BannerType
 public class Banner : MonoBehaviour
 {
     [ReadOnly] public BannerType bannerType;
+    [SerializeField] int RateUpChances = 25;
 
-    [Header("Possible Characters")]
-    [ReadOnly, SerializeField] List<Character> characters = new List<Character>();
+    [Header("Characters")]
     [ReadOnly, SerializeField, ShowIf("bannerType", BannerType.RateUp)] List<Character> rateUpCharacters = new List<Character>();
 
     [Header("Pull Data")]
@@ -38,21 +38,16 @@ public class Banner : MonoBehaviour
     [Button]
     void RefreshBanner()
     {
-        characters = new List<Character>();
         rateUpCharacters = new List<Character>();
 
         switch (bannerType)
         {
             case BannerType.Regular:
-                characters = CharacterManager.Characters;
-                break;
 
             case BannerType.RateUp:
-                characters = CharacterManager.Characters;
-
-                for (int i = 0; i < CharacterManager.Rarities.Count; i++)
+                for (int i = 0; i < GachaManager.Rarities.Count; i++)
                 {
-                    List<Character> charactersOfSameRarity = CharacterManager.FilterCharacters(CharacterManager.Characters, CharacterManager.Rarities[i]);
+                    List<Character> charactersOfSameRarity = GachaManager.FilterCharacters(GachaManager.Characters, GachaManager.Rarities[i]);
                     rateUpCharacters.Add(charactersOfSameRarity.ChooseRandomElementInList());
                 }
                 break;
@@ -96,7 +91,7 @@ public class Banner : MonoBehaviour
     {
         OddsDictionary odds = FindOdds(level);
 
-        Rarity rarityToPick = CharacterManager.Rarities[0];
+        Rarity rarityToPick = GachaManager.Rarities[0];
 
         foreach (var item in odds)
         {
@@ -107,27 +102,40 @@ public class Banner : MonoBehaviour
         RollCharacterOfRarity(rarityToPick);
     }
 
-    Character RollCharacterOfRarity(Rarity rarity)
+    void RollCharacterOfRarity(Rarity rarity)
     {
+        //pull a character
+        List<Character> charactersOfSameRarity = GachaManager.FilterCharacters(GachaManager.Characters, rarity);
+        characterPulled = charactersOfSameRarity.ChooseRandomElementInList();
+
+        //if theres rate up, we have a chance of overriding that with the rate up
         if (rateUpCharacters.Where(x => x.Rarity == rarity).ToList().Count > 0)
         {
-            int num = Random.Range(0, 3);
-            if (num > 0)
-                return rateUpCharacters.Where(x => x.Rarity == rarity).ToList()[0];
+            int num = Random.Range(0, 100);
+            if (num < RateUpChances)
+            {
+                characterPulled = rateUpCharacters.Where(x => x.Rarity == rarity).ToList()[0];
+            }
         }
 
-        List<Character> charactersOfSameRarity = CharacterManager.FilterCharacters(characters, rarity);
-        characterPulled = charactersOfSameRarity.ChooseRandomElementInList();
-        rarityPulled = characterPulled.Rarity;
-        return characterPulled;
+        if (characterPulled == null)
+            throw new System.Exception("Character pulled cannot be null.");
+        else
+            AddCharacter(characterPulled);
+    }
+
+    void AddCharacter(Character character)
+    {
+        rarityPulled = character.Rarity;
+        CharacterManager.AddCharacter(character);
     }
 
     OddsDictionary FindOdds(int level)
     {
         if (!IsRateUp())
-            return CharacterManager.Odds[level];
+            return GachaManager.Odds[level];
         else
-            return CharacterManager.Odds[level + 1];
+            return GachaManager.Odds[level + 1];
     }
 
     bool IsRateUp()
