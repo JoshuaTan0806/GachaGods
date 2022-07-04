@@ -5,7 +5,7 @@ using System.Linq;
 
 public class BannerManager : MonoBehaviour
 {
-    public static Dictionary<Transform, Banner> Banners = new Dictionary<Transform, Banner>();
+    public static Dictionary<RectTransform, Banner> Banners = new Dictionary<RectTransform, Banner>();
 
     public static Banner CurrentBanner
     {
@@ -23,11 +23,11 @@ public class BannerManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] Transform BannerHolder;
-    [SerializeField] Transform BannerSliderHolder;
+    [SerializeField] Transform BannerOptionHolder;
 
     [Header("Prefabs")]
     [SerializeField] GameObject BannerPrefab;
-    [SerializeField] GameObject BannerSliderPrefab;
+    [SerializeField] GameObject BannerOptionPrefab;
 
     private void Awake()
     {
@@ -38,17 +38,22 @@ public class BannerManager : MonoBehaviour
 
     void InitialiseBanners()
     {
-        Banners.Clear();
+        Banners = new Dictionary<RectTransform, Banner>();
 
-        for (int i = 0; i < System.Enum.GetNames(typeof(BannerType)).Length; i++)
+        SpawnBanner(BannerType.Regular);
+
+        for (int i = 0; i < 3; i++)
         {
-            Banner b = Instantiate(BannerPrefab, BannerHolder).GetComponent<Banner>();
-            b.bannerType = (BannerType)(i);
-
-            Transform t = Instantiate(BannerSliderPrefab, BannerSliderHolder).transform;
-
-            Banners.Add(t, b);
+            SpawnBanner(BannerType.RateUp);
         }
+    }
+
+    void SpawnBanner(BannerType bannerType)
+    {
+        Banner b = Instantiate(BannerPrefab, BannerHolder).GetComponent<Banner>();
+        b.bannerType = bannerType;
+        RectTransform t = Instantiate(BannerOptionPrefab, BannerOptionHolder).GetComponent<RectTransform>();
+        Banners.Add(t, b);
     }
 
     static void ChangeBanner()

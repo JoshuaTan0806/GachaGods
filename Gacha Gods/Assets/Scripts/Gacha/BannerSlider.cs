@@ -10,10 +10,12 @@ public class BannerSlider : MonoBehaviour
     [SerializeField] float _snapThreshold;
     [SerializeField] float _speed;
     ScrollRect ScrollRect;
+    RectTransform RectTransform;
 
     private void Awake()
     {
         ScrollRect = GetComponentInParent<ScrollRect>();
+        RectTransform = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -26,29 +28,33 @@ public class BannerSlider : MonoBehaviour
             MoveToBanner(ClosestBanner());
         }
 
-        if (ScrollRect.velocity.magnitude == 0)
-            MoveToBanner(ClosestBanner());
+        BannerManager.CurrentBanner = BannerManager.Banners[ClosestBanner()];
+        //if (ScrollRect.velocity.magnitude == 0)
+        //    MoveToBanner(ClosestBanner());
     }
 
     void Clamp()
     {
-        if (transform.position.y > -BannerManager.Banners.Keys.First().localPosition.y)
+        if (RectTransform.anchoredPosition.y < -BannerManager.Banners.Keys.First().anchoredPosition.y)
         {
             SnapToBanner(ClosestBanner());
             ScrollRect.velocity = Vector2.zero;
         }
 
-        if (transform.position.y < -BannerManager.Banners.Keys.Last().localPosition.y)
+        if (RectTransform.anchoredPosition.y > -BannerManager.Banners.Keys.Last().anchoredPosition.y)
         {
             SnapToBanner(ClosestBanner());
             ScrollRect.velocity = Vector2.zero;
         }
     }
 
-    public void MoveToBanner(Transform banner)
+    public void MoveToBanner(RectTransform banner)
     {
         BannerManager.CurrentBanner = BannerManager.Banners[banner];
-        //transform.Translate(Vector3.up * (transform.position.y - banner.transform.position.y) * _speed * Time.deltaTime);
+
+        Vector3 destination = RectTransform.anchoredPosition;
+        destination.y = -banner.anchoredPosition.y;
+        RectTransform.anchoredPosition = Vector3.MoveTowards(RectTransform.anchoredPosition, destination, _speed * Time.deltaTime);
     }
 
     bool ShouldSnap()
@@ -56,21 +62,24 @@ public class BannerSlider : MonoBehaviour
         return ScrollRect.velocity.magnitude > 0 && ScrollRect.velocity.magnitude < _snapThreshold;
     }
 
-    public void SnapToBanner(Transform banner)
+    public void SnapToBanner(RectTransform banner)
     {
         BannerManager.CurrentBanner = BannerManager.Banners[banner];
-        //transform.Translate(Vector3.up * (transform.position.y - banner.transform.position.y));
+
+        Vector3 destination = RectTransform.anchoredPosition;
+        destination.y = -banner.anchoredPosition.y;
+        RectTransform.anchoredPosition = destination;
     }
 
-    Transform ClosestBanner()
+    RectTransform ClosestBanner()
     {
-        Transform Closest = BannerManager.Banners.Keys.First();
+        RectTransform Closest = BannerManager.Banners.Keys.First();
 
         float closestDist = Mathf.Infinity;
 
         foreach (var item in BannerManager.Banners)
         {
-            float dist = Vector3.Distance(item.Key.position, transform.position);
+            float dist = Mathf.Abs(item.Key.anchoredPosition.y + RectTransform.anchoredPosition.y);
 
             if (dist < closestDist)
             {

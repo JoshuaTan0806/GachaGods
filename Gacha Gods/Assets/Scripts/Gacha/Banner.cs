@@ -8,9 +8,6 @@ public enum BannerType
 {
     Regular,
     RateUp,
-    Role,
-    Archetype,
-    Element,
 }
 
 public class Banner : MonoBehaviour
@@ -63,15 +60,6 @@ public class Banner : MonoBehaviour
                     List<Character> charactersOfSameRarity = CharacterManager.FilterCharacters(CharacterManager.Characters, CharacterManager.Rarities[i]);
                     rateUpCharacters.Add(charactersOfSameRarity.ChooseRandomElementInList());
                 }
-                break;
-            case BannerType.Role:
-                characters = CharacterManager.FilterCharacters(CharacterManager.Characters, CharacterManager.RandomRole());
-                break;
-            case BannerType.Archetype:
-                characters = CharacterManager.FilterCharacters(CharacterManager.Characters, CharacterManager.RandomArchetype());
-                break;
-            case BannerType.Element:
-                characters = CharacterManager.FilterCharacters(CharacterManager.Characters, CharacterManager.RandomElement());
                 break;
             default:
                 break;
