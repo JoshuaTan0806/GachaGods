@@ -20,7 +20,6 @@ public class Banner : MonoBehaviour
 
     [Header("Pull Data")]
     [SerializeField] int levelToPullAt;
-    [ReadOnly, SerializeField] int TimesRolled;
     [ReadOnly, SerializeField] Character characterPulled;
     [ReadOnly, SerializeField] Rarity rarityPulled;
 
@@ -28,7 +27,6 @@ public class Banner : MonoBehaviour
     {
         GameManager.OnGameStart += RefreshBanner;
         GameManager.OnRoundEnd += RefreshBanner;
-        TimesRolled = 0;
     }
 
     private void OnDestroy()
@@ -42,9 +40,6 @@ public class Banner : MonoBehaviour
     {
         characters = new List<Character>();
         rateUpCharacters = new List<Character>();
-
-        if (bannerType != BannerType.Regular)
-            TimesRolled = 0;
 
         switch (bannerType)
         {
@@ -78,8 +73,6 @@ public class Banner : MonoBehaviour
 
     public void Roll(int level)
     {
-        TimesRolled++;
-
         OddsDictionary odds = FindOdds(level);
 
         float roll = Random.Range(0, 100);
@@ -101,8 +94,6 @@ public class Banner : MonoBehaviour
 
     public void RollHighestPossibleTier(int level)
     {
-        TimesRolled++;
-
         OddsDictionary odds = FindOdds(level);
 
         Rarity rarityToPick = CharacterManager.Rarities[0];
