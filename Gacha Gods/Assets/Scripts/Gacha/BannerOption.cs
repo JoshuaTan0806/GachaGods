@@ -12,6 +12,6 @@ public class BannerOption : MonoBehaviour
 
     void MoveToBanner()
     {
-        GetComponentInParent<BannerSlider>().MoveToBanner(GetComponent<RectTransform>());
+        GetComponentInParent<BannerSlider>().SetDestination(GetComponent<RectTransform>());
     }
 }
