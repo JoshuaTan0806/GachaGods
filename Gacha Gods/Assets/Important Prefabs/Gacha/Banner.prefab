@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5915361989927485685}
   - component: {fileID: 1295327979107470875}
   - component: {fileID: 8077600917033480098}
+  - component: {fileID: 2290786664592921458}
   m_Layer: 5
   m_Name: 10 Pull
   m_TagString: Untagged
@@ -213,6 +214,19 @@ MonoBehaviour:
   roundedOutlineFilled: {fileID: 0}
   roundedOutlineText: {fileID: 0}
   roundedOutlineTextHighligted: {fileID: 0}
+--- !u!114 &2290786664592921458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213512423796998305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8c0d7818aed36429957c9cc810b730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: c6648b1e39d12be43998249c51aa0f86, type: 3}
 --- !u!1 &1281690416092205891
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +629,7 @@ GameObject:
   - component: {fileID: 5024277818147037464}
   - component: {fileID: 3328686829380132223}
   - component: {fileID: 728412043700660510}
+  - component: {fileID: 6738632474045723872}
   m_Layer: 5
   m_Name: 1 Pull
   m_TagString: Untagged
@@ -814,6 +829,19 @@ MonoBehaviour:
   roundedOutlineFilled: {fileID: 0}
   roundedOutlineText: {fileID: 0}
   roundedOutlineTextHighligted: {fileID: 0}
+--- !u!114 &6738632474045723872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842030724063574906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8c0d7818aed36429957c9cc810b730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: c6648b1e39d12be43998249c51aa0f86, type: 3}
 --- !u!1 &5416352398350996285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,7 +1036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.36863655, g: 0.6676965, b: 0.7169812, a: 1}
+  m_Color: {r: 0.38039216, g: 0.14509805, b: 0.74509805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

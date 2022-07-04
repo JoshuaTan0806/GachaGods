@@ -7,6 +7,7 @@ using Sirenix.OdinInspector;
 
 public class BannerSlider : MonoBehaviour
 {
+    [SerializeField] AudioClip clickSFX;
     [SerializeField] float _snapThreshold;
     [SerializeField] float _speed;
     ScrollRect ScrollRect;
@@ -22,7 +23,11 @@ public class BannerSlider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        BannerManager.CurrentBanner = BannerManager.Banners[ClosestBanner()];
+        if (BannerManager.CurrentBanner != BannerManager.Banners[ClosestBanner()])
+        {
+            BannerManager.CurrentBanner = BannerManager.Banners[ClosestBanner()];
+            SoundManager.PlaySFX(clickSFX);
+        }
 
         if (Input.GetMouseButtonDown(0))
             destination = Vector2.zero;

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 20416465843193331}
   - component: {fileID: 2505658966850466695}
   - component: {fileID: 3662292415139465147}
+  - component: {fileID: 5105865439149612508}
   m_Layer: 5
   m_Name: Banner Option
   m_TagString: Untagged
@@ -134,3 +135,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5105865439149612508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8093796068556327343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8c0d7818aed36429957c9cc810b730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: c6648b1e39d12be43998249c51aa0f86, type: 3}

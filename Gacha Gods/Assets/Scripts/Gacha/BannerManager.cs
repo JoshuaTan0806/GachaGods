@@ -20,7 +20,7 @@ public class BannerManager : MonoBehaviour
         }
     }
     static Banner currentBanner;
-
+   
     [Header("References")]
     [SerializeField] Transform BannerHolder;
     [SerializeField] Transform BannerOptionHolder;

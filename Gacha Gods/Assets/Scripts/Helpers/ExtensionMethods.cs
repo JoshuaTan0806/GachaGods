@@ -277,11 +277,6 @@ public static class ExtensionMethods
         UnityEngine.Object.Destroy(gameObject.transform.root.gameObject, seconds);
     }
 
-    public static void OnButtonClick(this MonoBehaviour monoBehaviour, System.Action action)
-    {
-        monoBehaviour.GetComponent<Button>().onClick.AddListener(() => action?.Invoke());
-    }
-
     public static void PlayNewClip(this AudioSource audioSource, AudioClip clip)
     {
         audioSource.clip = clip;
