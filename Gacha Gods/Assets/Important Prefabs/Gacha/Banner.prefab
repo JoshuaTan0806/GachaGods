@@ -293,7 +293,6 @@ MonoBehaviour:
   characters: []
   rateUpCharacters: []
   levelToPullAt: 0
-  TimesRolled: 0
   characterPulled: {fileID: 0}
   rarityPulled: {fileID: 0}
 --- !u!114 &1281690416092205889
