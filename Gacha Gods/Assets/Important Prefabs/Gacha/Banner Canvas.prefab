@@ -336,6 +336,17 @@ MonoBehaviour:
   BannerOptionHolder: {fileID: 7008101990327844009}
   BannerPrefab: {fileID: 1281690416092205891, guid: 81476f61f19c8824b91f0d20a3b051f8, type: 3}
   BannerOptionPrefab: {fileID: 8093796068556327343, guid: ce2f1f20c5375f1429f49a76d89f7d7d, type: 3}
+  bannerNames:
+  - Love
+  - Hope
+  - Faith
+  - Peace
+  - Grace
+  - Gratitude
+  - Elegance
+  - Mercy
+  - Charity
+  - Fortitude
 --- !u!114 &7008101990054095508
 MonoBehaviour:
   m_ObjectHideFlags: 0

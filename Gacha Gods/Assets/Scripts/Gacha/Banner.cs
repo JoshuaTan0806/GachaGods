@@ -76,6 +76,11 @@ public class Banner : MonoBehaviour
             default:
                 break;
         }
+
+        if (bannerType == BannerType.Regular)
+            gameObject.name = "Regular Banner";
+        else
+            gameObject.name = BannerManager.BannerNames.ChooseRandomElementInList(true) + " Banner";
     }
 
     public void RollAtLevel()

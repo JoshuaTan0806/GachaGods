@@ -30,14 +30,26 @@ public class BannerManager : MonoBehaviour
     [SerializeField] GameObject BannerOptionPrefab;
 
     [Header("Names")]
-    [SerializeField] List<string> BannerNames;
-    List<string> bannerNames;
+    [SerializeField] List<string> bannerNames;
+    public static List<string> BannerNames;
 
     private void Awake()
     {
+        GameManager.OnRoundEnd += ResetBannerNames;
+        ResetBannerNames();
         InitialiseBanners();
         currentBanner = Banners.Values.First();
         ChangeBanner();
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.OnRoundEnd -= ResetBannerNames;
+    }
+
+    void ResetBannerNames()
+    {
+        BannerNames = new List<string>(bannerNames);
     }
 
     void InitialiseBanners()
