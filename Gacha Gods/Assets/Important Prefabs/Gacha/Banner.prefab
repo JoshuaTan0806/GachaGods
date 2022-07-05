@@ -290,11 +290,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bannerType: 0
-  characters: []
+  RateUpChances: 25
   rateUpCharacters: []
   levelToPullAt: 0
   characterPulled: {fileID: 0}
   rarityPulled: {fileID: 0}
+  OneRollReference: {fileID: 5024277818147037464}
+  TenRollReference: {fileID: 5915361989927485685}
 --- !u!114 &1281690416092205889
 MonoBehaviour:
   m_ObjectHideFlags: 0

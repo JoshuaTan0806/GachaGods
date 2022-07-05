@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Sirenix.OdinInspector;
+using UnityEngine.UI;
 
 public enum BannerType
 {
@@ -23,10 +24,19 @@ public class Banner : MonoBehaviour
     [ReadOnly, SerializeField] Character characterPulled;
     [ReadOnly, SerializeField] Rarity rarityPulled;
 
+    [Header("References")]
+    [SerializeField] Button OneRollReference;
+    [SerializeField] Button TenRollReference;
+
     private void Awake()
     {
         GameManager.OnGameStart += RefreshBanner;
         GameManager.OnRoundEnd += RefreshBanner;
+        OneRollReference.onClick.AddListener(RollAtLevel);
+        TenRollReference.onClick.AddListener(Roll10AtLevel);
+
+        //levelToPullAt = 0;
+        //Player.OnLevelUp += levelToPullAt;
     }
 
     private void OnDestroy()
@@ -56,14 +66,9 @@ public class Banner : MonoBehaviour
         }
     }
 
-    public void Roll10(int level)
+    public void RollAtLevel()
     {
-        for (int i = 0; i < 9; i++)
-        {
-            Roll(level);
-        }
-
-        RollHighestPossibleTier(level);
+        Roll(levelToPullAt);
     }
 
     public void Roll(int level)
@@ -85,6 +90,21 @@ public class Banner : MonoBehaviour
         }
 
         throw new System.Exception("Roll total is above 100.");
+    }
+
+    public void Roll10AtLevel()
+    {
+        Roll10(levelToPullAt);
+    }
+
+    public void Roll10(int level)
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            Roll(level);
+        }
+
+        RollHighestPossibleTier(level);
     }
 
     public void RollHighestPossibleTier(int level)
@@ -141,17 +161,5 @@ public class Banner : MonoBehaviour
     bool IsRateUp()
     {
         return (GameManager.RoundNumber - 1) % 4 == 0;
-    }
-
-    [Button]
-    public void RollAtTestLevel()
-    {
-        Roll(levelToPullAt);
-    }
-
-    [Button]
-    public void Roll10AtTestLevel()
-    {
-        Roll10(levelToPullAt);
-    }    
+    }  
 }
