@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(menuName = "Managers/GameManager")]
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
