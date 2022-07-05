@@ -42,6 +42,14 @@ public static class ExtensionMethods
         transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
     }
 
+    public static float ConvertTo2DP(this float num)
+    {
+        num *= 100;
+        num = Mathf.CeilToInt(num);
+        num /= 100;
+        return num;
+    }
+
     public static bool IsEven(this int num)
     {
         return num % 2 == 0;

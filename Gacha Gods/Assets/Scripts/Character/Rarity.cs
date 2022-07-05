@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Character/Rarity")]
 public class Rarity : ScriptableObject
 {
-    public string Name => name;
+    public string Name => _name;
+    [SerializeField] string _name;
     public int RarityNumber => rarityNumber;
     [SerializeField] int rarityNumber;
     public Gradient Gradient => gradient;

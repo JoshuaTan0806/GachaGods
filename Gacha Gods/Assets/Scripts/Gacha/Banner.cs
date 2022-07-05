@@ -25,20 +25,30 @@ public class Banner : MonoBehaviour
     [ReadOnly, SerializeField] Rarity rarityPulled;
 
     [Header("References")]
-    [SerializeField] Button OneRollReference;
-    [SerializeField] Button TenRollReference;
-    [SerializeField] Button CharacterOddsReference;
+    [SerializeField] Button OneRollButtonReference;
+    [SerializeField] Button TenRollButtonReference;
+    [SerializeField] Button CharacterOddButtonReference;
+
+    [Header("References")]
+    [SerializeField] GameObject CharacterOddsPrefab;
+    GameObject CharacterOddsReference;
 
     private void Awake()
     {
         GameManager.OnGameStart += RefreshBanner;
         GameManager.OnRoundEnd += RefreshBanner;
-        OneRollReference.onClick.AddListener(RollAtLevel);
-        TenRollReference.onClick.AddListener(Roll10AtLevel);
-        CharacterOddsReference.onClick.AddListener(SpawnCharacterOdds);
+        OneRollButtonReference.onClick.AddListener(RollAtLevel);
+        TenRollButtonReference.onClick.AddListener(Roll10AtLevel);
+        CharacterOddButtonReference.onClick.AddListener(SpawnCharacterOdds);
 
         //levelToPullAt = 0;
         //Player.OnLevelUp += levelToPullAt;
+    }
+
+    private void OnDisable()
+    {
+        if (CharacterOddsReference)
+            Destroy(CharacterOddsReference);
     }
 
     private void OnDestroy()
@@ -167,6 +177,27 @@ public class Banner : MonoBehaviour
 
     void SpawnCharacterOdds()
     {
+        if (!CharacterOddsReference)
+        {
+            CharacterOddsReference = Instantiate(CharacterOddsPrefab, GetComponentInParent<BannerManager>().transform);
+            TextList list = CharacterOddsReference.GetComponentInChildren<TextList>();
+            OddsDictionary odds = FindOdds(levelToPullAt);
 
+            foreach (var item in odds)
+            {
+                list.SpawnText(item.Key.Name, 35, item.Key.Gradient, true);
+
+                List<Character> charactersOfRarity = GachaManager.FilterCharacters(GachaManager.Characters, item.Key);
+
+                for (int i = 0; i < charactersOfRarity.Count; i++)
+                {
+                    float chance = (float)item.Value / (float)charactersOfRarity.Count;
+                    chance = chance.ConvertTo2DP();
+                    list.SpawnText(charactersOfRarity[i].name + ": " + chance.ToString() + "%" , 25, Color.black);;
+                }
+            }
+        }
+        else
+            Destroy(CharacterOddsReference);
     }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7755067d0e563b342b46e820d540a9b6, type: 3}
   m_Name: 5 SSR
   m_EditorClassIdentifier: 
+  _name: Super Super Rare
   rarityNumber: 4
   gradient:
     serializedVersion: 2
