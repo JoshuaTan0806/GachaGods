@@ -7,7 +7,18 @@ using TMPro;
 public class TextList : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI TextPrefab;
-    
+    RectTransform RectTransform;
+    ScrollRect ScrollRect;
+
+    [SerializeField] float minY;
+    [SerializeField] float maxY;
+
+    private void Awake()
+    {
+        ScrollRect = GetComponentInParent<ScrollRect>();
+        RectTransform = GetComponent<RectTransform>();
+    }
+
     public void AddSpace()
     {
         SpawnText("", 0);
@@ -39,5 +50,25 @@ public class TextList : MonoBehaviour
 
         if (bold)
             t.fontStyle = FontStyles.Bold;
+    }
+
+    private void Update()
+    {
+        Clamp();
+    }
+
+    void Clamp()
+    {
+        if(RectTransform.anchoredPosition.y > maxY)
+        {
+            ScrollRect.velocity = Vector2.zero;
+            RectTransform.anchoredPosition = new Vector2(RectTransform.anchoredPosition.x, maxY);
+        }
+
+        if (RectTransform.anchoredPosition.y < minY)
+        {
+            ScrollRect.velocity = Vector2.zero;
+            RectTransform.anchoredPosition = new Vector2(RectTransform.anchoredPosition.x, minY);
+        }
     }
 }

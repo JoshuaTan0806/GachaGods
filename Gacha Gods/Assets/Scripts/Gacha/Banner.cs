@@ -196,7 +196,6 @@ public class Banner : MonoBehaviour
                 list.SpawnText(item.Key.Name + ": " + item.Value + "%", 25, item.Key.Gradient, true);
             }
 
-            //Add a space between the two
             list.AddSpace();
 
             //Spawn the character odds
@@ -234,6 +233,8 @@ public class Banner : MonoBehaviour
                         }
                     }
                 }
+
+                list.AddSpace();
             }
         }
         else
