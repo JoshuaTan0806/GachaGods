@@ -210,9 +210,29 @@ public class Banner : MonoBehaviour
 
                 for (int i = 0; i < charactersOfRarity.Count; i++)
                 {
-                    float chance = (float)item.Value / (float)charactersOfRarity.Count;
-                    chance = chance.ConvertTo2DP();
-                    list.SpawnText(charactersOfRarity[i].name + ": " + chance + "%" , 25);
+                    if(bannerType == BannerType.Regular)
+                    {
+                        float chance = (float)item.Value / (float)charactersOfRarity.Count;
+                        chance = chance.ConvertTo2DP();
+                        list.SpawnText(charactersOfRarity[i].name + ": " + chance + "%", 25);
+                    }
+                    else
+                    {
+                        if (rateUpCharacters.Contains(charactersOfRarity[i]))
+                        {
+                            float rateUpChance = ((float)RateUpChances * (float)item.Value / 100);
+                            float normalChance = (100 - (float)RateUpChances) / 100 * (float)item.Value / (float)charactersOfRarity.Count;
+                            float chance = rateUpChance + normalChance;
+                            chance = chance.ConvertTo2DP();
+                            list.SpawnText(charactersOfRarity[i].name + ": " + chance + "%", 25);
+                        }
+                        else
+                        {
+                            float chance = (100 - (float)RateUpChances) / 100 * (float)item.Value / (float)charactersOfRarity.Count;
+                            chance = chance.ConvertTo2DP();
+                            list.SpawnText(charactersOfRarity[i].name + ": " + chance + "%", 25);
+                        }
+                    }
                 }
             }
         }
