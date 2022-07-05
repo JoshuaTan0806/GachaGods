@@ -27,6 +27,7 @@ public class Banner : MonoBehaviour
     [Header("References")]
     [SerializeField] Button OneRollReference;
     [SerializeField] Button TenRollReference;
+    [SerializeField] Button CharacterOddsReference;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class Banner : MonoBehaviour
         GameManager.OnRoundEnd += RefreshBanner;
         OneRollReference.onClick.AddListener(RollAtLevel);
         TenRollReference.onClick.AddListener(Roll10AtLevel);
+        CharacterOddsReference.onClick.AddListener(SpawnCharacterOdds);
 
         //levelToPullAt = 0;
         //Player.OnLevelUp += levelToPullAt;
@@ -162,4 +164,9 @@ public class Banner : MonoBehaviour
     {
         return (GameManager.RoundNumber - 1) % 4 == 0;
     }  
+
+    void SpawnCharacterOdds()
+    {
+
+    }
 }

@@ -70,6 +70,9 @@ public class BannerSlider : MonoBehaviour
 
     public void MoveToBanner(RectTransform banner)
     {
+        if (Input.GetMouseButton(0))
+            return;
+
         Vector3 pos = RectTransform.anchoredPosition;
         pos.y = -banner.anchoredPosition.y;
         RectTransform.anchoredPosition = Vector3.MoveTowards(RectTransform.anchoredPosition, pos, _speed * Time.deltaTime);
