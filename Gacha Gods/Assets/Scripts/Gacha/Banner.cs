@@ -183,6 +183,20 @@ public class Banner : MonoBehaviour
             TextList list = CharacterOddsReference.GetComponentInChildren<TextList>();
             OddsDictionary odds = FindOdds(levelToPullAt);
 
+            //Spawn the rarity odds
+            list.SpawnText("Rarity Odds", 40, Color.black, true);
+
+            foreach (var item in odds)
+            {
+                list.SpawnText(item.Key.Name + ": " + item.Value + "%", 25, item.Key.Gradient, true);
+            }
+
+            //Add a space between the two
+            list.AddSpace();
+
+            //Spawn the character odds
+            list.SpawnText("Character Odds", 40, Color.black, true);
+
             foreach (var item in odds)
             {
                 list.SpawnText(item.Key.Name, 35, item.Key.Gradient, true);
@@ -193,7 +207,7 @@ public class Banner : MonoBehaviour
                 {
                     float chance = (float)item.Value / (float)charactersOfRarity.Count;
                     chance = chance.ConvertTo2DP();
-                    list.SpawnText(charactersOfRarity[i].name + ": " + chance.ToString() + "%" , 25, Color.black);;
+                    list.SpawnText(charactersOfRarity[i].name + ": " + chance + "%" , 25);
                 }
             }
         }

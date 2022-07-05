@@ -29,6 +29,10 @@ public class BannerManager : MonoBehaviour
     [SerializeField] GameObject BannerPrefab;
     [SerializeField] GameObject BannerOptionPrefab;
 
+    [Header("Names")]
+    [SerializeField] List<string> BannerNames;
+    List<string> bannerNames;
+
     private void Awake()
     {
         InitialiseBanners();
