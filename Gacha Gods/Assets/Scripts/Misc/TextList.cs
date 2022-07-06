@@ -6,7 +6,6 @@ using TMPro;
 
 public class TextList : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI TextPrefab;
     RectTransform RectTransform;
     ScrollRect ScrollRect;
 
@@ -26,7 +25,7 @@ public class TextList : MonoBehaviour
 
     public void SpawnText(string text, float fontSize, Color color = default, bool bold = false)
     {
-        TextMeshProUGUI t = Instantiate(TextPrefab, transform);
+        TextMeshProUGUI t = Instantiate(PrefabManager.StandardText, transform).GetComponent<TextMeshProUGUI>();
         t.SetText(text);
         t.gameObject.name = text;
         t.fontSize = fontSize;
@@ -38,7 +37,7 @@ public class TextList : MonoBehaviour
 
     public void SpawnText(string text, float fontSize, Gradient gradient, bool bold = false)
     {
-        TextMeshProUGUI t = Instantiate(TextPrefab, transform);
+        TextMeshProUGUI t = Instantiate(PrefabManager.StandardText, transform).GetComponent<TextMeshProUGUI>();
         t.SetText(text);
         t.gameObject.name = text;
         t.fontSize = fontSize;
