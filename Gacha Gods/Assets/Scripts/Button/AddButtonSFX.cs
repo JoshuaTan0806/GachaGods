@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class AddButtonSFX : MonoBehaviour
 {
@@ -9,7 +8,7 @@ public class AddButtonSFX : MonoBehaviour
 
     private void Awake()
     {
-        GetComponent<Button>().onClick.AddListener(PlaySound);
+        gameObject.AddListenerToButton(PlaySound);
     }
 
     void PlaySound()

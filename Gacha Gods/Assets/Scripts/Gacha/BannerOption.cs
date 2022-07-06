@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BannerOption : MonoBehaviour
 {
@@ -10,8 +9,7 @@ public class BannerOption : MonoBehaviour
     private void Awake()
     {
         RectTransform = GetComponent<RectTransform>();
-
-        GetComponent<Button>().onClick.AddListener(() => MoveToBanner());
+        gameObject.AddListenerToButton(MoveToBanner);
 
         GameManager.OnGameStart += RefreshName;
         GameManager.OnRoundEnd += RefreshName;

@@ -65,6 +65,25 @@ public static class ExtensionMethods
         return t == null;
     }
 
+    public static void SafeSetActive(this GameObject go, bool active)
+    {
+        if (go != null)
+            go.SetActive(active);
+    }
+
+    public static void AddListenerToButton(this GameObject go, System.Action action)
+    {
+        if (go.TryGetComponent(out Button button))
+            button.onClick.AddListener(() => action());
+        else
+            throw new Exception("No button attached");
+    }
+
+    public static void AddListenerToButton(this Button button, System.Action action)
+    {
+        button.onClick.AddListener(() => action());
+    }
+
     public static bool IsNullOrEmpty<T>(this T[] array)
     {
         return array == null || array.Length == 0;

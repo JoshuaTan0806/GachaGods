@@ -30,7 +30,7 @@ public class CharacterManager : Factories.FactoryBase
         }
         else
         {
-            CharacterMastery.Add(character, 0);
+            CharacterMastery.Add(Instantiate(character), 0);
         }
     }
 }

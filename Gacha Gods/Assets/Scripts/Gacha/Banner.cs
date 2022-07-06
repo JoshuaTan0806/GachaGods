@@ -37,9 +37,9 @@ public class Banner : MonoBehaviour
     {
         GameManager.OnGameStart += RefreshBanner;
         GameManager.OnRoundEnd += RefreshBanner;
-        OneRollButtonReference.onClick.AddListener(RollAtLevel);
-        TenRollButtonReference.onClick.AddListener(Roll10AtLevel);
-        CharacterOddButtonReference.onClick.AddListener(SpawnCharacterOdds);
+        OneRollButtonReference.AddListenerToButton(RollAtLevel);
+        TenRollButtonReference.AddListenerToButton(Roll10AtLevel);
+        CharacterOddButtonReference.AddListenerToButton(SpawnCharacterOdds);
 
         //levelToPullAt = 0;
         //Player.OnLevelUp += levelToPullAt;
@@ -169,16 +169,11 @@ public class Banner : MonoBehaviour
 
     OddsDictionary FindOdds(int level)
     {
-        if (!IsRateUp())
+        if (!BannerManager.IsRateUp())
             return GachaManager.Odds[level];
         else
             return GachaManager.Odds[level + 1];
     }
-
-    bool IsRateUp()
-    {
-        return (GameManager.RoundNumber - 1) % 4 == 0;
-    }  
 
     void SpawnCharacterOdds()
     {

@@ -17,5 +17,7 @@ public class Character : ScriptableObject
     [SerializeField] Rarity rarity;
     public StatFloatDictionary BaseStats => baseStats;
     [SerializeField] StatFloatDictionary baseStats;
+    public List<StatData> Mastery => mastery;
+    [SerializeField] List<StatData> mastery;
 }
 

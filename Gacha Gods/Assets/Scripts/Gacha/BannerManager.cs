@@ -76,9 +76,14 @@ public class BannerManager : MonoBehaviour
     {
         foreach (var item in Banners)
         {
-            item.Value.gameObject.SetActive(false);
+            item.Value.gameObject.SafeSetActive(false);
         }
 
-        CurrentBanner.gameObject.SetActive(true);
+        CurrentBanner.gameObject.SafeSetActive(true);
+    }
+
+    public static bool IsRateUp()
+    {
+        return (GameManager.RoundNumber - 1) % 4 == 0;
     }
 }
