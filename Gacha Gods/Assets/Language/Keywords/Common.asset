@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 085eeded8b224f244abee4ded1fe653f, type: 3}
-  m_Name: Rare
+  m_Script: {fileID: 11500000, guid: 5b4919f0ecef2b149819a0f0ff22e044, type: 3}
+  m_Name: Common
   m_EditorClassIdentifier: 
   translations:
     m_keys:
@@ -20,7 +20,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ae2a67c0bbb3e764d80d793d3b50ca2a, type: 2}
     - {fileID: 11400000, guid: a62b960a072f1fb458a5ab31b44bbe29, type: 2}
     m_values:
-    - Rare
+    - Common
     - Chinese
     - French
     - German
