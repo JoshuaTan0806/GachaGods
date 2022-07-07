@@ -13,16 +13,8 @@ MonoBehaviour:
   m_Name: Language Manager
   m_EditorClassIdentifier: 
   translations:
-    m_keys:
-    - Character Odds
-    - Close
-    - Highest Rarity Guaranteed
-    - Rarity Odds
-    m_values:
-    - {fileID: 11400000, guid: 55ebcc18edec11945a8c3290cd75e4b6, type: 2}
-    - {fileID: 11400000, guid: ca88bc3fb9cc23e42ac18ce1c29415af, type: 2}
-    - {fileID: 11400000, guid: 9e193fb4a76a6c340bac9035b2302b8c, type: 2}
-    - {fileID: 11400000, guid: 957a1dff8fd41b2449010132af6eb53b, type: 2}
+    m_keys: []
+    m_values: []
   keywords:
     m_keys:
     - Common

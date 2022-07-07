@@ -21,7 +21,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a62b960a072f1fb458a5ab31b44bbe29, type: 2}
     m_values:
     - Super Super Rare
-    - Chinese
-    - French
-    - German
-    - Japanese
+    - "\u8D85\u7EA7\u8D85\u7EA7\u7A00\u6709 "
+    - ' Super Super Rare'
+    - Supersuperselten
+    - "\u8D85\u8D85\u30EC\u30A2"

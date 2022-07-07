@@ -21,7 +21,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a62b960a072f1fb458a5ab31b44bbe29, type: 2}
     m_values:
     - Uncommon
-    - Chinese
-    - French
-    - German
-    - Japanese
+    - "\u7F55\u89C1"
+    - Peu Commun
+    - "Ungew\xF6hnlich"
+    - "\u73CD\u3057\u3044"
