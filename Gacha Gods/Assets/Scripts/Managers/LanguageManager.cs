@@ -65,7 +65,10 @@ public class LanguageManager : Factories.FactoryBase
 
         for (int i = 0; i < translations.Count; i++)
         {
-            this.translations.Add(translations[i].Translations[English], translations[i]);
+            if (!this.translations.ContainsKey(translations[i].Translations[English]))
+            {
+                this.translations.Add(translations[i].Translations[English], translations[i]);
+            }
         }
     }
 #endif

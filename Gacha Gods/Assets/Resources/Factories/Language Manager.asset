@@ -15,7 +15,21 @@ MonoBehaviour:
   translations:
     m_keys:
     - Highest Rarity Guaranteed
+    - Character Odds
+    - Common
+    - Rare
+    - Rarity Odds
+    - Super Rare
+    - Super Super Rare
+    - Uncommon
     m_values:
     - {fileID: 11400000, guid: 9e193fb4a76a6c340bac9035b2302b8c, type: 2}
+    - {fileID: 11400000, guid: 55ebcc18edec11945a8c3290cd75e4b6, type: 2}
+    - {fileID: 11400000, guid: 04b78f9ec4afa2a41ae98e817309171b, type: 2}
+    - {fileID: 11400000, guid: 2074f26f3e75f6840ab962a65edae43d, type: 2}
+    - {fileID: 11400000, guid: 957a1dff8fd41b2449010132af6eb53b, type: 2}
+    - {fileID: 11400000, guid: dc3692d4eb430d442946ddc148a58cdb, type: 2}
+    - {fileID: 11400000, guid: e48a72bacf32dd64abac9770ef829994, type: 2}
+    - {fileID: 11400000, guid: addf058acc3f26c4688b96c0cae00326, type: 2}
   English: {fileID: 11400000, guid: a80b4b074bac9b54fb2c576b9c6891fa, type: 2}
-  LanguageToTest: {fileID: 11400000, guid: b4d759f4652e13f4caaa69e11437204c, type: 2}
+  LanguageToTest: {fileID: 11400000, guid: a80b4b074bac9b54fb2c576b9c6891fa, type: 2}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TranslateOnAwake : MonoBehaviour
+public class TranslateText : MonoBehaviour
 {
     TextMeshProUGUI text;
     string originalText;
@@ -11,6 +11,10 @@ public class TranslateOnAwake : MonoBehaviour
     private void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();
+    }
+
+    private void Start()
+    {
         originalText = text.text;
         Translate();
     }
