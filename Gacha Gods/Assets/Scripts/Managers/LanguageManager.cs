@@ -18,6 +18,9 @@ public class LanguageManager : Factories.FactoryBase
 
     public override void Initialise()
     {
+        Translations.Clear();
+        Keywords.Clear();
+
         Translations = translations;
         //Keywords = (KeywordDictionary)keywords.OrderByDescending(x => x.Key.Length); //cast not working
 

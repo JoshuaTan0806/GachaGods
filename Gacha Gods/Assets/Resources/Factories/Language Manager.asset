@@ -37,4 +37,4 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e48a72bacf32dd64abac9770ef829994, type: 2}
     - {fileID: 11400000, guid: addf058acc3f26c4688b96c0cae00326, type: 2}
   English: {fileID: 11400000, guid: a80b4b074bac9b54fb2c576b9c6891fa, type: 2}
-  LanguageToTest: {fileID: 11400000, guid: a62b960a072f1fb458a5ab31b44bbe29, type: 2}
+  LanguageToTest: {fileID: 11400000, guid: a80b4b074bac9b54fb2c576b9c6891fa, type: 2}
