@@ -22,6 +22,7 @@ MonoBehaviour:
     - Super Rare
     - Super Super Rare
     - Uncommon
+    - Close
     m_values:
     - {fileID: 11400000, guid: 9e193fb4a76a6c340bac9035b2302b8c, type: 2}
     - {fileID: 11400000, guid: 55ebcc18edec11945a8c3290cd75e4b6, type: 2}
@@ -31,5 +32,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: dc3692d4eb430d442946ddc148a58cdb, type: 2}
     - {fileID: 11400000, guid: e48a72bacf32dd64abac9770ef829994, type: 2}
     - {fileID: 11400000, guid: addf058acc3f26c4688b96c0cae00326, type: 2}
+    - {fileID: 11400000, guid: ca88bc3fb9cc23e42ac18ce1c29415af, type: 2}
   English: {fileID: 11400000, guid: a80b4b074bac9b54fb2c576b9c6891fa, type: 2}
-  LanguageToTest: {fileID: 11400000, guid: a80b4b074bac9b54fb2c576b9c6891fa, type: 2}
+  LanguageToTest: {fileID: 11400000, guid: a62b960a072f1fb458a5ab31b44bbe29, type: 2}
