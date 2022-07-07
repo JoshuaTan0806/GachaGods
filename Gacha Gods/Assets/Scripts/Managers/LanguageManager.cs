@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using System.Linq;
 
 [CreateAssetMenu(menuName = "Managers/Language Manager")]
 public class LanguageManager : Factories.FactoryBase
 {
     public static TranslationDictionary Translations = new TranslationDictionary();
     [SerializeField, ReadOnly] TranslationDictionary translations = new TranslationDictionary();
+    public static KeywordDictionary Keywords = new KeywordDictionary();
+    [SerializeField, ReadOnly] KeywordDictionary keywords = new KeywordDictionary();
     public static Language CurrentLanguage;
     [SerializeField] Language English;
 
@@ -16,6 +19,18 @@ public class LanguageManager : Factories.FactoryBase
     public override void Initialise()
     {
         Translations = translations;
+        //Keywords = (KeywordDictionary)keywords.OrderByDescending(x => x.Key.Length); //cast not working
+
+        List<string> keywordKeys = new List<string>();
+        foreach (var item in keywords)
+        {
+            keywordKeys.Add(item.Key);
+        }
+        keywordKeys = keywordKeys.OrderByDescending(x => x.Length).ToList();
+        foreach (var item in keywordKeys)
+        {
+            Keywords.Add(item, keywords[item]);
+        }
 
         //save language here
 
@@ -34,6 +49,25 @@ public class LanguageManager : Factories.FactoryBase
     }
 
     public static string FindTranslation(string str)
+    {
+        if (TranslateSentence(str) == str)
+            return TranslateKeyword(str);
+        else
+            return TranslateSentence(str);
+    }
+
+    public static string TranslateKeyword(string str)
+    {
+        foreach (var item in Keywords)
+        {
+            if (str.Contains(item.Key))
+                return str.Replace(item.Key, item.Value.Translations[CurrentLanguage]);
+        }
+
+        return str;
+    }
+
+    public static string TranslateSentence(string str)
     {
         if (CurrentLanguage == null)
             return str;
@@ -59,21 +93,34 @@ public class LanguageManager : Factories.FactoryBase
 
 #if UNITY_EDITOR
     [Button]
-    public void GetAllTranslations()
+    public void GetAllTranslationsAndKeywords()
     {
-        List<Translation> translations = EditorExtensionMethods.GetAllInstances<Translation>();
+        translations.Clear();
+        keywords.Clear();
 
-        for (int i = 0; i < translations.Count; i++)
+        List<Translation> newTranslations = EditorExtensionMethods.GetAllInstances<Translation>();
+
+        for (int i = 0; i < newTranslations.Count; i++)
         {
-            if (!this.translations.ContainsKey(translations[i].Translations[English]))
+            if (!this.translations.ContainsKey(newTranslations[i].Translations[English]))
             {
-                this.translations.Add(translations[i].Translations[English], translations[i]);
+                this.translations.Add(newTranslations[i].Translations[English], newTranslations[i]);
+            }
+        }
+
+        List<Keyword> newKeywords = EditorExtensionMethods.GetAllInstances<Keyword>();
+
+        for (int i = 0; i < newKeywords.Count; i++)
+        {
+            if (!this.keywords.ContainsKey(newKeywords[i].Translations[English]))
+            {
+                this.keywords.Add(newKeywords[i].Translations[English], newKeywords[i]);
             }
         }
     }
 #endif
 }
 
-
-
+[System.Serializable] public class Translations : SerializableDictionary<Language, string> { }
 [System.Serializable] public class TranslationDictionary : SerializableDictionary<string, Translation> { }
+[System.Serializable] public class KeywordDictionary : SerializableDictionary<string, Keyword> { }
