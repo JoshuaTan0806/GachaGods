@@ -21,7 +21,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a62b960a072f1fb458a5ab31b44bbe29, type: 2}
     m_values:
     - Character Odds
-    - Chinese
-    - French
-    - German
-    - Japanese
+    - "\u89D2\u8272\u8D54\u7387 "
+    - Cotes Des Personnages
+    - 'Charakter-Chancen '
+    - "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC\u30AA\u30C3\u30BA "

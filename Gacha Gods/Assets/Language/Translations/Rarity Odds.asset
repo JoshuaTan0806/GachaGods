@@ -21,7 +21,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a62b960a072f1fb458a5ab31b44bbe29, type: 2}
     m_values:
     - Rarity Odds
-    - Chinese
-    - French
-    - German
-    - Japanese
+    - "\u7A00\u6709\u51E0\u7387 "
+    - "Cotes De Raret\xE9"
+    - 'Seltenheitsquoten '
+    - "\u30EC\u30A2\u30EA\u30C6\u30A3\u30AA\u30C3\u30BA"

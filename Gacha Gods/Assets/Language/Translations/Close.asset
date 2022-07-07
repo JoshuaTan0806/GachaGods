@@ -21,7 +21,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a62b960a072f1fb458a5ab31b44bbe29, type: 2}
     m_values:
     - Close
-    - Chinese
-    - French
-    - German
-    - Japanese
+    - "\u5173 "
+    - Proche
+    - Nah Dran
+    - "\u8FD1\u3044 "

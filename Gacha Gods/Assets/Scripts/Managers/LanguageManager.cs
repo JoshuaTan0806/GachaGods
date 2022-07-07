@@ -21,7 +21,11 @@ public class LanguageManager : Factories.FactoryBase
         Translations.Clear();
         Keywords.Clear();
 
-        Translations = translations;
+        foreach (var item in translations)
+        {
+            Translations.Add(item.Key, item.Value);
+        }
+
         //Keywords = (KeywordDictionary)keywords.OrderByDescending(x => x.Key.Length); //cast not working
 
         List<string> keywordKeys = new List<string>();

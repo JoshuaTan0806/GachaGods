@@ -21,7 +21,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a62b960a072f1fb458a5ab31b44bbe29, type: 2}
     m_values:
     - Highest Rarity Guaranteed
-    - Chinese
-    - French
-    - German
-    - Japanese
+    - "\u4FDD\u8BC1\u6700\u9AD8\u7A00\u6709\u5EA6 "
+    - "La Plus Haute Raret\xE9 Garantie"
+    - " H\xF6chste Seltenheit Garantiert"
+    - "\u6700\u9AD8\u306E\u30EC\u30A2\u5EA6\u3092\u4FDD\u8A3C "

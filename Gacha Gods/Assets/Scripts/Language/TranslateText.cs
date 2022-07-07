@@ -22,7 +22,9 @@ public class TranslateText : MonoBehaviour
     private void OnEnable()
     {
         LanguageManager.OnLanguageChanged += Translate;
-        Translate();
+
+        if (originalText != null)
+            Translate();
     }
 
     private void OnDisable()
