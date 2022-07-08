@@ -442,12 +442,11 @@ MonoBehaviour:
   RateUpChances: 25
   rateUpCharacters: []
   levelToPullAt: 0
-  characterPulled: {fileID: 0}
-  rarityPulled: {fileID: 0}
+  charactersPulled: []
+  PremiumRollButtonReference: {fileID: 494241637925213024}
   OneRollButtonReference: {fileID: 5024277818147037464}
   TenRollButtonReference: {fileID: 5915361989927485685}
   CharacterOddButtonReference: {fileID: 846743493630130865}
-  CharacterOddsPrefab: {fileID: 8559000567383617724, guid: 0f6556a1486a4c642807e0182de01fb1, type: 3}
 --- !u!114 &1281690416092205889
 MonoBehaviour:
   m_ObjectHideFlags: 0

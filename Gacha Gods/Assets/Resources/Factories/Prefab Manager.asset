@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Prefab Manager
   m_EditorClassIdentifier: 
   standardText: {fileID: 899606731974254561, guid: 03f97c60fd1845d4286eba20d660fb0c, type: 3}
+  gacha: {fileID: 8089375317678833865, guid: 0054d5b006693964eb508799b774270d, type: 3}
+  characterOdds: {fileID: 8559000567383617724, guid: 0f6556a1486a4c642807e0182de01fb1, type: 3}

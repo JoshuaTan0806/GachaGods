@@ -21,16 +21,13 @@ public class Banner : MonoBehaviour
 
     [Header("Pull Data")]
     [SerializeField] int levelToPullAt;
-    [ReadOnly, SerializeField] Character characterPulled;
-    [ReadOnly, SerializeField] Rarity rarityPulled;
+    [ReadOnly, SerializeField] List<Character> charactersPulled = new List<Character>();
 
     [Header("References")]
+    [SerializeField] Button PremiumRollButtonReference;
     [SerializeField] Button OneRollButtonReference;
     [SerializeField] Button TenRollButtonReference;
     [SerializeField] Button CharacterOddButtonReference;
-
-    [Header("References")]
-    [SerializeField] GameObject CharacterOddsPrefab;
     GameObject CharacterOddsReference;
 
     private void Awake()
@@ -38,6 +35,7 @@ public class Banner : MonoBehaviour
         GameManager.OnGameStart += RefreshBanner;
         GameManager.OnRoundEnd += RefreshBanner;
         OneRollButtonReference.AddListenerToButton(RollAtLevel);
+        PremiumRollButtonReference.AddListenerToButton(RollAtLevel);
         TenRollButtonReference.AddListenerToButton(Roll10AtLevel);
         CharacterOddButtonReference.AddListenerToButton(SpawnCharacterOdds);
 
@@ -83,12 +81,14 @@ public class Banner : MonoBehaviour
             gameObject.name = BannerManager.BannerNames.ChooseRandomElementInList(true) + " Banner";
     }
 
-    public void RollAtLevel()
+    void RollAtLevel()
     {
+        charactersPulled.Clear();
         Roll(levelToPullAt);
+        SpawnGacha();
     }
 
-    public void Roll(int level)
+    void Roll(int level)
     {
         OddsDictionary odds = FindOdds(level);
 
@@ -109,12 +109,14 @@ public class Banner : MonoBehaviour
         throw new System.Exception("Roll total is above 100.");
     }
 
-    public void Roll10AtLevel()
+    void Roll10AtLevel()
     {
+        charactersPulled.Clear();
         Roll10(levelToPullAt);
+        SpawnGacha();
     }
 
-    public void Roll10(int level)
+    void Roll10(int level)
     {
         for (int i = 0; i < 9; i++)
         {
@@ -124,7 +126,7 @@ public class Banner : MonoBehaviour
         RollHighestPossibleTier(level);
     }
 
-    public void RollHighestPossibleTier(int level)
+    void RollHighestPossibleTier(int level)
     {
         OddsDictionary odds = FindOdds(level);
 
@@ -143,7 +145,7 @@ public class Banner : MonoBehaviour
     {
         //pull a character
         List<Character> charactersOfSameRarity = GachaManager.FilterCharacters(GachaManager.Characters, rarity);
-        characterPulled = charactersOfSameRarity.ChooseRandomElementInList();
+        Character characterPulled = charactersOfSameRarity.ChooseRandomElementInList();
 
         //if theres rate up, we have a chance of overriding that with the rate up
         if (rateUpCharacters.Where(x => x.Rarity == rarity).ToList().Count > 0)
@@ -155,7 +157,7 @@ public class Banner : MonoBehaviour
             }
         }
 
-        if (characterPulled == null)
+        if (charactersPulled == null)
             throw new System.Exception("Character pulled cannot be null.");
         else
             AddCharacter(characterPulled);
@@ -163,7 +165,7 @@ public class Banner : MonoBehaviour
 
     void AddCharacter(Character character)
     {
-        rarityPulled = character.Rarity;
+        charactersPulled.Add(character);
         CharacterManager.AddCharacter(character);
     }
 
@@ -179,7 +181,7 @@ public class Banner : MonoBehaviour
     {
         if (!CharacterOddsReference)
         {
-            CharacterOddsReference = Instantiate(CharacterOddsPrefab, GetComponentInParent<BannerManager>().transform);
+            CharacterOddsReference = Instantiate(PrefabManager.CharacterOdds, GetComponentInParent<BannerManager>().transform);
             TextList list = CharacterOddsReference.GetComponentInChildren<TextList>();
             OddsDictionary odds = FindOdds(levelToPullAt);
 
@@ -234,5 +236,10 @@ public class Banner : MonoBehaviour
         }
         else
             Destroy(CharacterOddsReference);
+    }
+
+    void SpawnGacha()
+    {
+        Instantiate(PrefabManager.Gacha).GetComponent<Gacha>().characters = new List<Character>(charactersPulled);
     }
 }
