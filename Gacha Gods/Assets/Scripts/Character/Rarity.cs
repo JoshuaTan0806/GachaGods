@@ -11,4 +11,6 @@ public class Rarity : ScriptableObject
     [SerializeField] int rarityNumber;
     public Gradient Gradient => gradient;
     [SerializeField] Gradient gradient;
+    public Sprite Icon => icon;
+    [SerializeField] Sprite icon;
 }

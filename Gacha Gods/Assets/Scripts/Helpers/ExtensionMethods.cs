@@ -25,7 +25,7 @@ public static class ExtensionMethods
         {
             if (char.IsUpper(str[i]))
                 newString = " ";
-            
+
             newString += str[i];
         }
 
@@ -82,6 +82,57 @@ public static class ExtensionMethods
     public static void AddListenerToButton(this Button button, System.Action action)
     {
         button.onClick.AddListener(() => action());
+    }
+
+    public static void IncreaseTransparency(this Image image, float speed)
+    {
+        if (image.color.a > 0)
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - (speed * Time.deltaTime));
+        else
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
+    }
+
+    public static void DecreaseTransparency(this Image image, float speed)
+    {
+        if (image.color.a < 1)
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a + (speed * Time.deltaTime));
+        else
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
+    }
+
+    public static void IncreaseTransparency(this Button button, float speed)
+    {
+        var colors = button.colors;
+
+        if (colors.normalColor.a > 0)
+            colors.normalColor = new Color(button.colors.normalColor.r, button.colors.normalColor.g, button.colors.normalColor.b, button.colors.normalColor.a - (speed * Time.deltaTime));
+        else
+            colors.normalColor = new Color(button.colors.normalColor.r, button.colors.normalColor.g, button.colors.normalColor.b, 0);
+
+        button.colors = colors;
+    }
+
+    public static void DecreaseTransparency(this Button button, float speed)
+    {
+        var colors = button.colors;
+
+        if (colors.normalColor.a < 1)
+            colors.normalColor = new Color(button.colors.normalColor.r, button.colors.normalColor.g, button.colors.normalColor.b, button.colors.normalColor.a + (speed * Time.deltaTime));
+        else
+            colors.normalColor = new Color(button.colors.normalColor.r, button.colors.normalColor.g, button.colors.normalColor.b, 1);
+
+        button.colors = colors;
+    }
+
+
+    public static bool IsTransparent(this Image image)
+    {
+        return image.color.a == 0;
+    }
+
+    public static bool IsOpaque(this Image image)
+    {
+        return image.color.a == 1;
     }
 
     public static bool IsNullOrEmpty<T>(this T[] array)

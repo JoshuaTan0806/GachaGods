@@ -240,6 +240,6 @@ public class Banner : MonoBehaviour
 
     void SpawnGacha()
     {
-        Instantiate(PrefabManager.Gacha).GetComponent<Gacha>().characters = new List<Character>(charactersPulled);
+        Instantiate(PrefabManager.Gacha).GetComponent<Gacha>().InitialiseCharacters(charactersPulled);
     }
 }
