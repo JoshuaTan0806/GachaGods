@@ -179,21 +179,7 @@ public class CharacterManager : Factories.FactoryBase
             ActiveElements[element]--;
     }
 
-
-
     public Character Character;
-
-    [Button]
-    public void ActivateTest()
-    {
-        ActivateCharacter(Character);
-    }
-
-    [Button]
-    public void DeactivateTest()
-    {
-        DeactivateCharacter(Character);
-    }
 }
 
 public class CharacterMastery : SerializableDictionary<Character, int> { }
