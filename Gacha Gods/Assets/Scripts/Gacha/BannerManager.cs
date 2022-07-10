@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class BannerManager : MonoBehaviour
 {
@@ -22,8 +23,11 @@ public class BannerManager : MonoBehaviour
     static Banner currentBanner;
    
     [Header("References")]
+    [SerializeField] Transform GachaHolder;
     [SerializeField] Transform BannerHolder;
     [SerializeField] Transform BannerOptionHolder;
+    [SerializeField] Button OpenGachaButton;
+    [SerializeField] Button CloseGachaButton;
 
     [Header("Prefabs")]
     [SerializeField] GameObject BannerPrefab;
@@ -36,15 +40,34 @@ public class BannerManager : MonoBehaviour
     private void Awake()
     {
         GameManager.OnRoundEnd += ResetBannerNames;
+        GameManager.OnRoundEnd += SnapToFirstBanner;
+        OpenGachaButton.AddListenerToButton(OpenGacha);
+        CloseGachaButton.AddListenerToButton(CloseGacha);
         ResetBannerNames();
         InitialiseBanners();
         currentBanner = Banners.Values.First();
         ChangeBanner();
+
+        //do this last
+        CloseGacha();
+    }
+
+    void OpenGacha()
+    {
+        GachaHolder.gameObject.SafeSetActive(true);
+        OpenGachaButton.gameObject.SafeSetActive(false);
+    }
+
+    void CloseGacha()
+    {
+        GachaHolder.gameObject.SafeSetActive(false);
+        OpenGachaButton.gameObject.SafeSetActive(true);
     }
 
     private void OnDestroy()
     {
         GameManager.OnRoundEnd -= ResetBannerNames;
+        GameManager.OnRoundEnd -= SnapToFirstBanner;
     }
 
     void ResetBannerNames()
@@ -62,6 +85,8 @@ public class BannerManager : MonoBehaviour
         {
             SpawnBanner(BannerType.RateUp);
         }
+
+        SnapToFirstBanner();
     }
 
     void SpawnBanner(BannerType bannerType)
@@ -80,6 +105,11 @@ public class BannerManager : MonoBehaviour
         }
 
         CurrentBanner.gameObject.SafeSetActive(true);
+    }
+
+    void SnapToFirstBanner()
+    {
+        GetComponentInChildren<BannerSlider>().SnapToBanner(Banners.First().Key);
     }
 
     public static bool IsRateUp()

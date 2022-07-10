@@ -28,6 +28,8 @@ public class Banner : MonoBehaviour
     [SerializeField] Button OneRollButtonReference;
     [SerializeField] Button TenRollButtonReference;
     [SerializeField] Button CharacterOddButtonReference;
+    [SerializeField] Transform RateUpReference;
+    [SerializeField] List<Image> RateUpCharactersPositionReference;
     GameObject CharacterOddsReference;
 
     private void Awake()
@@ -60,19 +62,19 @@ public class Banner : MonoBehaviour
     {
         rateUpCharacters = new List<Character>();
 
-        switch (bannerType)
+        if(bannerType == BannerType.Regular)
         {
-            case BannerType.Regular:
-
-            case BannerType.RateUp:
-                for (int i = 0; i < GachaManager.Rarities.Count; i++)
-                {
-                    List<Character> charactersOfSameRarity = GachaManager.FilterCharacters(GachaManager.Characters, GachaManager.Rarities[i]);
-                    rateUpCharacters.Add(charactersOfSameRarity.ChooseRandomElementInList());
-                }
-                break;
-            default:
-                break;
+            RateUpReference.gameObject.SafeSetActive(false);
+        }
+        else if(bannerType == BannerType.RateUp)
+        {
+            for (int i = 0; i < GachaManager.Rarities.Count; i++)
+            {
+                List<Character> charactersOfSameRarity = GachaManager.FilterCharacters(GachaManager.Characters, GachaManager.Rarities[i]);
+                Character character = charactersOfSameRarity.ChooseRandomElementInList();
+                rateUpCharacters.Add(character);
+                RateUpCharactersPositionReference[i].sprite = character.Icon;
+            }
         }
 
         if (bannerType == BannerType.Regular)

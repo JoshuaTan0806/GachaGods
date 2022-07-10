@@ -973,7 +973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7008101990054095594, guid: b517a631f5dbef54993d9181f80c6878, type: 3}
       propertyPath: m_Name
-      value: BannerCanvas
+      value: Gacha Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b517a631f5dbef54993d9181f80c6878, type: 3}

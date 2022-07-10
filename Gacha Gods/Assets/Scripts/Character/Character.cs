@@ -7,6 +7,8 @@ public class Character : ScriptableObject
 {
     public GameObject Prefab => prefab;
     [SerializeField] GameObject prefab;
+    public Sprite Icon => icon;
+    [SerializeField] Sprite icon;
     public List<Role> Role => role;
     [SerializeField] List<Role> role;
     public List<Archetype> Archetype => archetype;
