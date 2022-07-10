@@ -10,4 +10,6 @@ public class Element : ScriptableObject
     [SerializeField] string description;
     public Sprite Icon => icon;
     [SerializeField] Sprite icon;
+    public SetData SetData => setData;
+    [SerializeField] SetData setData;
 }
