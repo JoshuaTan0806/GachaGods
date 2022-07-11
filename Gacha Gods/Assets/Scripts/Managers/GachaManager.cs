@@ -19,10 +19,6 @@ public class GachaManager : Factories.FactoryBase
     static List<Archetype> archetypes = new List<Archetype>();
     [SerializeField] List<Archetype> _archetypes;
 
-    public static List<Element> Elements => elements;
-    static List<Element> elements = new List<Element>();
-    [SerializeField] List<Element> _elements;
-
     public static List<Rarity> Rarities => rarities;
     static List<Rarity> rarities = new List<Rarity>();
     [SerializeField] List<Rarity> _rarities;
@@ -49,7 +45,6 @@ public class GachaManager : Factories.FactoryBase
         characters = _characters;
         roles = _roles;
         archetypes = _archetypes;
-        elements = _elements;
         rarities = _rarities.OrderBy(x => x.RarityNumber).ToList();
         InitialiseOdds();
     }
@@ -86,11 +81,6 @@ public class GachaManager : Factories.FactoryBase
         return characters.Where(x => x.Archetype.Contains(archetype)).ToList();
     }
 
-    public static List<Character> FilterCharacters(List<Character> characters, Element element)
-    {
-        return characters.Where(x => x.Element.Contains(element)).ToList();
-    }
-
     public static Role RandomRole()
     {
         return roles.ChooseRandomElementInList();
@@ -100,11 +90,5 @@ public class GachaManager : Factories.FactoryBase
     {
         return archetypes.ChooseRandomElementInList();
     }
-
-    public static Element RandomElement()
-    {
-        return elements.ChooseRandomElementInList();
-    }
-
 }
 [System.Serializable] public class OddsDictionary : SerializableDictionary<Rarity, int> { }

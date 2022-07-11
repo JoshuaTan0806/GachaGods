@@ -13,8 +13,6 @@ public class Character : ScriptableObject
     [SerializeField] List<Role> role;
     public List<Archetype> Archetype => archetype;
     [SerializeField] List<Archetype> archetype;
-    public List<Element> Element => element;
-    [SerializeField] List<Element> element;
     public Rarity Rarity => rarity;
     [SerializeField] Rarity rarity;
     public StatFloatDictionary BaseStats => baseStats;
