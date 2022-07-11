@@ -36,11 +36,14 @@ public class CharacterManager : Factories.FactoryBase
         if (CharacterMastery.ContainsKey(character))
         {
             if (CharacterMastery[character] < 5)
-                CharacterMastery[character] += 1;
+                CharacterMastery[character]++;
+
+            if (ActiveCharacters.ContainsKey(character))
+                character.Mastery[CharacterMastery[character]].ActivateMastery(ActiveCharacters[character]);
         }
         else
         {
-            CharacterMastery.Add(Instantiate(character), 0);
+            CharacterMastery.Add(character, 0);
         }
     }
 
@@ -64,6 +67,11 @@ public class CharacterManager : Factories.FactoryBase
             {
                 AddArchetype(character.Archetype[i]);
             }
+
+            for (int i = 0; i < CharacterMastery[character] || i < character.Mastery.Count - 1; i++)
+            {
+                character.Mastery[i].ActivateMastery(characterStats);
+            }
         }
     }
 
@@ -73,7 +81,10 @@ public class CharacterManager : Factories.FactoryBase
             throw new System.Exception("Can't remove a character that is inactive");
         else
         {
-            activeCharacters.Remove(character);
+            for (int i = 0; i < CharacterMastery[character] || i < character.Mastery.Count - 1; i++)
+            {
+                character.Mastery[i].DeactiveMastery(activeCharacters[character]);
+            }
 
             for (int i = 0; i < character.Role.Count; i++)
             {
@@ -85,6 +96,8 @@ public class CharacterManager : Factories.FactoryBase
             {
                 RemoveArchetype(character.Archetype[i]);
             }
+
+            activeCharacters.Remove(character);
         }
     }
     
