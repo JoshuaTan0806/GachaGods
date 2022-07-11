@@ -9,7 +9,7 @@ public class CharacterManager : Factories.FactoryBase
     public static CharacterMastery CharacterMastery => characterMastery;
     static CharacterMastery characterMastery = new CharacterMastery();
     public static ActiveCharacters ActiveCharacters => activeCharacters;
-    static ActiveCharacters activeCharacters;
+    static ActiveCharacters activeCharacters = new ActiveCharacters();
     public static ActiveRoles ActiveRoles => activeRoles;
     static ActiveRoles activeRoles;
     public static ActiveArchetypes ActiveArchetypes => activeArchetypes;

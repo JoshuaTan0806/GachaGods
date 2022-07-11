@@ -49,7 +49,7 @@ public class BannerManager : MonoBehaviour
         ChangeBanner();
 
         //do this last
-        CloseGacha();
+        OpenGacha();
     }
 
     void OpenGacha()
@@ -60,6 +60,9 @@ public class BannerManager : MonoBehaviour
 
     void CloseGacha()
     {
+        if (CharacterManager.CharacterMastery.Count == 0)
+            return;
+
         GachaHolder.gameObject.SafeSetActive(false);
         OpenGachaButton.gameObject.SafeSetActive(true);
     }
