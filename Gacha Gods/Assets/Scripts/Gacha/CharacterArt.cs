@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class CharacterArt : MonoBehaviour
 {
-    [SerializeField] List<Image> roles;
-    [SerializeField] List<Image> archetypes;
+    [SerializeField] List<Image> rolesAndArchetypes;
     [SerializeField] Image rarity;
 
     public void Initialise(Character character)
@@ -15,14 +14,25 @@ public class CharacterArt : MonoBehaviour
 
         rarity.sprite = character.Rarity.Icon;
 
+        for (int i = 0; i < rolesAndArchetypes.Count; i++)
+        {
+            rolesAndArchetypes[i].gameObject.SafeSetActive(false);
+        }
+
+        int counter = 0;
+
         for (int i = 0; i < character.Role.Count; i++)
         {
-            roles[i].sprite = character.Role[i].Icon;
+            rolesAndArchetypes[counter].gameObject.SafeSetActive(true);
+            rolesAndArchetypes[counter].sprite = character.Role[i].Icon;
+            counter++;
         }
 
         for (int i = 0; i < character.Archetype.Count; i++)
         {
-            roles[i].sprite = character.Archetype[i].Icon;
+            rolesAndArchetypes[counter].gameObject.SafeSetActive(true);
+            rolesAndArchetypes[counter].sprite = character.Archetype[i].Icon;
+            counter++;
         }
     }
 }
