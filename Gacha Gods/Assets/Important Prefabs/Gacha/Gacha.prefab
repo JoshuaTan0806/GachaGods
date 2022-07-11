@@ -1199,12 +1199,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed408d4c72cede45b98dec8f148db83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roles:
-  - {fileID: 1198056298375601238}
-  - {fileID: 7510481996652615271}
-  archetypes:
+  rolesAndArchetypes:
   - {fileID: 8914441093943166167}
   - {fileID: 8592067554869340165}
+  - {fileID: 1198056298375601238}
+  - {fileID: 7510481996652615271}
   rarity: {fileID: 5819811283251273257}
 --- !u!1 &8153199767450552133
 GameObject:

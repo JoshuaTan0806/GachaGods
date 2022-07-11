@@ -51,6 +51,7 @@ public class CharacterManager : Factories.FactoryBase
         else
         {
             CharacterStats characterStats = Instantiate(character.Prefab).GetComponent<CharacterStats>();
+            AddAllGlobalBuffs(characterStats);
 
             activeCharacters.Add(character, characterStats);
 
@@ -154,6 +155,14 @@ public class CharacterManager : Factories.FactoryBase
         foreach (var item in ActiveCharacters)
         {
             item.Value.RemoveStat(statData);
+        }
+    }
+
+    public static void AddAllGlobalBuffs(CharacterStats characterStats)
+    {
+        foreach (var item in globalBuffs)
+        {
+            characterStats.AddStat(item);
         }
     }
 }
