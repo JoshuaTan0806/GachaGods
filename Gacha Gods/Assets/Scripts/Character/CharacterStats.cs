@@ -8,7 +8,7 @@ public class CharacterStats : MonoBehaviour
     public StatDictionary Stats => stats;
     StatDictionary stats = new StatDictionary();
     [ReadOnly, SerializeField] StatFloatDictionary totalStats = new StatFloatDictionary();
-
+    public System.Action OnStatsChanged;
     public Character Character => character;
     [SerializeField] Character character;
 
@@ -51,6 +51,8 @@ public class CharacterStats : MonoBehaviour
         }
 
         totalStats[stat.stat] = stats[stat.stat].Total;
+
+        OnStatsChanged?.Invoke();
     }
 
     public void RemoveStat(StatData stat)
@@ -66,6 +68,8 @@ public class CharacterStats : MonoBehaviour
         }
 
         totalStats[stat.stat] = stats[stat.stat].Total;
+
+        OnStatsChanged?.Invoke();
     }
 
     public bool IsDead()
