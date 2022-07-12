@@ -15,6 +15,11 @@ public class CharacterStats : MonoBehaviour
     List<Buff> buffs = new List<Buff>();
     public System.Action OnDeath;
 
+    public GameObject AttackPrefab => attackPrefab;
+    [SerializeField] GameObject attackPrefab;
+    public GameObject SpellPrefab => spellPrefab;
+    [SerializeField] GameObject spellPrefab;
+
     float currentHealth;
     float currentMana;
 
@@ -75,6 +80,16 @@ public class CharacterStats : MonoBehaviour
     public bool IsDead()
     {
         return currentHealth > 0;
+    }
+
+    public void UpgradeAttack(GameObject gameObject)
+    {
+        attackPrefab = gameObject;
+    }
+
+    public void UpgradeSpell(GameObject gameObject)
+    {
+        spellPrefab = gameObject;
     }
 
     public void AddBuff(Buff buff)

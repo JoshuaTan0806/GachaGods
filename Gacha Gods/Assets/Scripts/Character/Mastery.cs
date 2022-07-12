@@ -9,7 +9,8 @@ public enum MasteryType
     Archetype,
     Stat,
     GlobalStat,
-    Skill
+    Attack,
+    Spell
 }
 
 [CreateAssetMenu(menuName = "Character/Mastery")]
@@ -29,6 +30,13 @@ public class Mastery : ScriptableObject
     [ShowIf("MasteryType", MasteryType.GlobalStat), SerializeField]
     StatData GlobalStat;
 
+    [ShowIf("MasteryType", MasteryType.Attack), SerializeField]
+    GameObject AttackPrefab;
+
+    [ShowIf("MasteryType", MasteryType.Spell), SerializeField]
+    GameObject SpellPrefab;
+
+
     public void ActivateMastery(CharacterStats stats)
     {
         switch (MasteryType)
@@ -45,7 +53,11 @@ public class Mastery : ScriptableObject
             case MasteryType.GlobalStat:
                 CharacterManager.AddGlobalBuff(GlobalStat);
                 break;
-            case MasteryType.Skill:
+            case MasteryType.Attack:
+                stats.UpgradeAttack(AttackPrefab);
+                break;
+            case MasteryType.Spell:
+                stats.UpgradeSpell(SpellPrefab);
                 break;
             default:
                 break;
@@ -68,8 +80,9 @@ public class Mastery : ScriptableObject
             case MasteryType.GlobalStat:
                 CharacterManager.RemoveGlobalBuff(GlobalStat);
                 break;
-            case MasteryType.Skill:
+            case MasteryType.Attack:
                 break;
+            case MasteryType.Spell:
             default:
                 break;
         }

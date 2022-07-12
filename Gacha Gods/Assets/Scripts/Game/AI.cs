@@ -72,6 +72,8 @@ public class AI : MonoBehaviour
         animator.Play("Attack");
         canChooseAction = false;
         StartCoroutine(AllowAction(1 / stats.GetStat(Stat.AtkSpd)));
+
+        Instantiate(stats.AttackPrefab);
     }
 
     void Move()
@@ -86,6 +88,8 @@ public class AI : MonoBehaviour
         animator.Play("Cast");
         canChooseAction = false;
         StartCoroutine(AllowAction(1 / stats.GetStat(Stat.SpellSpd)));
+
+        Instantiate(stats.SpellPrefab);
     }
 
     void Stun(float time)
