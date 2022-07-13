@@ -70,7 +70,7 @@ public class Banner : MonoBehaviour
         {
             for (int i = 0; i < GachaManager.Rarities.Count; i++)
             {
-                List<Character> charactersOfSameRarity = GachaManager.FilterCharacters(GachaManager.Characters, GachaManager.Rarities[i]);
+                List<Character> charactersOfSameRarity = GachaManager.Rarities[i].FilterOnly(GachaManager.Characters);
                 Character character = charactersOfSameRarity.ChooseRandomElementInList();
                 rateUpCharacters.Add(character);
                 RateUpCharactersPositionReference[i].sprite = character.Icon;
@@ -146,7 +146,7 @@ public class Banner : MonoBehaviour
     void RollCharacterOfRarity(Rarity rarity)
     {
         //pull a character
-        List<Character> charactersOfSameRarity = GachaManager.FilterCharacters(GachaManager.Characters, rarity);
+        List<Character> charactersOfSameRarity = rarity.FilterOnly(GachaManager.Characters);
         Character characterPulled = charactersOfSameRarity.ChooseRandomElementInList();
 
         //if theres rate up, we have a chance of overriding that with the rate up
@@ -204,7 +204,7 @@ public class Banner : MonoBehaviour
             {
                 list.SpawnText(item.Key.Name, 35, item.Key.Gradient, true);
 
-                List<Character> charactersOfRarity = GachaManager.FilterCharacters(GachaManager.Characters, item.Key);
+                List<Character> charactersOfRarity = item.Key.FilterOnly(GachaManager.Characters);
 
                 for (int i = 0; i < charactersOfRarity.Count; i++)
                 {

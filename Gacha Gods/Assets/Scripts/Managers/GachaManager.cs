@@ -65,30 +65,5 @@ public class GachaManager : Factories.FactoryBase
             }
         }
     }
-
-    public static List<Character> FilterCharacters(List<Character> characters, Rarity rarity)
-    {
-        return characters.Where(x => x.Rarity == rarity).ToList();
-    }
-
-    public static List<Character> FilterCharacters(List<Character> characters, Role role)
-    {
-        return characters.Where(x => x.Role.Contains(role)).ToList();
-    }
-
-    public static List<Character> FilterCharacters(List<Character> characters, Archetype archetype)
-    {
-        return characters.Where(x => x.Archetype.Contains(archetype)).ToList();
-    }
-
-    public static Role RandomRole()
-    {
-        return roles.ChooseRandomElementInList();
-    }
-
-    public static Archetype RandomArchetype()
-    {
-        return archetypes.ChooseRandomElementInList();
-    }
 }
 [System.Serializable] public class OddsDictionary : SerializableDictionary<Rarity, int> { }
