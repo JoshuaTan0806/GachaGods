@@ -68,9 +68,9 @@ public class Banner : MonoBehaviour
         }
         else if(bannerType == BannerType.RateUp)
         {
-            for (int i = 0; i < GachaManager.Rarities.Count; i++)
+            for (int i = 0; i < CharacterManager.Rarities.Count; i++)
             {
-                List<Character> charactersOfSameRarity = GachaManager.Rarities[i].FilterOnly(GachaManager.Characters);
+                List<Character> charactersOfSameRarity = CharacterManager.Rarities[i].FilterOnly(CharacterManager.Characters);
                 Character character = charactersOfSameRarity.ChooseRandomElementInList();
                 rateUpCharacters.Add(character);
                 RateUpCharactersPositionReference[i].sprite = character.Icon;
@@ -132,7 +132,7 @@ public class Banner : MonoBehaviour
     {
         OddsDictionary odds = FindOdds(level);
 
-        Rarity rarityToPick = GachaManager.Rarities[0];
+        Rarity rarityToPick = CharacterManager.Rarities[0];
 
         foreach (var item in odds)
         {
@@ -146,7 +146,7 @@ public class Banner : MonoBehaviour
     void RollCharacterOfRarity(Rarity rarity)
     {
         //pull a character
-        List<Character> charactersOfSameRarity = rarity.FilterOnly(GachaManager.Characters);
+        List<Character> charactersOfSameRarity = rarity.FilterOnly(CharacterManager.Characters);
         Character characterPulled = charactersOfSameRarity.ChooseRandomElementInList();
 
         //if theres rate up, we have a chance of overriding that with the rate up
@@ -174,9 +174,9 @@ public class Banner : MonoBehaviour
     OddsDictionary FindOdds(int level)
     {
         if (!BannerManager.IsRateUp())
-            return GachaManager.Odds[level];
+            return CharacterManager.Odds[level];
         else
-            return GachaManager.Odds[level + 1];
+            return CharacterManager.Odds[level + 1];
     }
 
     void SpawnCharacterOdds()
@@ -204,7 +204,7 @@ public class Banner : MonoBehaviour
             {
                 list.SpawnText(item.Key.Name, 35, item.Key.Gradient, true);
 
-                List<Character> charactersOfRarity = item.Key.FilterOnly(GachaManager.Characters);
+                List<Character> charactersOfRarity = item.Key.FilterOnly(CharacterManager.Characters);
 
                 for (int i = 0; i < charactersOfRarity.Count; i++)
                 {

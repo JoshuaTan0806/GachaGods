@@ -2,10 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using System.Linq;
 
 [CreateAssetMenu(menuName = "Managers/Character Manager")]
 public class CharacterManager : Factories.FactoryBase
 {
+    public static List<Character> Characters => characters;
+    static List<Character> characters = new List<Character>();
+    [SerializeField] List<Character> _characters;
+
+    public static List<Role> Roles => roles;
+    static List<Role> roles = new List<Role>();
+    [SerializeField] List<Role> _roles;
+
+    public static List<Archetype> Archetypes => archetypes;
+    static List<Archetype> archetypes = new List<Archetype>();
+    [SerializeField] List<Archetype> _archetypes;
+
+    public static List<Rarity> Rarities => rarities;
+    static List<Rarity> rarities = new List<Rarity>();
+    [SerializeField] List<Rarity> _rarities;
+
+    public static List<OddsDictionary> Odds => odds;
+    static List<OddsDictionary> odds = new List<OddsDictionary>();
+    List<int> _odds = new List<int>()
+    {
+        100, 0, 0, 0, 0,
+        100, 0, 0, 0, 0,
+        100, 0, 0, 0, 0,
+        75, 25, 0, 0, 0,
+        55, 30, 15, 0, 0,
+        45, 33, 20, 2, 0,
+        25, 40, 30, 5, 0,
+        19, 30, 35, 15, 1,
+        16, 20, 35, 25, 4,
+        9, 15, 30, 30, 16,
+        5, 10, 20, 40, 25
+    };
+
     public static CharacterMastery CharacterMastery => characterMastery;
     static CharacterMastery characterMastery = new CharacterMastery();
     public static ActiveCharacters ActiveCharacters => activeCharacters;
@@ -21,6 +55,29 @@ public class CharacterManager : Factories.FactoryBase
     {
         GameManager.OnGameEnd -= Clear;
         GameManager.OnGameEnd += Clear;
+
+        characters = _characters;
+        roles = _roles;
+        archetypes = _archetypes;
+        rarities = _rarities.OrderBy(x => x.RarityNumber).ToList();
+        InitialiseOdds();
+    }
+
+    public void InitialiseOdds()
+    {
+        odds.Clear();
+        int counter = 0;
+
+        for (int i = 0; i < 11; i++)
+        {
+            odds.Add(new OddsDictionary());
+
+            for (int j = 0; j < _rarities.Count; j++)
+            {
+                odds[i].Add(_rarities[j], _odds[counter]);
+                counter++;
+            }
+        }
     }
 
     void Clear()
@@ -185,3 +242,4 @@ public class CharacterMastery : SerializableDictionary<Character, int> { }
 public class ActiveRoles : SerializableDictionary<Role, int> { }
 public class ActiveArchetypes : SerializableDictionary<Archetype, int> { }
 public class SetData : SerializableDictionary<int, StatData> { }
+[System.Serializable] public class OddsDictionary : SerializableDictionary<Rarity, int> { }
