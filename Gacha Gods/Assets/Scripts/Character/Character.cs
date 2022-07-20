@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(menuName = "Character/Character")]
 public class Character : ScriptableObject
@@ -19,5 +20,10 @@ public class Character : ScriptableObject
     [SerializeField] StatFloatDictionary baseStats;
     public List<Mastery> Mastery => mastery;
     [SerializeField] List<Mastery> mastery;
-}
 
+    [Button]
+    void CreateScriptables()
+    {
+
+    }
+}

@@ -16,7 +16,11 @@ public enum MasteryType
 [CreateAssetMenu(menuName = "Character/Mastery")]
 public class Mastery : ScriptableObject
 {
-    public MasteryType MasteryType;
+    public string Description => description;
+    [SerializeField] string description;
+
+    public MasteryType MasteryType => masteryType;
+    [SerializeField] MasteryType masteryType;
 
     [ShowIf("MasteryType", MasteryType.Role), SerializeField]
     Role Role;
@@ -31,10 +35,10 @@ public class Mastery : ScriptableObject
     StatData GlobalStat;
 
     [ShowIf("MasteryType", MasteryType.Attack), SerializeField]
-    GameObject AttackPrefab;
+    Attack Attack;
 
     [ShowIf("MasteryType", MasteryType.Spell), SerializeField]
-    GameObject SpellPrefab;
+    Spell Spell;
 
 
     public void ActivateMastery(CharacterStats stats)
@@ -54,10 +58,10 @@ public class Mastery : ScriptableObject
                 CharacterManager.AddGlobalBuff(GlobalStat);
                 break;
             case MasteryType.Attack:
-                stats.UpgradeAttack(AttackPrefab);
+                stats.UpgradeAttack(Attack);
                 break;
             case MasteryType.Spell:
-                stats.UpgradeSpell(SpellPrefab);
+                stats.UpgradeSpell(Spell);
                 break;
             default:
                 break;

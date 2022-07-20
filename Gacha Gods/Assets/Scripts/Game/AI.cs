@@ -73,7 +73,7 @@ public class AI : MonoBehaviour
         canChooseAction = false;
         StartCoroutine(AllowAction(1 / stats.GetStat(Stat.AtkSpd)));
 
-        Instantiate(stats.AttackPrefab);
+        Instantiate(stats.Attack.Prefab, transform.position, Quaternion.identity);
     }
 
     void Move()
@@ -89,7 +89,7 @@ public class AI : MonoBehaviour
         canChooseAction = false;
         StartCoroutine(AllowAction(1 / stats.GetStat(Stat.SpellSpd)));
 
-        Instantiate(stats.SpellPrefab);
+        Instantiate(stats.Spell.Prefab, transform.position, Quaternion.identity);
     }
 
     void Stun(float time)
