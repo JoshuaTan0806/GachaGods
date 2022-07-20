@@ -13,15 +13,22 @@ MonoBehaviour:
   m_Name: Ai
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
+  icon: {fileID: 0}
   role:
   - {fileID: 11400000, guid: f60c0bb05b3f1e64f9e9065c6bf73a4f, type: 2}
   archetype:
   - {fileID: 11400000, guid: 3fb58b23d85771d4fbe1b45b57184c76, type: 2}
-  element:
-  - {fileID: 11400000, guid: 3fa25fc23b8570247a6ac5ce03efb2d9, type: 2}
-  - {fileID: 11400000, guid: f2a89d641fd9da84a936c4f7082900c6, type: 2}
   rarity: {fileID: 11400000, guid: 5caa1fcf88ed40b4abb3e1f7df2d8f23, type: 2}
   baseStats:
     m_keys: 00000000
     m_values:
     - 5
+  mastery:
+  - {fileID: 11400000, guid: 2c08f4022937e72448ad810e71ec305a, type: 2}
+  - {fileID: 11400000, guid: 4274c56fdbc8c864380cfa9d58a22da7, type: 2}
+  - {fileID: 11400000, guid: 5973d409678721b42af5a2704534fc0f, type: 2}
+  - {fileID: 11400000, guid: 4bef17dbfa2471a408271c20e534d60c, type: 2}
+  - {fileID: 11400000, guid: 7c1a221d55621a7429dcba07a595e31c, type: 2}
+  - {fileID: 11400000, guid: 1ec6d4eb7511dc5478508844ad6f5136, type: 2}
+  attack: {fileID: 11400000, guid: a8c698cd83deace46921eb4eaf23d341, type: 2}
+  spell: {fileID: 11400000, guid: 6eebcd80a12f7db4f812fff3825a2b81, type: 2}

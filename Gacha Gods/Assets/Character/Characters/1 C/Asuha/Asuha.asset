@@ -24,3 +24,5 @@ MonoBehaviour:
     m_values:
     - 5
   mastery: []
+  attack: {fileID: 0}
+  spell: {fileID: 0}
