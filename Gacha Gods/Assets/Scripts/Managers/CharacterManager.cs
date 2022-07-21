@@ -45,14 +45,17 @@ public class CharacterManager : Factories.FactoryBase
     public static ActiveCharacters ActiveCharacters => activeCharacters;
     static ActiveCharacters activeCharacters = new ActiveCharacters();
     public static ActiveRoles ActiveRoles => activeRoles;
-    static ActiveRoles activeRoles;
+    static ActiveRoles activeRoles = new ActiveRoles();
     public static ActiveArchetypes ActiveArchetypes => activeArchetypes;
-    static ActiveArchetypes activeArchetypes;
+    static ActiveArchetypes activeArchetypes = new ActiveArchetypes();
     public static List<StatData> GlobalBuffs => globalBuffs;
-    static List<StatData> globalBuffs;
+    static List<StatData> globalBuffs = new List<StatData>();
 
     public override void Initialise()
     {
+        GameManager.OnGameStart -= Clear;
+        GameManager.OnGameStart += Clear;
+
         GameManager.OnGameEnd -= Clear;
         GameManager.OnGameEnd += Clear;
 
@@ -86,6 +89,7 @@ public class CharacterManager : Factories.FactoryBase
         ActiveCharacters.Clear();
         ActiveRoles.Clear();
         ActiveArchetypes.Clear();
+        GlobalBuffs.Clear();
     }
 
     public static void AddCharacter(Character character)

@@ -55,6 +55,7 @@ public static class ExtensionMethods
         return num % 2 == 0;
     }
 
+
     public static bool IsOdd(this int num)
     {
         return num % 2 == 1;
@@ -124,6 +125,10 @@ public static class ExtensionMethods
         button.colors = colors;
     }
 
+    public static void SetTransparency(this Image image, float transparency)
+    {
+        image.color = new Color(image.color.r, image.color.g, image.color.b, transparency);
+    }
 
     public static bool IsTransparent(this Image image)
     {
