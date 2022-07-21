@@ -16,6 +16,14 @@ public class ClampScrollView : MonoBehaviour
         ScrollRect = GetComponentInParent<ScrollRect>();
     }
 
+    private void Start()
+    {
+        if (ScrollRect.vertical)
+            RectTransform.anchoredPosition = new Vector2(RectTransform.anchoredPosition.x, minValue);
+        else
+            RectTransform.anchoredPosition = new Vector2(maxValue, RectTransform.anchoredPosition.y);
+    }
+
     private void Update()
     {
         if (ScrollRect.vertical)
