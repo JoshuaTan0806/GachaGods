@@ -26,8 +26,6 @@ public class BannerManager : MonoBehaviour
     [SerializeField] Transform GachaHolder;
     [SerializeField] Transform BannerHolder;
     [SerializeField] Transform BannerOptionHolder;
-    [SerializeField] Button OpenGachaButton;
-    [SerializeField] Button CloseGachaButton;
 
     [Header("Prefabs")]
     [SerializeField] GameObject BannerPrefab;
@@ -41,30 +39,10 @@ public class BannerManager : MonoBehaviour
     {
         GameManager.OnRoundEnd += ResetBannerNames;
         GameManager.OnRoundEnd += SnapToFirstBanner;
-        OpenGachaButton.AddListenerToButton(OpenGacha);
-        CloseGachaButton.AddListenerToButton(CloseGacha);
         ResetBannerNames();
         InitialiseBanners();
         currentBanner = Banners.Values.First();
         ChangeBanner();
-
-        //do this last
-        OpenGacha();
-    }
-
-    void OpenGacha()
-    {
-        GachaHolder.gameObject.SafeSetActive(true);
-        OpenGachaButton.gameObject.SafeSetActive(false);
-    }
-
-    void CloseGacha()
-    {
-        if (CharacterManager.CharacterMastery.Count == 0)
-            return;
-
-        GachaHolder.gameObject.SafeSetActive(false);
-        OpenGachaButton.gameObject.SafeSetActive(true);
     }
 
     private void OnDestroy()
