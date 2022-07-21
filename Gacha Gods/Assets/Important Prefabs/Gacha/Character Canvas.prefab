@@ -255,7 +255,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: 20
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -275,8 +275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b0dd2ba6b62f4142a59e07a02cf7a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minValue: -4000
-  maxValue: 500
+  minValue: -4700
+  maxValue: 50
 --- !u!1 &6109990090490008587
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6109990090490008591
 RectTransform:
   m_ObjectHideFlags: 0
