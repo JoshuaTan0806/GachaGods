@@ -22,9 +22,9 @@ public class Character : ScriptableObject
     [SerializeField] StatFloatDictionary baseStats;
     public List<Mastery> Mastery => mastery;
     [SerializeField] List<Mastery> mastery;
-    public Attack Attack => Attack;
+    public Attack Attack => attack;
     [SerializeField] Attack attack;
-    public Spell Spell => Spell;
+    public Spell Spell => spell;
     [SerializeField] Spell spell;
 
     [Button]
