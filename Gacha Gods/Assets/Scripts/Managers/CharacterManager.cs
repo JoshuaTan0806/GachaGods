@@ -129,7 +129,7 @@ public class CharacterManager : Factories.FactoryBase
                 AddArchetype(character.Archetype[i]);
             }
 
-            for (int i = 0; i < CharacterMastery[character] || i < character.Mastery.Count - 1; i++)
+            for (int i = 0; i < CharacterMastery[character]; i++)
             {
                 character.Mastery[i].ActivateMastery(characterStats);
             }

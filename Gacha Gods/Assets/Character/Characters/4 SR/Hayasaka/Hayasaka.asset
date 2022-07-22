@@ -22,6 +22,12 @@ MonoBehaviour:
   baseStats:
     m_keys: 
     m_values: []
-  mastery: []
-  attack: {fileID: 0}
-  spell: {fileID: 0}
+  mastery:
+  - {fileID: 11400000, guid: 9b2d9c8a51d57924a85e0209e53a03d7, type: 2}
+  - {fileID: 11400000, guid: 458869e98bfaa6240b81aaddf871b871, type: 2}
+  - {fileID: 11400000, guid: dbf89f7c27e80414ab80be2776ce1042, type: 2}
+  - {fileID: 11400000, guid: 8b3d8f85893f1f6448f3b55655e6929d, type: 2}
+  - {fileID: 11400000, guid: 209f7b285e867c649b12470b349cece9, type: 2}
+  - {fileID: 11400000, guid: db294c011dc14fa47a0c02dd97176741, type: 2}
+  attack: {fileID: 11400000, guid: 975e3c9e5dc3e0e4297441831eb00c39, type: 2}
+  spell: {fileID: 11400000, guid: 33e90f9048348c647848b59436fec32a, type: 2}

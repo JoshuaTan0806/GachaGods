@@ -23,6 +23,12 @@ MonoBehaviour:
     m_keys: 00000000
     m_values:
     - 5
-  mastery: []
-  attack: {fileID: 0}
-  spell: {fileID: 0}
+  mastery:
+  - {fileID: 11400000, guid: 7cc291c7e752cc94eaf3e728ca279911, type: 2}
+  - {fileID: 11400000, guid: 990be612904476e40b7be2806d850b20, type: 2}
+  - {fileID: 11400000, guid: a8261ceb8d505654aaa3df140e61dcb6, type: 2}
+  - {fileID: 11400000, guid: 95c30b0c4f15934469cda68bf397c68a, type: 2}
+  - {fileID: 11400000, guid: a5c458d561dc9a54c9244ef32cfb9ac3, type: 2}
+  - {fileID: 11400000, guid: 0497402d2a4055041978d41e6d0eef82, type: 2}
+  attack: {fileID: 11400000, guid: 46e0ee8dcf82cb345a7b7f1da67f87c3, type: 2}
+  spell: {fileID: 11400000, guid: 03e00f882931387498b90517bef49c51, type: 2}

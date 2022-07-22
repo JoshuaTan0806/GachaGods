@@ -65,7 +65,6 @@ public class Character : ScriptableObject
             }
         }
 
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
+        EditorExtensionMethods.SaveAsset(this);
     }
 }
