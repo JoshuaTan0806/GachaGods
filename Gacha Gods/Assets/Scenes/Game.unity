@@ -1156,8 +1156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 358622463683999335, guid: 494986b65a9234948bc7b86a38bc45dc, type: 3}
-  startingPos: {x: -4, y: -1}
-  width: 10
+  startingPos: {x: -5, y: -1}
+  width: 12
   height: 6
 --- !u!1 &2119192825 stripped
 GameObject:
