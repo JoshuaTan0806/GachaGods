@@ -19,6 +19,7 @@ public class CharacterUI : MonoBehaviour
             Image g = Instantiate(PrefabManager.CharacterIcon, CharacterHolder.transform).GetComponent<Image>();
             g.name = item.name;
             g.sprite = item.Icon;
+            g.GetComponent<ActivateCharacterButton>().SetCharacter(item);
             CharacterDictionary.Add(item, g);
         }
     }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneNames:
   - Assets/Scenes/Main Menu.unity
-  - Assets/Scenes/Banner.unity
+  - Assets/Scenes/Game.unity
   - 
   - 
   - 

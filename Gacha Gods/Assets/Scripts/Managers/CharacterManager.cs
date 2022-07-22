@@ -245,5 +245,5 @@ public class ActiveCharacters : SerializableDictionary<Character, CharacterStats
 public class CharacterMastery : SerializableDictionary<Character, int> { }
 public class ActiveRoles : SerializableDictionary<Role, int> { }
 public class ActiveArchetypes : SerializableDictionary<Archetype, int> { }
-public class SetData : SerializableDictionary<int, StatData> { }
+[System.Serializable] public class SetData : SerializableDictionary<int, StatData> { }
 [System.Serializable] public class OddsDictionary : SerializableDictionary<Rarity, int> { }
