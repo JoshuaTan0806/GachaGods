@@ -81,7 +81,12 @@ public class BoardManager : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, Mathf.Infinity, whatIsTile);
 
             if (hit.collider == null)
+            {
+                if (heldCharacter != null)
+                    Destroy(heldCharacter.gameObject);
+
                 return;
+            }
 
             Tile tile = hit.transform.GetComponent<Tile>();
 
@@ -105,9 +110,9 @@ public class BoardManager : MonoBehaviour
                 if (characterStats == null)
                     return;
 
-                HeldCharacter = tile.Character;
-                CharacterManager.DeactivateCharacter(characterStats.Character);
                 tile.Character = null;
+                HeldCharacter = characterStats;
+                CharacterManager.DeactivateCharacter(characterStats.Character);
             }
         }
     }

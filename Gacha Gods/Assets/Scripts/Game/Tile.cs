@@ -52,6 +52,9 @@ public class Tile : MonoBehaviour
 
     public bool CanBePlaced(Character character)
     {
+        if (Character != null)
+            return false;
+
         switch (unitType)
         {
             case UnitType.None:
