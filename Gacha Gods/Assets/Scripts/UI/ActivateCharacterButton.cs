@@ -21,7 +21,7 @@ public class ActivateCharacterButton : MonoBehaviour
         if (!CharacterManager.CharacterMastery.ContainsKey(character))
             return;
 
-        if (!CharacterManager.ActiveCharacters.ContainsKey(character))
+        if (CharacterManager.ActiveCharacters.ContainsKey(character))
             return;
 
         CharacterManager.ActivateCharacter(character);

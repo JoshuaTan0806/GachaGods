@@ -96,7 +96,7 @@ public class CharacterManager : Factories.FactoryBase
     {
         if (CharacterMastery.ContainsKey(character))
         {
-            if (CharacterMastery[character] < 5)
+            if (CharacterMastery[character] < CharacterMastery.Count)
                 CharacterMastery[character]++;
 
             if (ActiveCharacters.ContainsKey(character))
