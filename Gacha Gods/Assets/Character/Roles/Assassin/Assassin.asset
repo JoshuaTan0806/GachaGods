@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: Assassin
   m_EditorClassIdentifier: 
   description: 
+  icon: {fileID: 0}
+  setData:
+    m_keys: 02000000
+    m_values:
+    - {fileID: 11400000, guid: 412d3aedb0a971440bf3ab38c349228b, type: 2}

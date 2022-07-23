@@ -50,6 +50,7 @@ public class CharacterManager : Factories.FactoryBase
     static ActiveArchetypes activeArchetypes = new ActiveArchetypes();
     public static List<StatData> GlobalBuffs => globalBuffs;
     static List<StatData> globalBuffs = new List<StatData>();
+    public static GameObject HeldCharacter;
 
     public override void Initialise()
     {
@@ -108,13 +109,14 @@ public class CharacterManager : Factories.FactoryBase
         }
     }
 
-    public static void ActivateCharacter(Character character)
+    public static void ActivateCharacter(CharacterStats characterStats)
     {
+        Character character = characterStats.Character;
+
         if (activeCharacters.ContainsKey(character))
             throw new System.Exception("Can't add a character which is already active");
         else
         {
-            CharacterStats characterStats = Instantiate(character.Prefab).GetComponent<CharacterStats>();
             AddAllGlobalBuffs(characterStats);
 
             activeCharacters.Add(character, characterStats);
@@ -142,7 +144,7 @@ public class CharacterManager : Factories.FactoryBase
             throw new System.Exception("Can't remove a character that is inactive");
         else
         {
-            for (int i = 0; i < CharacterMastery[character] || i < character.Mastery.Count - 1; i++)
+            for (int i = 0; i < CharacterMastery[character]; i++)
             {
                 character.Mastery[i].DeactiveMastery(activeCharacters[character]);
             }
@@ -150,7 +152,6 @@ public class CharacterManager : Factories.FactoryBase
             for (int i = 0; i < character.Role.Count; i++)
             {
                 RemoveRole(character.Role[i]);
-
             }
     
             for (int i = 0; i < character.Archetype.Count; i++)

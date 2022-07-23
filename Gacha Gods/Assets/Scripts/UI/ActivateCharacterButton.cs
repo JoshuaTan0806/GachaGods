@@ -8,7 +8,7 @@ public class ActivateCharacterButton : MonoBehaviour
 
     private void Awake()
     {
-        gameObject.AddListenerToButton(ActivateCharacter);
+        gameObject.AddListenerToButton(InstantiateCharacter);
     }
 
     public void SetCharacter(Character character)
@@ -16,7 +16,7 @@ public class ActivateCharacterButton : MonoBehaviour
         this.character = character;
     }
 
-    void ActivateCharacter()
+    void InstantiateCharacter()
     {
         if (!CharacterManager.CharacterMastery.ContainsKey(character))
             return;
@@ -24,6 +24,11 @@ public class ActivateCharacterButton : MonoBehaviour
         if (CharacterManager.ActiveCharacters.ContainsKey(character))
             return;
 
-        CharacterManager.ActivateCharacter(character);
+        if (BoardManager.HeldCharacter != null)
+            return;
+
+        CharacterStats stats = Instantiate(character.Prefab).GetComponent<CharacterStats>();
+        stats.InitialiseCharacter(character);
+        BoardManager.HeldCharacter = stats;
     }
 }

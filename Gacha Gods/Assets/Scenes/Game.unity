@@ -1159,6 +1159,9 @@ MonoBehaviour:
   startingPos: {x: -5, y: -1}
   width: 12
   height: 6
+  whatIsTile:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &2119192825 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6109990090490008587, guid: 8ed8f8c17ef97d347a7935bfbbca5df9, type: 3}

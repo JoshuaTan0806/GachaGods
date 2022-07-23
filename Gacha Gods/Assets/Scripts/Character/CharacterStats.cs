@@ -25,8 +25,6 @@ public class CharacterStats : MonoBehaviour
 
     void Start()
     {
-        character = Instantiate(character);
-
         foreach (var item in StatManager.StatDictionary)
         {
             AddStat(item.Value);
@@ -36,6 +34,13 @@ public class CharacterStats : MonoBehaviour
         {
             AddStat(StatManager.CreateStat(item.Key, StatType.Flat, item.Value));
         }
+    }
+
+    public void InitialiseCharacter(Character character)
+    {
+        this.character = character;
+        spell = character.Spell;
+        attack = character.Attack;
     }
 
     public float GetStat(Stat stat)
