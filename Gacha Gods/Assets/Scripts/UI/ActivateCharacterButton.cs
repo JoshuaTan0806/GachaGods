@@ -29,6 +29,7 @@ public class ActivateCharacterButton : MonoBehaviour
 
         CharacterStats stats = Instantiate(character.Prefab).GetComponent<CharacterStats>();
         stats.InitialiseCharacter(character);
+        CharacterManager.ActivateCharacter(stats);
         BoardManager.HeldCharacter = stats;
     }
 }

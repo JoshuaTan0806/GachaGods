@@ -75,44 +75,82 @@ public class BoardManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            pos.z = -Camera.main.transform.position.z;
-            RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, Mathf.Infinity, whatIsTile);
-
-            if (hit.collider == null)
-            {
-                if (heldCharacter != null)
-                    Destroy(heldCharacter.gameObject);
-
-                return;
-            }
-
-            Tile tile = hit.transform.GetComponent<Tile>();
+            Tile tile = RaycastTile();
 
             if (tile == null)
                 return;
 
             if (HeldCharacter != null)
             {
-                if (!tile.CanBePlaced(HeldCharacter.Character))
-                    return;
-
-                HeldCharacter.transform.position = hit.transform.position;
-                tile.Character = HeldCharacter;
-                CharacterManager.ActivateCharacter(HeldCharacter);
-                HeldCharacter = null;
+                PlaceCharacter(tile);
             }
             else
             {
-                CharacterStats characterStats = tile.Character;
-
-                if (characterStats == null)
-                    return;
-
-                tile.Character = null;
-                CharacterManager.DeactivateCharacter(characterStats.Character);
-                HeldCharacter = characterStats;
+                PickUpCharacter(tile);
             }
         }
+
+        if(Input.GetMouseButtonDown(1))
+        {
+            if (heldCharacter != null)
+                return;
+
+            Tile tile = RaycastTile();
+
+            if (tile == null)
+                return;
+
+            RemoveCharacter(tile);
+        }
     }
+
+    void PickUpCharacter(Tile tile)
+    {
+        CharacterStats characterStats = tile.Character;
+
+        if (characterStats == null)
+            return;
+
+        tile.Character = null;
+        HeldCharacter = characterStats;
+    }
+
+    void PlaceCharacter(Tile tile)
+    {
+        if (!tile.CanBePlaced(HeldCharacter.Character))
+            return;
+
+        CharacterStats stats = tile.Character;
+
+        HeldCharacter.transform.position = tile.transform.position;
+        tile.Character = HeldCharacter;
+
+        //pick up existing character
+        HeldCharacter = stats;
+    }
+
+    void RemoveCharacter(Tile tile)
+    {
+        CharacterStats characterStats = tile.Character;
+
+        if (characterStats == null)
+            return;
+
+        Destroy(tile.Character.gameObject);
+        CharacterManager.DeactivateCharacter(characterStats.Character);
+        HeldCharacter = null;
+    }
+
+    Tile RaycastTile()
+    {
+        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        pos.z = -Camera.main.transform.position.z;
+        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, Mathf.Infinity, whatIsTile);
+
+        if (hit.collider == null)
+            return null;
+
+        return hit.transform.GetComponent<Tile>();
+    }
+
 }
