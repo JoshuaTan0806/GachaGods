@@ -20,7 +20,6 @@ public class Banner : MonoBehaviour
     [ReadOnly, SerializeField, ShowIf("bannerType", BannerType.RateUp)] List<Character> rateUpCharacters = new List<Character>();
 
     [Header("Pull Data")]
-    [SerializeField] int levelToPullAt;
     [ReadOnly, SerializeField] List<Character> charactersPulled = new List<Character>();
 
     [Header("References")]
@@ -36,9 +35,9 @@ public class Banner : MonoBehaviour
     {
         GameManager.OnGameStart += RefreshBanner;
         GameManager.OnRoundEnd += RefreshBanner;
-        OneRollButtonReference.AddListenerToButton(RollAtLevel);
-        PremiumRollButtonReference.AddListenerToButton(RollAtLevel);
-        TenRollButtonReference.AddListenerToButton(Roll10AtLevel);
+        OneRollButtonReference.AddListenerToButton(Use1Gold);
+        PremiumRollButtonReference.AddListenerToButton(Use1Gem);
+        TenRollButtonReference.AddListenerToButton(Use10Gold);
         CharacterOddButtonReference.AddListenerToButton(SpawnCharacterOdds);
 
         //levelToPullAt = 0;
@@ -83,10 +82,43 @@ public class Banner : MonoBehaviour
             gameObject.name = BannerManager.BannerNames.ChooseRandomElementInList(true) + " Banner";
     }
 
+    void Use1Gold()
+    {
+        if (GameManager.Gold < 1)
+            return;
+        else
+        {
+            GameManager.RemoveGold(1);
+            RollAtLevel();
+        }
+    }
+
+    void Use10Gold()
+    {
+        if (GameManager.Gold < 10)
+            return;
+        else
+        {
+            GameManager.RemoveGold(10);
+            Roll10AtLevel();
+        }
+    }
+
+    void Use1Gem()
+    {
+        if (GameManager.Gems < 1)
+            return;
+        else
+        {
+            GameManager.RemoveGems(1);
+            RollAtLevel();
+        }
+    }
+
     void RollAtLevel()
     {
         charactersPulled.Clear();
-        Roll(levelToPullAt);
+        Roll(GameManager.Level);
         SpawnGacha();
     }
 
@@ -114,7 +146,7 @@ public class Banner : MonoBehaviour
     void Roll10AtLevel()
     {
         charactersPulled.Clear();
-        Roll10(levelToPullAt);
+        Roll10(GameManager.Level);
         SpawnGacha();
     }
 
@@ -185,7 +217,7 @@ public class Banner : MonoBehaviour
         {
             CharacterOddsReference = Instantiate(PrefabManager.CharacterOdds, GetComponentInParent<BannerManager>().transform);
             TextList list = CharacterOddsReference.GetComponentInChildren<TextList>();
-            OddsDictionary odds = FindOdds(levelToPullAt);
+            OddsDictionary odds = FindOdds(GameManager.Level);
 
             //Spawn the rarity odds
             list.SpawnText("Rarity Odds", 40, Color.black, true);

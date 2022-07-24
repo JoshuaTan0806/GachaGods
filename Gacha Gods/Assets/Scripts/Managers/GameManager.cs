@@ -12,6 +12,14 @@ public class GameManager : MonoBehaviour
     public static System.Action OnRoundEnd;
 
     public static int RoundNumber;
+
+    public static int Level => level;
+    static int level;
+    public static int Gold => gold;
+    static int gold;
+    public static int Gems => gems;
+    static int gems;
+
     private void Awake()
     {
         if (instance == null)
@@ -30,6 +38,9 @@ public class GameManager : MonoBehaviour
     {
         OnGameStart?.Invoke();
         RoundNumber = 0;
+        level = 3;
+        gold = 10;
+        gems = 0;
     }
 
     [Button]
@@ -49,5 +60,25 @@ public class GameManager : MonoBehaviour
     {
         RoundNumber++;
         OnRoundEnd?.Invoke();
+    }
+
+    public static void AddGold(int num)
+    {
+        gold += num;
+    }
+
+    public static void RemoveGold(int num)
+    {
+        gold -= num;
+    }
+
+    public static void AddGems(int num)
+    {
+        gems += num;
+    }
+
+    public static void RemoveGems(int num)
+    {
+        gems -= num;
     }
 }

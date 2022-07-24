@@ -152,5 +152,4 @@ public class BoardManager : MonoBehaviour
 
         return hit.transform.GetComponent<Tile>();
     }
-
 }
