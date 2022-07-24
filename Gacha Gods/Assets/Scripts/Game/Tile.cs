@@ -62,7 +62,7 @@ public class Tile : MonoBehaviour
             case UnitType.All:
                 return true;
             case UnitType.Assassin:
-                return character.Role.Contains(Assassin);
+                return character.Roles.Contains(Assassin);
             default:
                 return false;
         }

@@ -21,17 +21,17 @@ public class CharacterArt : MonoBehaviour
 
         int counter = 0;
 
-        for (int i = 0; i < character.Role.Count; i++)
+        for (int i = 0; i < character.Roles.Count; i++)
         {
             rolesAndArchetypes[counter].gameObject.SafeSetActive(true);
-            rolesAndArchetypes[counter].sprite = character.Role[i].Icon;
+            rolesAndArchetypes[counter].sprite = character.Roles[i].Icon;
             counter++;
         }
 
-        for (int i = 0; i < character.Archetype.Count; i++)
+        for (int i = 0; i < character.Archetypes.Count; i++)
         {
             rolesAndArchetypes[counter].gameObject.SafeSetActive(true);
-            rolesAndArchetypes[counter].sprite = character.Archetype[i].Icon;
+            rolesAndArchetypes[counter].sprite = character.Archetypes[i].Icon;
             counter++;
         }
     }

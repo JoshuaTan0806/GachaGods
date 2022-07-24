@@ -16,11 +16,11 @@ public class Archetype : ScriptableObject
 
     public List<Character> FilterOnly(List<Character> characters)
     {
-        return characters.Where(x => x.Archetype.Contains(this)).ToList();
+        return characters.Where(x => x.Archetypes.Contains(this)).ToList();
     }
 
     public List<Character> FilterOut(List<Character> characters)
     {
-        return characters.Where(x => !x.Archetype.Contains(this)).ToList();
+        return characters.Where(x => !x.Archetypes.Contains(this)).ToList();
     }
 }

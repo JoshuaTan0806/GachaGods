@@ -121,14 +121,14 @@ public class CharacterManager : Factories.FactoryBase
 
             activeCharacters.Add(character, characterStats);
 
-            for (int i = 0; i < character.Role.Count; i++)
+            for (int i = 0; i < character.Roles.Count; i++)
             {
-                AddRole(character.Role[i]);
+                AddRole(character.Roles[i]);
             }
 
-            for (int i = 0; i < character.Archetype.Count; i++)
+            for (int i = 0; i < character.Archetypes.Count; i++)
             {
-                AddArchetype(character.Archetype[i]);
+                AddArchetype(character.Archetypes[i]);
             }
 
             for (int i = 0; i < CharacterMastery[character]; i++)
@@ -149,14 +149,14 @@ public class CharacterManager : Factories.FactoryBase
                 character.Mastery[i].DeactiveMastery(activeCharacters[character]);
             }
 
-            for (int i = 0; i < character.Role.Count; i++)
+            for (int i = 0; i < character.Roles.Count; i++)
             {
-                RemoveRole(character.Role[i]);
+                RemoveRole(character.Roles[i]);
             }
     
-            for (int i = 0; i < character.Archetype.Count; i++)
+            for (int i = 0; i < character.Archetypes.Count; i++)
             {
-                RemoveArchetype(character.Archetype[i]);
+                RemoveArchetype(character.Archetypes[i]);
             }
 
             activeCharacters.Remove(character);

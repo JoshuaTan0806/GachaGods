@@ -12,10 +12,10 @@ public class Character : ScriptableObject
     [SerializeField] GameObject prefab;
     public Sprite Icon => icon;
     [SerializeField] Sprite icon;
-    public List<Role> Role => role;
-    [SerializeField] List<Role> role;
-    public List<Archetype> Archetype => archetype;
-    [SerializeField] List<Archetype> archetype;
+    public List<Role> Roles => roles;
+    [SerializeField] List<Role> roles;
+    public List<Archetype> Archetypes => archetypes;
+    [SerializeField] List<Archetype> archetypes;
     public Rarity Rarity => rarity;
     [SerializeField] Rarity rarity;
     public StatFloatDictionary BaseStats => baseStats;
@@ -66,5 +66,15 @@ public class Character : ScriptableObject
         }
 
         EditorExtensionMethods.SaveAsset(this);
+    }
+
+    [Button]
+    void RandomiseTraits()
+    {
+        archetypes.Clear();
+        roles.Clear();
+
+        archetypes.Add(CharacterManager.Archetypes.ChooseRandomElementInList());
+        roles.Add(CharacterManager.Roles.ChooseRandomElementInList());
     }
 }

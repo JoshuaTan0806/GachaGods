@@ -16,11 +16,11 @@ public class Role : ScriptableObject
 
     public List<Character> FilterOnly(List<Character> characters)
     {
-        return characters.Where(x => x.Role.Contains(this)).ToList();
+        return characters.Where(x => x.Roles.Contains(this)).ToList();
     }
 
     public List<Character> FilterOut(List<Character> characters)
     {
-        return characters.Where(x => !x.Role.Contains(this)).ToList();
+        return characters.Where(x => !x.Roles.Contains(this)).ToList();
     }
 }
