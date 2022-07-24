@@ -41,4 +41,12 @@ public class TextList : MonoBehaviour
         if (bold)
             t.fontStyle = FontStyles.Bold;
     }
+
+    public void Clear()
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+    }
 }

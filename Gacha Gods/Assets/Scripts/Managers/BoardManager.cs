@@ -9,7 +9,6 @@ public class BoardManager : MonoBehaviour
     [SerializeField] int width;
     [SerializeField] int height;
     [SerializeField] LayerMask whatIsTile;
-
     public Tile[,] Board => board;
     Tile[,] board;
 
@@ -111,8 +110,8 @@ public class BoardManager : MonoBehaviour
                     return;
 
                 tile.Character = null;
-                HeldCharacter = characterStats;
                 CharacterManager.DeactivateCharacter(characterStats.Character);
+                HeldCharacter = characterStats;
             }
         }
     }
