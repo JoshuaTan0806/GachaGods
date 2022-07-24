@@ -24,6 +24,9 @@ public class ActivateCharacterButton : MonoBehaviour
         if (CharacterManager.ActiveCharacters.ContainsKey(character))
             return;
 
+        if (CharacterManager.ActiveCharacters.Count == GameManager.Level)
+            return;
+
         if (BoardManager.HeldCharacter != null)
             return;
 
