@@ -23,16 +23,16 @@ public class Mastery : ScriptableObject
     [SerializeField] MasteryType masteryType;
 
     [ShowIf("MasteryType", MasteryType.Role), SerializeField]
-    Role Role;
+    List<Role> Roles;
 
     [ShowIf("MasteryType", MasteryType.Archetype), SerializeField]
-    Archetype Archetype;
+    List<Archetype> Archetypes;
 
     [ShowIf("MasteryType", MasteryType.Stat), SerializeField]
-    StatData Stat;
+    List<StatData> Stats;
 
     [ShowIf("MasteryType", MasteryType.GlobalStat), SerializeField]
-    StatData GlobalStat;
+    List<StatData> GlobalStats;
 
     [ShowIf("MasteryType", MasteryType.Attack), SerializeField]
     Attack Attack;
@@ -46,16 +46,28 @@ public class Mastery : ScriptableObject
         switch (MasteryType)
         {
             case MasteryType.Role:
-                CharacterManager.AddRole(Role);
+                foreach (var item in Roles)
+                {
+                    CharacterManager.AddRole(item);
+                }
                 break;
             case MasteryType.Archetype:
-                CharacterManager.AddArchetype(Archetype);
+                foreach (var item in Archetypes)
+                {
+                    CharacterManager.AddArchetype(item);
+                }
                 break;
             case MasteryType.Stat:
-                stats.AddStat(Stat);
+                foreach (var item in Stats)
+                {
+                    stats.AddStat(item);
+                }
                 break;
             case MasteryType.GlobalStat:
-                CharacterManager.AddGlobalBuff(GlobalStat);
+                foreach (var item in GlobalStats)
+                {
+                    CharacterManager.AddGlobalBuff(item);
+                }
                 break;
             case MasteryType.Attack:
                 stats.UpgradeAttack(Attack);
@@ -73,16 +85,28 @@ public class Mastery : ScriptableObject
         switch (MasteryType)
         {
             case MasteryType.Role:
-                CharacterManager.RemoveRole(Role);
+                foreach (var item in Roles)
+                {
+                    CharacterManager.RemoveRole(item);
+                }
                 break;
             case MasteryType.Archetype:
-                CharacterManager.RemoveArchetype(Archetype);
+                foreach (var item in Archetypes)
+                {
+                    CharacterManager.RemoveArchetype(item);
+                }
                 break;
             case MasteryType.Stat:
-                stats.RemoveStat(Stat);
+                foreach (var item in Stats)
+                {
+                    stats.RemoveStat(item);
+                }
                 break;
             case MasteryType.GlobalStat:
-                CharacterManager.RemoveGlobalBuff(GlobalStat);
+                foreach (var item in GlobalStats)
+                {
+                    CharacterManager.RemoveGlobalBuff(item);
+                }
                 break;
             case MasteryType.Attack:
                 break;
