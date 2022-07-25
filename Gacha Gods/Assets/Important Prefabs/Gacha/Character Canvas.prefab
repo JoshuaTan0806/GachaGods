@@ -328,6 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1239db9146ef94e8a104022deaf4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIBackground: {fileID: 951175895}
   CharacterHolder: {fileID: 1762761591}
 --- !u!1 &6367465694998689958
 GameObject:

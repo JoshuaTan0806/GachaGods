@@ -7,6 +7,7 @@ using Sirenix.OdinInspector;
 
 public class CharacterUI : MonoBehaviour
 {
+    [SerializeField] GameObject UIBackground;
     [SerializeField] GameObject CharacterHolder;
     Dictionary<Character, Image> CharacterDictionary;
 
@@ -33,6 +34,13 @@ public class CharacterUI : MonoBehaviour
             else
                 item.Value.SetTransparency(0.5f);
         }
+
+        BoardManager.OnHeldCharacterChanged += ToggleUI;
+    }
+
+    private void OnDisable()
+    {
+        BoardManager.OnHeldCharacterChanged -= ToggleUI;
     }
 
     private void Sort(List<Character> characters)
@@ -44,5 +52,13 @@ public class CharacterUI : MonoBehaviour
             else
                 CharacterDictionary[characters[i]].transform.SetSiblingIndex(i);
         }
+    }
+
+    void ToggleUI()
+    {
+        if (BoardManager.HeldCharacter != null)
+            UIBackground.SetActive(false);
+        else
+            UIBackground.SetActive(true);
     }
 }
