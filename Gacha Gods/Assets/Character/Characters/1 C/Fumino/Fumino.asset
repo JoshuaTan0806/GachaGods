@@ -19,17 +19,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e0a062371dc47b44e992175b95bdafb3, type: 2}
   archetypes:
   - {fileID: 11400000, guid: 02004ea139a9ea74d9d9a8a4088c422e, type: 2}
-  rarity: {fileID: 11400000, guid: 27d5dc7d806f2df4f80365ac1b3a74b0, type: 2}
+  rarity: {fileID: 11400000, guid: 5caa1fcf88ed40b4abb3e1f7df2d8f23, type: 2}
   baseStats:
     m_keys: 
     m_values: []
   mastery:
-  - {fileID: 11400000, guid: 7ccd912d2e5b85945b97f12a4d8af6d7, type: 2}
-  - {fileID: 11400000, guid: 8c344d3d7329bae4da42243d83e6157a, type: 2}
-  - {fileID: 11400000, guid: 81b39cca855655f498d6295c356d4977, type: 2}
-  - {fileID: 11400000, guid: de48364d434390e4eb0d1914eae5a938, type: 2}
-  - {fileID: 11400000, guid: a55418294577a8540a5f23d512250d1b, type: 2}
-  - {fileID: 11400000, guid: 0d941c80a6c67c14eb212c765990fafe, type: 2}
   - {fileID: 11400000, guid: 5255156af43f3914d99550c47475459b, type: 2}
   - {fileID: 11400000, guid: 8f1ed235a12ecaa4f943271210c997c7, type: 2}
   - {fileID: 11400000, guid: 885e6144416cb1f4c80d95d279f0f318, type: 2}

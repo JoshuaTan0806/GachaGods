@@ -24,12 +24,6 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   mastery:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 11400000, guid: 0856cc48c6033fb458f72eeac0d30af3, type: 2}
   - {fileID: 11400000, guid: 239a9e2f5a43e2b4fa9f6c8c78895e12, type: 2}
   - {fileID: 11400000, guid: 6c4f2b55f8a2e914695e069201584fc3, type: 2}

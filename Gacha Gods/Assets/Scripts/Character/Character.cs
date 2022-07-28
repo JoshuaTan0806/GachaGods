@@ -56,6 +56,8 @@ public class Character : ScriptableObject
             this.spell = spell;
         }
 
+        mastery.Clear();
+
         for (int i = 0; i < 6; i++)
         {
             if (!File.Exists(path + name + " Mastery " + (i+1) + ".asset"))

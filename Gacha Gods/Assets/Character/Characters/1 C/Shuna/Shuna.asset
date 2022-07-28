@@ -25,12 +25,6 @@ MonoBehaviour:
     m_values:
     - 5
   mastery:
-  - {fileID: 11400000, guid: 3de77c018401e9949ae4e48d2eddc324, type: 2}
-  - {fileID: 11400000, guid: cdb6bbadcb142e34f8e80581080b115d, type: 2}
-  - {fileID: 11400000, guid: e981e28c4c606a04bb62806ae6d701fc, type: 2}
-  - {fileID: 11400000, guid: 4c5f11ce35db8b043b32b6ef48cc7e07, type: 2}
-  - {fileID: 11400000, guid: f779f3f69ed4fc74193f766088d809f1, type: 2}
-  - {fileID: 11400000, guid: 1ed2c8a9f1877b8459470d81fa769d57, type: 2}
   - {fileID: 11400000, guid: f9682413b03e0274cb0898fa9a318369, type: 2}
   - {fileID: 11400000, guid: 62742baedb1b1bf479ef63843f14d40b, type: 2}
   - {fileID: 11400000, guid: b9bf4ed1d950be94f9722db0fc44dd94, type: 2}

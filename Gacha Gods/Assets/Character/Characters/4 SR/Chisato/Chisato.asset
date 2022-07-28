@@ -19,18 +19,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3bccd85134a05fe42a7014ef843ddd50, type: 2}
   archetypes:
   - {fileID: 11400000, guid: 02004ea139a9ea74d9d9a8a4088c422e, type: 2}
-  rarity: {fileID: 11400000, guid: 5caa1fcf88ed40b4abb3e1f7df2d8f23, type: 2}
+  rarity: {fileID: 11400000, guid: 3cd61046da265d44baf2779ecfbc1324, type: 2}
   baseStats:
     m_keys: 00000000
     m_values:
     - 5
   mastery:
-  - {fileID: 11400000, guid: e146942e858924348a3a7019ac9a3fd4, type: 2}
-  - {fileID: 11400000, guid: 968283d222132424fae8c5bce89b6fa2, type: 2}
-  - {fileID: 11400000, guid: b4ac2b5138898754da43b51974559b9a, type: 2}
-  - {fileID: 11400000, guid: c67da50517f28cf478090080b1902597, type: 2}
-  - {fileID: 11400000, guid: 23777fdc28e2d484fa3934e4ca27f017, type: 2}
-  - {fileID: 11400000, guid: 4782f4b31a22b5e4ea55336190ff1fde, type: 2}
   - {fileID: 11400000, guid: 71e09cbb353fc59429abf15b6dd82a1d, type: 2}
   - {fileID: 11400000, guid: cb88d292004af1e40939c71b0af11581, type: 2}
   - {fileID: 11400000, guid: d60d5785138793441adde3b3e76c0239, type: 2}
