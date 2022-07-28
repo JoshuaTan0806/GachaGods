@@ -8,6 +8,8 @@ public class BoardManager : MonoBehaviour
     [SerializeField] Vector2 startingPos;
     [SerializeField] int width;
     [SerializeField] int height;
+
+    static LayerMask WhatIsTile;
     [SerializeField] LayerMask whatIsTile;
     public Tile[,] Board => board;
     Tile[,] board;
@@ -29,6 +31,7 @@ public class BoardManager : MonoBehaviour
 
     private void Awake()
     {
+        WhatIsTile = whatIsTile;
         board = new Tile[width, height];
 
         for (int i = 0; i < width; i++)
@@ -104,7 +107,7 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    void PickUpCharacter(Tile tile)
+    static void PickUpCharacter(Tile tile)
     {
         CharacterStats characterStats = tile.Character;
 
@@ -115,7 +118,7 @@ public class BoardManager : MonoBehaviour
         HeldCharacter = characterStats;
     }
 
-    void PlaceCharacter(Tile tile)
+    static void PlaceCharacter(Tile tile)
     {
         if (!tile.CanBePlaced(HeldCharacter.Character))
             return;
@@ -129,7 +132,7 @@ public class BoardManager : MonoBehaviour
         HeldCharacter = stats;
     }
 
-    void RemoveCharacter(Tile tile)
+    static void RemoveCharacter(Tile tile)
     {
         CharacterStats characterStats = tile.Character;
 
@@ -141,11 +144,11 @@ public class BoardManager : MonoBehaviour
         HeldCharacter = null;
     }
 
-    Tile RaycastTile()
+    static Tile RaycastTile()
     {
         Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         pos.z = -Camera.main.transform.position.z;
-        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, Mathf.Infinity, whatIsTile);
+        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, Mathf.Infinity, WhatIsTile);
 
         if (hit.collider == null)
             return null;

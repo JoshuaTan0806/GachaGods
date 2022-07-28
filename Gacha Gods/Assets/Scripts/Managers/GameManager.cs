@@ -192,4 +192,19 @@ public class GameManager : MonoBehaviour
     {
         gemsText.SetText("Gems: " + gems);
     }
+
+    private void Update()
+    {
+#if UNITY_EDITOR
+        SpeedUp();
+#endif
+    }
+
+    void SpeedUp()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+            Time.timeScale = 5;
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+            Time.timeScale = 1;
+    }
 }

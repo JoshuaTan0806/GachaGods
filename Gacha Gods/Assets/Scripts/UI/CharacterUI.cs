@@ -8,12 +8,16 @@ using Sirenix.OdinInspector;
 public class CharacterUI : MonoBehaviour
 {
     [SerializeField] GameObject UIBackground;
+    [SerializeField] GameObject UIBin;
     [SerializeField] GameObject CharacterHolder;
     Dictionary<Character, Image> CharacterDictionary;
 
     private void Awake()
     {
         CharacterDictionary = new Dictionary<Character, Image>();
+        UIBin.AddListenerToButton(DestroyHeldCharacter);
+
+        UIBin.SafeSetActive(false);
 
         foreach (var item in CharacterManager.Characters)
         {
@@ -57,8 +61,22 @@ public class CharacterUI : MonoBehaviour
     void ToggleUI()
     {
         if (BoardManager.HeldCharacter != null)
-            UIBackground.SetActive(false);
+        {
+            UIBackground.SafeSetActive(false);
+            UIBin.SafeSetActive(true);
+        }
         else
-            UIBackground.SetActive(true);
+        {
+            UIBackground.SafeSetActive(true);
+            UIBin.SafeSetActive(false);
+        }
+    }
+
+    void DestroyHeldCharacter()
+    {
+        CharacterStats stats = BoardManager.HeldCharacter;
+        CharacterManager.DeactivateCharacter(stats.Character);
+        Destroy(BoardManager.HeldCharacter.gameObject);
+        BoardManager.HeldCharacter = null;
     }
 }
