@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
-  m_Name: Rio
+  m_Name: Amakusa
   m_EditorClassIdentifier: 
   series: koikimo
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
@@ -24,11 +24,11 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   mastery:
-  - {fileID: 11400000, guid: 2f53e276c81fa5a409302a0cb3b13170, type: 2}
-  - {fileID: 11400000, guid: 7edcceba07bd527419398fb2399caf62, type: 2}
-  - {fileID: 11400000, guid: 0018b95ceb486ab46ac0e83a4bf2455e, type: 2}
-  - {fileID: 11400000, guid: a91d0df23d5ef8a4ea5db77c9ea8bd4e, type: 2}
-  - {fileID: 11400000, guid: 5b4ec073548f45342b97135c24d96940, type: 2}
-  - {fileID: 11400000, guid: d3fc5af641b09fa4bb0d740c15cb21b8, type: 2}
-  attack: {fileID: 11400000, guid: bd1430afc721d024bb67231ea44357df, type: 2}
-  spell: {fileID: 11400000, guid: e820ad2c877ac8e4eb174c84f7316808, type: 2}
+  - {fileID: 11400000, guid: ec2dfaf1b44cdd141a38a1d86123ef67, type: 2}
+  - {fileID: 11400000, guid: c20f5c8a9312c234690782e8fba2fc51, type: 2}
+  - {fileID: 11400000, guid: 26217b04450ab6a40b930453259413db, type: 2}
+  - {fileID: 11400000, guid: 4e5e07b3d201a414591746ab17b96f21, type: 2}
+  - {fileID: 11400000, guid: f8312350ab06f9547a092b7b929c4201, type: 2}
+  - {fileID: 11400000, guid: 3817f70b55c75614d878e5a3773a44f3, type: 2}
+  attack: {fileID: 11400000, guid: 271d98c8f8316ac4296e4c9f7ff69405, type: 2}
+  spell: {fileID: 11400000, guid: 1da3ae59742eb724a86fa204ac15ec5e, type: 2}
