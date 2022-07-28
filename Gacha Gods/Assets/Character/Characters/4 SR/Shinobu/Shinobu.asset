@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
   m_Name: Shinobu
   m_EditorClassIdentifier: 
+  series: Demon Slayer
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
   icon: {fileID: 0}
   roles:
@@ -23,6 +24,12 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   mastery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 5da096b65a4658348bde68fd53ffe397, type: 2}
   - {fileID: 11400000, guid: 8c36b5bbd8583454390139c44f8eaece, type: 2}
   - {fileID: 11400000, guid: 66c3ae68eef3ea349bb39a65676a6bab, type: 2}

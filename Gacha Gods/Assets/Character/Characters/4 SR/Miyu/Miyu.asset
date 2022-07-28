@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
   m_Name: Miyu
   m_EditorClassIdentifier: 
+  series: Fate Illya
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
   icon: {fileID: 0}
   roles:
@@ -23,6 +24,12 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   mastery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: cb486fa001d101640a85b10d4f36353e, type: 2}
   - {fileID: 11400000, guid: bec6d439827069a4caf4de258791ae54, type: 2}
   - {fileID: 11400000, guid: e1e8fe6213ebe9044978c214b95d2255, type: 2}

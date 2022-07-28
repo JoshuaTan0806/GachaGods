@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
   m_Name: Kayano
   m_EditorClassIdentifier: 
+  series: ASsassination classroom
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
   icon: {fileID: 0}
   roles:
@@ -24,6 +25,12 @@ MonoBehaviour:
     m_values:
     - 5
   mastery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 6a3b551027850904e8f042a2bedb6991, type: 2}
   - {fileID: 11400000, guid: 719891823c66c084699358900e73b9ca, type: 2}
   - {fileID: 11400000, guid: f1eadde3633f6044397ba90e42a30169, type: 2}

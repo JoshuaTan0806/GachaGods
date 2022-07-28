@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
   m_Name: Shiina
   m_EditorClassIdentifier: 
+  series: Sakurasou
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
   icon: {fileID: 0}
   roles:
@@ -23,6 +24,12 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   mastery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: f0281d1f43ed91d438c9e2e695f84da7, type: 2}
   - {fileID: 11400000, guid: 990b629f4e6e63b418234089fe5e33b8, type: 2}
   - {fileID: 11400000, guid: d1147f07db3703848884dbcf532d39ad, type: 2}

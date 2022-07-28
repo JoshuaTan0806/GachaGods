@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
   m_Name: Shiori
   m_EditorClassIdentifier: 
+  series: TWGOK
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
   icon: {fileID: 0}
   roles:
@@ -23,6 +24,12 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   mastery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 017633019bb7c8f42a9bc54169177d38, type: 2}
   - {fileID: 11400000, guid: c206fb5a8ed15614ca4b9ea5b0ebbda9, type: 2}
   - {fileID: 11400000, guid: 8005d0ccb8df7df46b503ed65a7bb2c2, type: 2}

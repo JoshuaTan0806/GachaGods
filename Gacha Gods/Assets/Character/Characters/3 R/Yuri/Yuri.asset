@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
   m_Name: Yuri
   m_EditorClassIdentifier: 
+  series: DDLC
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
   icon: {fileID: 0}
   roles:
@@ -23,6 +24,12 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   mastery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 212ecb6e200a29e459557f29daff8815, type: 2}
   - {fileID: 11400000, guid: cd5c1978c9270ca49bdb029b7c679610, type: 2}
   - {fileID: 11400000, guid: af5bae4ec2ebcf340a6b07ecba3af2c9, type: 2}

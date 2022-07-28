@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
   m_Name: Chizuru
   m_EditorClassIdentifier: 
+  series: Rent A GF
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
   icon: {fileID: 0}
   roles:
@@ -23,6 +24,12 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   mastery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 158da7d2485937742ac99840df316950, type: 2}
   - {fileID: 11400000, guid: b68b9cacc1a4c0f489a519bf0fcdb51b, type: 2}
   - {fileID: 11400000, guid: 9771c18e99754b743947db52358c1158, type: 2}

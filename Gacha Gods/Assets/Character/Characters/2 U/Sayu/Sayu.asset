@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
+  m_Name: Sayu
+  m_EditorClassIdentifier: 
+  series: Higehiro
+  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  icon: {fileID: 0}
+  roles:
+  - {fileID: 11400000, guid: 3a67598af6bef5541b390cec4871b3fe, type: 2}
+  archetypes:
+  - {fileID: 11400000, guid: 3b5b4aa8ee8a9a14093cd5f5c9fd3d78, type: 2}
+  rarity: {fileID: 11400000, guid: 46abe82243041d443bc2279cd6345bb0, type: 2}
+  baseStats:
+    m_keys: 
+    m_values: []
+  mastery:
+  - {fileID: 11400000, guid: 1f68f2233da35ad4f9e43eca377ac7b6, type: 2}
+  - {fileID: 11400000, guid: a22f69de1989aa342be5ab87ecdc14c0, type: 2}
+  - {fileID: 11400000, guid: 07122291d23d17d4aa1bc72911db43d3, type: 2}
+  - {fileID: 11400000, guid: 8d431b30e3f726f4b9b630508d7b2ed1, type: 2}
+  - {fileID: 11400000, guid: 1ef7ea9da7700da42bc1ac8ab8bdbba1, type: 2}
+  - {fileID: 11400000, guid: 68ae96e659422424a8c635fb5c763771, type: 2}
+  - {fileID: 11400000, guid: dbe563343bafe184aad03001e94bdfdd, type: 2}
+  - {fileID: 11400000, guid: 20172aea32848a247bf42f29cb4a0c0c, type: 2}
+  - {fileID: 11400000, guid: c4ca4bf9dfac0da4e8789515bf689d97, type: 2}
+  - {fileID: 11400000, guid: abb4badb883c3b24fbb3e9d9d7b160ae, type: 2}
+  - {fileID: 11400000, guid: 8a511796574610549960852f931ffb7b, type: 2}
+  - {fileID: 11400000, guid: 9998b6f3bba1b9a4fb3f5a54d6ca2fc3, type: 2}
+  attack: {fileID: 11400000, guid: 1cade78bef174e54d994385b9f2c922c, type: 2}
+  spell: {fileID: 11400000, guid: dc9f9d9f04354334281773b75a57c697, type: 2}

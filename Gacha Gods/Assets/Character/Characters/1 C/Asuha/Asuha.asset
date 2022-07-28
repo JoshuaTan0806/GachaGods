@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
   m_Name: Asuha
   m_EditorClassIdentifier: 
+  series: Qualidea Code
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
   icon: {fileID: 0}
   roles:
@@ -24,6 +25,12 @@ MonoBehaviour:
     m_values:
     - 5
   mastery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: bb6738be9bf04104aba0d42037412131, type: 2}
   - {fileID: 11400000, guid: 8792ba18447a48545a3ccbb8478482f5, type: 2}
   - {fileID: 11400000, guid: e93a343e90009b24581c0d360c8b1650, type: 2}

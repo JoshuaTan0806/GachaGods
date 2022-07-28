@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
   m_Name: Origami
   m_EditorClassIdentifier: 
+  series: Date a live
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
   icon: {fileID: 0}
   roles:
@@ -23,6 +24,12 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   mastery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 99f31df623531be4abde542c57becb48, type: 2}
   - {fileID: 11400000, guid: 7d0ba1869941f5e4fba9981b565cb1ac, type: 2}
   - {fileID: 11400000, guid: 041f6d38108b9e7429affe694301d456, type: 2}

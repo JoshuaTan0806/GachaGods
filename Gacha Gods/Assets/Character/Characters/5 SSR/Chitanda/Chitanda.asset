@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
   m_Name: Chitanda
   m_EditorClassIdentifier: 
+  series: Hyouka
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
   icon: {fileID: 0}
   roles:
@@ -23,6 +24,12 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   mastery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 6c2f161739f2b0f4ca484368307ba1ca, type: 2}
   - {fileID: 11400000, guid: c2db66605a9a451499ae1f2b4fd5aa5c, type: 2}
   - {fileID: 11400000, guid: 151a44f8d22c8104eb966e9c60f35109, type: 2}

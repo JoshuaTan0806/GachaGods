@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
   m_Name: Nayu
   m_EditorClassIdentifier: 
+  series: Imouto sae
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
   icon: {fileID: 0}
   roles:
@@ -23,6 +24,12 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   mastery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 0525d4aede9e3cf46a44df688d0c6672, type: 2}
   - {fileID: 11400000, guid: 958535498e379a64b80d8b8f7a87732d, type: 2}
   - {fileID: 11400000, guid: 230820d35c7d5ae47b6c14f90fd25a16, type: 2}

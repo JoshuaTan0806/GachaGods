@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
   m_Name: Miku
   m_EditorClassIdentifier: 
+  series: Quints
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
   icon: {fileID: 0}
   roles:
@@ -23,6 +24,12 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   mastery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: b3fd7e3c604a5bd49be1e8221a3103ea, type: 2}
   - {fileID: 11400000, guid: 6a45b3cf0192a7d40904faaa1dba9090, type: 2}
   - {fileID: 11400000, guid: daf5e4184bfaf5742bbc614fd2e3ecf1, type: 2}

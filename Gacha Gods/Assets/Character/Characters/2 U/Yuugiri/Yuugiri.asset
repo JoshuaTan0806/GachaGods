@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
   m_Name: Yuugiri
   m_EditorClassIdentifier: 
+  series: Zombieland
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
   icon: {fileID: 0}
   roles:
@@ -23,6 +24,12 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   mastery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 0688999f69a65b14ca9608fa6996647a, type: 2}
   - {fileID: 11400000, guid: 0469f3351f59c6c46916cc911467c2c7, type: 2}
   - {fileID: 11400000, guid: d7737327aaf4a3241a60e42018733671, type: 2}

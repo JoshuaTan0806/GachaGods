@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 
   masteryType: 0
-  Role: {fileID: 11400000, guid: 3bccd85134a05fe42a7014ef843ddd50, type: 2}
-  Archetype: {fileID: 0}
-  Stat: {fileID: 0}
-  GlobalStat: {fileID: 0}
+  Roles: []
+  Archetypes: []
+  Stats: []
+  GlobalStats: []
   Attack: {fileID: 0}
   Spell: {fileID: 0}

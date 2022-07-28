@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
   m_Name: Shino
   m_EditorClassIdentifier: 
+  series: Remake our life
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
   icon: {fileID: 0}
   roles:
@@ -23,6 +24,12 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   mastery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 23363d3f4566f5e48a9bbcd898082914, type: 2}
   - {fileID: 11400000, guid: 3b8ec0238364e704ba1b7d4f3187510f, type: 2}
   - {fileID: 11400000, guid: 2e12325fbf376dc4fa3eb0fb50eefa1c, type: 2}

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df548b6b88a01f843b037cc5cba429e6, type: 3}
   m_Name: Mai
   m_EditorClassIdentifier: 
+  series: Bunny Girl Senpai
   prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
   icon: {fileID: 0}
   roles:
@@ -23,6 +24,12 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   mastery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 0eab67bfd0ae7164ca6ba4fc16598129, type: 2}
   - {fileID: 11400000, guid: 683213c5b59e3aa47b7f2c47ed537873, type: 2}
   - {fileID: 11400000, guid: b0af3914898c8c341b66a0cf7a056924, type: 2}
