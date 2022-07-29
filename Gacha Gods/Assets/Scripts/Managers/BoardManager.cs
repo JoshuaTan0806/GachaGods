@@ -1,6 +1,9 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+using System.IO;
 
 public class BoardManager : MonoBehaviour
 {
@@ -154,5 +157,52 @@ public class BoardManager : MonoBehaviour
             return null;
 
         return hit.transform.GetComponent<Tile>();
+    }
+
+    [Button]
+    public void SaveBoardData()
+    {
+        string path = "Assets/BoardDatabase/Round " + GameManager.RoundNumber + "/";
+        string name;
+
+        if (BoardDatabase.Database.ContainsKey(GameManager.RoundNumber))
+        {
+            name = "Round " + GameManager.RoundNumber + " ID " + (BoardDatabase.Database[GameManager.RoundNumber].Count + 1).ToString();
+        }
+        else
+        {
+            name = "Round " + GameManager.RoundNumber + " ID 0";
+        }
+
+        if (!File.Exists(path + name))
+        {
+            BoardData boardData = ScriptableObject.CreateInstance<BoardData>();
+            AssetDatabase.CreateAsset(boardData, path + name);
+            boardData.name = name;
+
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    if(board[i,j].Character != null)
+                    {
+                        CharacterStats character = board[i, j].Character;
+                        CharacterData data = new CharacterData(character.Character, character.Stats, character.Attack, character.Spell, new Vector2(i, j));
+                        boardData.AddCharacter(data);
+                    }
+                }
+            }
+
+
+            BoardDatabase.SaveBoard(boardData, GameManager.RoundNumber);
+
+            EditorExtensionMethods.SaveAsset(boardData);
+        }
+    }
+
+    [Button]
+    public void LoadRandomBoardData()
+    {
+        BoardDatabase.LoadRandomBoardData(GameManager.RoundNumber);
     }
 }
