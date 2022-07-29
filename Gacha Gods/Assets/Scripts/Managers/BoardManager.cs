@@ -187,12 +187,11 @@ public class BoardManager : MonoBehaviour
                     if(board[i,j].Character != null)
                     {
                         CharacterStats character = board[i, j].Character;
-                        CharacterData data = new CharacterData(character.Character, character.Stats, character.Attack, character.Spell, new Vector2(i, j));
+                        CharacterData data = new CharacterData(character.Character, character.Stats, character.Attack, character.Spell, new Vector2Int(i, j));
                         boardData.AddCharacter(data);
                     }
                 }
             }
-
 
             BoardDatabase.SaveBoard(boardData, GameManager.RoundNumber);
 
@@ -203,6 +202,18 @@ public class BoardManager : MonoBehaviour
     [Button]
     public void LoadRandomBoardData()
     {
-        BoardDatabase.LoadRandomBoardData(GameManager.RoundNumber);
+        BoardData boardData = BoardDatabase.LoadRandomBoardData(GameManager.RoundNumber);
+
+        for (int i = 0; i < boardData.CharacterDatas.Count; i++)
+        {
+            CharacterData characterData = boardData.CharacterDatas[i];
+
+            Vector3 spawnPos = Board[width - characterData.Position.x, characterData.Position.y].transform.position;
+
+            CharacterStats g = Instantiate(characterData.Character.Prefab, spawnPos, Quaternion.identity).GetComponent<CharacterStats>();
+            g.UpgradeAttack(characterData.Attack);
+            g.UpgradeSpell(characterData.Spell);
+            g.SetStats(characterData.Stats);
+        }
     }
 }

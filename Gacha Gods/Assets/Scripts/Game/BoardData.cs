@@ -25,10 +25,10 @@ public class CharacterData
     Attack attack;
     public Spell Spell => spell;
     Spell spell;
-    public Vector2 Position => position;
-    Vector2 position;
+    public Vector2Int Position => position;
+    Vector2Int position;
 
-    public CharacterData(Character character, StatDictionary stats, Attack attack, Spell spell, Vector2 position)
+    public CharacterData(Character character, StatDictionary stats, Attack attack, Spell spell, Vector2Int position)
     {
         this.character = character;
         this.stats = stats;

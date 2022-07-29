@@ -48,6 +48,11 @@ public class CharacterStats : MonoBehaviour
         return stats.ContainsKey(stat) ? stats[stat].Total : StatManager.NullStat(stat).Total;
     }
 
+    public void SetStats(StatDictionary statDictionary)
+    {
+        stats = statDictionary;
+    }
+
     public void AddStat(StatData stat)
     {
         if(stats.ContainsKey(stat.stat))
