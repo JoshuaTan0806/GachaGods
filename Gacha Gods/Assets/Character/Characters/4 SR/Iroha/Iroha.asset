@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Iroha
   m_EditorClassIdentifier: 
   series: Oregairu
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: eaf5f37693fb9394b9db96c91d487ba1, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: 312f5fb9d9c16134c8254a44153f90f2, type: 2}

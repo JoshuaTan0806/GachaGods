@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Iris
   m_EditorClassIdentifier: 
   series: Konobuba
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: c0e8780a98a8b9a4c97b3ed648dfe747, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: 3a67598af6bef5541b390cec4871b3fe, type: 2}

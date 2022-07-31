@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chisato
   m_EditorClassIdentifier: 
   series: Lycoris Recoil
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: 2a4b4f5f477e0bd478dbf9d56023d9e3, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: 3bccd85134a05fe42a7014ef843ddd50, type: 2}

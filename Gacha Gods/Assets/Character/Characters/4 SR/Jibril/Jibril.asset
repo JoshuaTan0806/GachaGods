@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Jibril
   m_EditorClassIdentifier: 
   series: NGNL
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: ea190e7b0e38c8040854bd7ae2546091, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: e0a062371dc47b44e992175b95bdafb3, type: 2}
