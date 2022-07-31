@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Kiyoko
   m_EditorClassIdentifier: 
   series: haikyuu
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: 1ed694ff97c356d45a48646582d9d2a9, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: 3a67598af6bef5541b390cec4871b3fe, type: 2}

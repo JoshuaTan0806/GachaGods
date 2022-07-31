@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Kanoko
   m_EditorClassIdentifier: 
   series: Recipe for happiness
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: f24b69d676d1d7040b107d10cdf6c8e0, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: 3bccd85134a05fe42a7014ef843ddd50, type: 2}

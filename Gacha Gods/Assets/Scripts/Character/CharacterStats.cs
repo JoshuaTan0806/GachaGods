@@ -16,9 +16,9 @@ public class CharacterStats : MonoBehaviour
     public System.Action OnDeath;
 
     public Attack Attack => attack;
-    [SerializeField] Attack attack;
+    Attack attack;
     public Spell Spell => spell;
-    [SerializeField] Spell spell;
+    Spell spell;
 
     float currentHealth;
     float currentMana;

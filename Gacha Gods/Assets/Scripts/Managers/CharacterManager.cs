@@ -112,6 +112,8 @@ public class CharacterManager : Factories.FactoryBase
     public static void ActivateCharacter(CharacterStats characterStats)
     {
         Character character = characterStats.Character;
+        characterStats.UpgradeAttack(character.Attack);
+        characterStats.UpgradeSpell(character.Spell);
 
         if (activeCharacters.ContainsKey(character))
             throw new System.Exception("Can't add a character which is already active");

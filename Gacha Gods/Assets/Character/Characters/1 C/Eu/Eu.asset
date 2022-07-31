@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Eu
   m_EditorClassIdentifier: 
   series: Is this a zombie
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: bc52786ff568e1342a1c23f482685c02, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: 3a67598af6bef5541b390cec4871b3fe, type: 2}

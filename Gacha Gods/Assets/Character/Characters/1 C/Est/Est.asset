@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Est
   m_EditorClassIdentifier: 
   series: Blade Dance
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: 5b138dd5b049d6341ad0c10caabe07ee, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: e0a062371dc47b44e992175b95bdafb3, type: 2}

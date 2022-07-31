@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nakatsu
   m_EditorClassIdentifier: 
   series: Rewrite
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: b0c912bfcea42e84eab50d9d6e3533a1, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: f60c0bb05b3f1e64f9e9065c6bf73a4f, type: 2}

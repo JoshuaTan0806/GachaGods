@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rui
   m_EditorClassIdentifier: 
   series: domestic gf
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: e831e162185256b4a8b5b32d7644f8a5, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: f60c0bb05b3f1e64f9e9065c6bf73a4f, type: 2}

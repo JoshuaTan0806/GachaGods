@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mikan
   m_EditorClassIdentifier: 
   series: To Love Ru
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: 5ceeac34ea76a8d459f27640d957ff1b, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: 7874320ddd40d8b4ebd78f9245280999, type: 2}

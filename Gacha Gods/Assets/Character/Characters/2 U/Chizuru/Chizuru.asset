@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chizuru
   m_EditorClassIdentifier: 
   series: Rent A GF
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: 7fdb1b9f1372d9a43b4bd88db43043c4, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: f60c0bb05b3f1e64f9e9065c6bf73a4f, type: 2}

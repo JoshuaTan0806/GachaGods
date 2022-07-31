@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sayu
   m_EditorClassIdentifier: 
   series: Higehiro
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: ae73848eb8b06d3468906bc168460c21, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: 3a67598af6bef5541b390cec4871b3fe, type: 2}
