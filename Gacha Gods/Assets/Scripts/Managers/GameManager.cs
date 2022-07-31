@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         OnGameStart?.Invoke();
-        RoundNumber = 0;
+        RoundNumber = 1;
         Experience = 0;
         Level = 3;
         Gold = 10;

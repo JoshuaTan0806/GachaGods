@@ -43,6 +43,11 @@ public class CharacterStats : MonoBehaviour
         attack = character.Attack;
     }
 
+    public void SetStats(StatDictionary stats)
+    {
+        this.stats = stats;
+    }
+
     public float GetStat(Stat stat)
     {
         return stats.ContainsKey(stat) ? stats[stat].Total : StatManager.NullStat(stat).Total;

@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -154,5 +155,40 @@ public class BoardManager : MonoBehaviour
             return null;
 
         return hit.transform.GetComponent<Tile>();
+    }
+
+    [Button]
+    public void LoadBoardData()
+    {
+        BoardData boardData = BoardDatabase.LoadBoard(GameManager.RoundNumber);
+
+        foreach (var item in boardData.CharacterDatas)
+        {
+
+        }
+    
+    }
+
+    [Button]
+    public void SaveBoardData()
+    {
+        List<CharacterData> characterDatas = new List<CharacterData>();
+
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                if (board[i, j].Character == null)
+                    continue;
+
+                CharacterStats character = board[i, j].Character;
+
+                CharacterData characterData = new CharacterData(character.Character, character.Attack, character.Spell, character.Stats, new Vector2Int(i, j));
+                characterDatas.Add(characterData);
+            }
+        }
+
+        BoardData boardData = new BoardData(GameManager.RoundNumber, characterDatas);
+        BoardDatabase.SaveBoard(boardData);
     }
 }
