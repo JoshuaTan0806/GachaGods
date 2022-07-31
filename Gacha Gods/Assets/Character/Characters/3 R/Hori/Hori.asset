@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hori
   m_EditorClassIdentifier: 
   series: HoriMiya
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: 7fa97ef040d86a149930e37533a70588, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: e0a062371dc47b44e992175b95bdafb3, type: 2}

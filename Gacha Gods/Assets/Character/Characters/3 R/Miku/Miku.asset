@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Miku
   m_EditorClassIdentifier: 
   series: Quints
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: 79875c8bbebdbba48ae3252ec143c187, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: 2e97f9336ab26b6489cf2ff55d672b70, type: 2}

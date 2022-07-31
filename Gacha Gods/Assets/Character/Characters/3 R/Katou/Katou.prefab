@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 254769892512848945}
   - component: {fileID: 5678867208104207488}
   m_Layer: 0
-  m_Name: Yuki 5
+  m_Name: Katou
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,6 +100,4 @@ MonoBehaviour:
   totalStats:
     m_keys: 
     m_values: []
-  character: {fileID: 11400000, guid: 855ee7b47ce4c3e4281a1dcf258735fa, type: 2}
-  attack: {fileID: 0}
-  spell: {fileID: 0}
+  character: {fileID: 11400000, guid: bb859bbe3cdc9db4cbce41724c841743, type: 2}
