@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nayu
   m_EditorClassIdentifier: 
   series: Imouto sae
-  prefab: {fileID: 6035215514094413432, guid: 850c592b7fa6bdb42931f345a0d8dc50, type: 3}
+  prefab: {fileID: 6035215514094413432, guid: 84327b5bb82672542b1fa501dd0bc686, type: 3}
   icon: {fileID: 0}
   roles:
   - {fileID: 11400000, guid: 7874320ddd40d8b4ebd78f9245280999, type: 2}
