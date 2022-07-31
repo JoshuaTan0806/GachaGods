@@ -29,7 +29,7 @@ public class BoardDatabase : Factories.FactoryBase
         if (!database.ContainsKey(roundNumber))
             throw new System.Exception("Database for round " + roundNumber + " is empty.");
 
-        if (!database[roundNumber].IsNullOrEmpty())
+        if (database[roundNumber].IsNullOrEmpty())
             throw new System.Exception("Database for round " + roundNumber + " is empty.");
 
         return database[roundNumber].ChooseRandomElementInList();

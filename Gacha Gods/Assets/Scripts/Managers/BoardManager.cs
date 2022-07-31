@@ -164,7 +164,7 @@ public class BoardManager : MonoBehaviour
 
         foreach (var item in boardData.CharacterDatas)
         {
-            CharacterStats stats = Instantiate(item.Character.Prefab, Board[width - item.Position.x, item.Position.y].transform).GetComponent<CharacterStats>();
+            CharacterStats stats = Instantiate(item.Character.Prefab, Board[width - 1 - item.Position.x, item.Position.y].transform).GetComponent<CharacterStats>();
             stats.SetStats(item.Stats);
             stats.UpgradeAttack(item.Attack);
             stats.UpgradeSpell(item.Spell);
