@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.87061965, g: 0.8559867, b: 0.47825235, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,5 +101,3 @@ MonoBehaviour:
     m_keys: 
     m_values: []
   character: {fileID: 11400000, guid: e454e9491720bd4408044605304d3511, type: 2}
-  attack: {fileID: 0}
-  spell: {fileID: 0}

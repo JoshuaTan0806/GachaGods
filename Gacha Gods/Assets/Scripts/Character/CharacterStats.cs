@@ -136,6 +136,13 @@ public class CharacterStats : MonoBehaviour
     }
 
     [Button]
+    public void RandomiseColour()
+    {
+        Color color = new Vector4(Random.Range(0, 1f), Random.Range(0, 1f), Random.Range(0, 1f), 1);
+        GetComponent<SpriteRenderer>().color = color;
+    }
+
+    [Button]
     public void Buff()
     {
         Buff buff = new(StatManager.CreateStat(Stat.Health, StatType.Flat, 100), ref GameManager.OnRoundEnd);
