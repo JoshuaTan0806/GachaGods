@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,5 +34,11 @@ public class BoardDatabase : Factories.FactoryBase
             throw new System.Exception("Database for round " + roundNumber + " is empty.");
 
         return database[roundNumber].ChooseRandomElementInList();
+    }
+
+    [Button]
+    public void ClearDatabase()
+    {
+        database.Clear();
     }
 }
