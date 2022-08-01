@@ -30,6 +30,11 @@ public class BoardManager : MonoBehaviour
     static CharacterStats heldCharacter;
     public static System.Action OnHeldCharacterChanged;
 
+    [Header("References")]
+    [SerializeField] Transform tilesReference;
+    [SerializeField] Transform alliesReference;
+    [SerializeField] Transform enemiesReference;
+
     private void Awake()
     {
         WhatIsTile = whatIsTile;
@@ -39,7 +44,7 @@ public class BoardManager : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-                board[i, j] = Instantiate(tilePrefab, new Vector3(startingPos.x + i, startingPos.y + j), Quaternion.identity, transform);
+                board[i, j] = Instantiate(tilePrefab, new Vector3(startingPos.x + i, startingPos.y + j), Quaternion.identity, tilesReference);
 
                 if (i >= width / 2)
                 {
@@ -69,6 +74,9 @@ public class BoardManager : MonoBehaviour
     {
         if (HeldCharacter != null)
         {
+            if (HeldCharacter.transform.parent != alliesReference)
+                HeldCharacter.transform.SetParent(alliesReference);
+
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pos.z = -Camera.main.transform.position.z;
             HeldCharacter.transform.position = pos;
@@ -164,7 +172,7 @@ public class BoardManager : MonoBehaviour
 
         foreach (var item in boardData.CharacterDatas)
         {
-            CharacterStats stats = Instantiate(item.Character.Prefab, Board[width - 1 - item.Position.x, item.Position.y].transform).GetComponent<CharacterStats>();
+            CharacterStats stats = Instantiate(item.Character.Prefab, Board[width - 1 - item.Position.x, item.Position.y].transform.position, Quaternion.identity, enemiesReference).GetComponent<CharacterStats>();
             stats.SetStats(item.Stats);
             stats.UpgradeAttack(item.Attack);
             stats.UpgradeSpell(item.Spell);
