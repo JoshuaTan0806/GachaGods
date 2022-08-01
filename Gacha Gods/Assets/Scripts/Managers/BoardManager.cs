@@ -37,6 +37,9 @@ public class BoardManager : MonoBehaviour
 
     private void Awake()
     {
+        WhatIsTile = whatIsTile;
+        SpawnBoard();
+
         GameManager.OnRoundStart -= LoadEnemyBoardData;
         GameManager.OnRoundStart += LoadEnemyBoardData;
         GameManager.OnRoundStart -= SaveBoardData;
@@ -46,9 +49,6 @@ public class BoardManager : MonoBehaviour
         GameManager.OnRoundEnd += ClearBoard;
         GameManager.OnRoundEnd -= LoadBoardData;
         GameManager.OnRoundEnd += LoadBoardData;
-
-        WhatIsTile = whatIsTile;
-        SpawnBoard();
     }
 
     void SpawnBoard()
@@ -183,9 +183,12 @@ public class BoardManager : MonoBehaviour
     [Button]
     public void LoadBoardData()
     {
-        foreach (var item in BoardDatabase.PlayerBoard.CharacterDatas)
+        BoardData boardData = BoardDatabase.LoadBoard();
+
+        foreach (var item in boardData.CharacterDatas)
         {
-            CharacterStats stats = Instantiate(item.Character.Prefab, board[item.Position.x, item.Position.y].transform.position, Quaternion.identity, alliesReference).GetComponent<CharacterStats>();
+            Vector3 spawnPos = board[item.Position.x, item.Position.y].transform.position;
+            CharacterStats stats = Instantiate(item.Character.Prefab, spawnPos, Quaternion.identity, alliesReference).GetComponent<CharacterStats>();
             board[item.Position.x, item.Position.y].Character = stats;
             stats.SetStats(item.Stats);
             stats.UpgradeAttack(item.Attack);
@@ -196,11 +199,12 @@ public class BoardManager : MonoBehaviour
     [Button]
     public void LoadEnemyBoardData()
     {
-        BoardData boardData = BoardDatabase.LoadBoard(GameManager.RoundNumber);
+        BoardData boardData = BoardDatabase.LoadEnemyBoard(GameManager.RoundNumber);
 
         foreach (var item in boardData.CharacterDatas)
         {
-            CharacterStats stats = Instantiate(item.Character.Prefab, board[width - 1 - item.Position.x, item.Position.y].transform.position, Quaternion.identity, enemiesReference).GetComponent<CharacterStats>();
+            Vector3 spawnPos = board[width - 1 - item.Position.x, item.Position.y].transform.position;
+            CharacterStats stats = Instantiate(item.Character.Prefab, spawnPos, Quaternion.identity, enemiesReference).GetComponent<CharacterStats>();
             stats.SetStats(item.Stats);
             stats.UpgradeAttack(item.Attack);
             stats.UpgradeSpell(item.Spell);

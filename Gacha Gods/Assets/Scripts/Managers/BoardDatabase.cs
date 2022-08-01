@@ -8,7 +8,7 @@ public class BoardDatabase : Factories.FactoryBase
 {
     public static Dictionary<int, List<BoardData>> Database => database;
     static Dictionary<int, List<BoardData>> database = new Dictionary<int, List<BoardData>>();
-    public static BoardData PlayerBoard;
+    static BoardData PlayerBoard;
 
     public override void Initialise()
     {
@@ -28,7 +28,12 @@ public class BoardDatabase : Factories.FactoryBase
         }
     }
 
-    public static BoardData LoadBoard(int roundNumber)
+    public static BoardData LoadBoard()
+    {
+        return PlayerBoard;
+    }
+
+    public static BoardData LoadEnemyBoard(int roundNumber)
     {
         if (!database.ContainsKey(roundNumber))
             throw new System.Exception("Database for round " + roundNumber + " is empty.");
