@@ -12,7 +12,7 @@ public class BoardManager : MonoBehaviour
 
     static LayerMask WhatIsTile;
     [SerializeField] LayerMask whatIsTile;
-    public Tile[,] Board => board;
+
     Tile[,] board;
 
     public static CharacterStats HeldCharacter
@@ -49,6 +49,14 @@ public class BoardManager : MonoBehaviour
         GameManager.OnRoundEnd += ClearBoard;
         GameManager.OnRoundEnd -= LoadBoardData;
         GameManager.OnRoundEnd += LoadBoardData;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.OnRoundStart -= SaveBoardData;
+        GameManager.OnRoundStart -= LoadEnemyBoardData;
+        GameManager.OnRoundEnd -= ClearBoard;
+        GameManager.OnRoundEnd -= LoadBoardData;
     }
 
     void SpawnBoard()
