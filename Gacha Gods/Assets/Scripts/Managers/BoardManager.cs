@@ -40,14 +40,10 @@ public class BoardManager : MonoBehaviour
         WhatIsTile = whatIsTile;
         SpawnBoard();
 
-        GameManager.OnRoundStart -= LoadEnemyBoardData;
-        GameManager.OnRoundStart += LoadEnemyBoardData;
-        GameManager.OnRoundStart -= SaveBoardData;
+        //save should actually go after load
         GameManager.OnRoundStart += SaveBoardData;
-
-        GameManager.OnRoundEnd -= ClearBoard;
+        GameManager.OnRoundStart += LoadEnemyBoardData;
         GameManager.OnRoundEnd += ClearBoard;
-        GameManager.OnRoundEnd -= LoadBoardData;
         GameManager.OnRoundEnd += LoadBoardData;
     }
 
