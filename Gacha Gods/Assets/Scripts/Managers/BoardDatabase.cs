@@ -8,6 +8,7 @@ public class BoardDatabase : Factories.FactoryBase
 {
     public static Dictionary<int, List<BoardData>> Database => database;
     static Dictionary<int, List<BoardData>> database = new Dictionary<int, List<BoardData>>();
+    public static BoardData PlayerBoard;
 
     public override void Initialise()
     {
@@ -15,6 +16,8 @@ public class BoardDatabase : Factories.FactoryBase
 
     public static void SaveBoard(BoardData boardData)
     {
+        PlayerBoard = boardData;
+
         if (database.ContainsKey(boardData.RoundNumber))
             database[boardData.RoundNumber].Add(boardData);
         else

@@ -80,6 +80,14 @@ public static class ExtensionMethods
             throw new Exception("No button attached");
     }
 
+    public static void DestroyAllChildren(this Transform transform)
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            UnityEngine.Object.Destroy(transform.GetChild(i).gameObject);
+        }
+    }
+
     public static void AddListenerToButton(this Button button, System.Action action)
     {
         button.onClick.AddListener(() => action());

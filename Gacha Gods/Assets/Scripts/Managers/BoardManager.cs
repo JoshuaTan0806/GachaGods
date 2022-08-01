@@ -37,7 +37,22 @@ public class BoardManager : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.OnRoundStart -= LoadEnemyBoardData;
+        GameManager.OnRoundStart += LoadEnemyBoardData;
+        GameManager.OnRoundStart -= SaveBoardData;
+        GameManager.OnRoundStart += SaveBoardData;
+
+        GameManager.OnRoundEnd -= ClearBoard;
+        GameManager.OnRoundEnd += ClearBoard;
+        GameManager.OnRoundEnd -= LoadBoardData;
+        GameManager.OnRoundEnd += LoadBoardData;
+
         WhatIsTile = whatIsTile;
+        SpawnBoard();
+    }
+
+    void SpawnBoard()
+    {
         board = new Tile[width, height];
 
         for (int i = 0; i < width; i++)
@@ -168,11 +183,24 @@ public class BoardManager : MonoBehaviour
     [Button]
     public void LoadBoardData()
     {
+        foreach (var item in BoardDatabase.PlayerBoard.CharacterDatas)
+        {
+            CharacterStats stats = Instantiate(item.Character.Prefab, board[item.Position.x, item.Position.y].transform.position, Quaternion.identity, alliesReference).GetComponent<CharacterStats>();
+            board[item.Position.x, item.Position.y].Character = stats;
+            stats.SetStats(item.Stats);
+            stats.UpgradeAttack(item.Attack);
+            stats.UpgradeSpell(item.Spell);
+        }
+    }
+
+    [Button]
+    public void LoadEnemyBoardData()
+    {
         BoardData boardData = BoardDatabase.LoadBoard(GameManager.RoundNumber);
 
         foreach (var item in boardData.CharacterDatas)
         {
-            CharacterStats stats = Instantiate(item.Character.Prefab, Board[width - 1 - item.Position.x, item.Position.y].transform.position, Quaternion.identity, enemiesReference).GetComponent<CharacterStats>();
+            CharacterStats stats = Instantiate(item.Character.Prefab, board[width - 1 - item.Position.x, item.Position.y].transform.position, Quaternion.identity, enemiesReference).GetComponent<CharacterStats>();
             stats.SetStats(item.Stats);
             stats.UpgradeAttack(item.Attack);
             stats.UpgradeSpell(item.Spell);
@@ -200,5 +228,13 @@ public class BoardManager : MonoBehaviour
 
         BoardData boardData = new BoardData(GameManager.RoundNumber, characterDatas);
         BoardDatabase.SaveBoard(boardData);
+    }
+
+
+    [Button]
+    void ClearBoard()
+    {
+        alliesReference.DestroyAllChildren();
+        enemiesReference.DestroyAllChildren();
     }
 }
