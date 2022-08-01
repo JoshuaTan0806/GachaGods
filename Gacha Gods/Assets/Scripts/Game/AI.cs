@@ -84,6 +84,7 @@ public class AI : MonoBehaviour
         agent.SetDestination(target.transform.position);
     }
 
+    [Button]
     void Cast()
     {
         OnSpellCast?.Invoke();
@@ -111,7 +112,10 @@ public class AI : MonoBehaviour
     public void Buff()
     {
         Condition condition = new Condition(ref OnAttack, 5);
-        Buff buff = new(StatManager.CreateStat(Stat.Health, StatType.Flat, 100), condition);
+        Condition condition1 = new Condition(ref OnSpellCast, 3);
+        Condition condition2 = new Condition(ref GameManager.OnRoundEnd, 1);
+        List<Condition> conditions = new List<Condition>() { condition, condition1, condition2 };
+        Buff buff = new(StatManager.CreateStat(Stat.Health, StatType.Flat, 100), conditions);
         stats.AddBuff(buff);
     }
 }
