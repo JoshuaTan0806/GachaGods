@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -66,6 +67,7 @@ public class AI : MonoBehaviour
         return false;
     }
 
+    [Button]
     void Attack()
     {
         OnAttack?.Invoke();
@@ -103,5 +105,13 @@ public class AI : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         canChooseAction = true;
+    }
+
+    [Button]
+    public void Buff()
+    {
+        Condition condition = new Condition(ref OnAttack, 5);
+        Buff buff = new(StatManager.CreateStat(Stat.Health, StatType.Flat, 100), condition);
+        stats.AddBuff(buff);
     }
 }

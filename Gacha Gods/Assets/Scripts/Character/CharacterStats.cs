@@ -145,7 +145,8 @@ public class CharacterStats : MonoBehaviour
     [Button]
     public void Buff()
     {
-        Buff buff = new(StatManager.CreateStat(Stat.Health, StatType.Flat, 100), ref GameManager.OnRoundEnd);
+        Condition condition = new Condition(ref GameManager.OnRoundEnd, 2);
+        Buff buff = new(StatManager.CreateStat(Stat.Health, StatType.Flat, 100), condition);
         AddBuff(buff);
     }
 }

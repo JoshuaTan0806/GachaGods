@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class Buff
 {
-    public Buff(StatData statData, ref System.Action conditionToRemove)
+    public Buff(StatData statData, Condition condition)
     {
         Stat = statData;
 
-        conditionToRemove -= RemoveBuff;
-        conditionToRemove += RemoveBuff;
+        condition.OnConditionHit -= RemoveBuff;
+        condition.OnConditionHit += RemoveBuff;
 
-        GameManager.OnGameEnd -= RemoveBuff;
-        GameManager.OnGameEnd += RemoveBuff;
+        GameManager.OnRoundEnd -= RemoveBuff;
+        GameManager.OnRoundEnd += RemoveBuff;
     }
 
-    public Buff(StatData statData, ref List<System.Action> conditionsToRemove)
+    public Buff(StatData statData, List<Condition> conditions)
     {
         Stat = statData;
 
-        for (int i = 0; i < conditionsToRemove.Count; i++)
+        for (int i = 0; i < conditions.Count; i++)
         {
-            conditionsToRemove[i] -= RemoveBuff;
-            conditionsToRemove[i] += RemoveBuff;
+            conditions[i].OnConditionHit -= RemoveBuff;
+            conditions[i].OnConditionHit += RemoveBuff;
         }
 
         GameManager.OnGameEnd -= RemoveBuff;
@@ -47,5 +47,30 @@ public class Buff
     {
         yield return new WaitForSeconds(time);
         RemoveBuff();
+    }
+}
+
+public class Condition
+{
+    public System.Action Event;
+    public int Number;
+
+    public System.Action OnConditionHit;
+
+    public Condition(ref System.Action Event, int Number = 1)
+    {
+        this.Event = Event;
+        this.Number = Number;
+
+        Event -= SubtractNumber;
+        Event += SubtractNumber;
+    }
+
+    public void SubtractNumber()
+    {
+        Number--;
+
+        if (Number <= 0)
+            OnConditionHit?.Invoke();
     }
 }
